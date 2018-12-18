@@ -1,0 +1,44 @@
+/* Text styling */
+h1 {
+    color: #e23d06;
+    font-family: "Cabin", Helvetica, Arial, serif;
+    font-weight: bold;
+    margin-top: 0.8em;
+    margin-bottom: 0.8em;
+}
+
+/* Header */
+#header-img {
+    margin-left: 20px;
+}
+
+/* Nav bar */
+#nav-bar .button {
+    color: white;
+    font-size: 1.3em;
+    font-family: Tahoma, Arial, sans-serif;
+    text-align: center;
+}
+
+.nav-item {
+    border: 3px solid rgba(0, 0, 0, 0);
+    border-bottom-width: 10px;
+}
+
+#home-button {
+    background-color: #1e8ac8;
+}
+#games-button {
+    background-color: #eb9711;
+}
+#about-button {
+    background-color: #e23d06;
+}
+#extra-button {
+    background-color: #e23d41;
+}
+
+/* Main content */
+#main-content {
+    border-top: 1px solid rgba(0, 0, 0, 0.35);
+}
