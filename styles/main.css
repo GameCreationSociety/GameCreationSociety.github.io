@@ -5,7 +5,6 @@
 
 /* Text styling */
 h1 {
-    color: #e23d06;
     font-weight: bold;
     margin-top: 0.8em;
     margin-bottom: 0.8em;
@@ -14,12 +13,14 @@ h1 {
 /* Buttons */
 .red-button {
     font-size: 1.3em;
-    background: linear-gradient(180deg, #891222 0%, #C01930 100%);
+    color: #FFFFFF;
+    background: linear-gradient(270deg, #891222 0%, #C01930 100%);
 }
 
 /* Body */
 body {
     background-color: #DEDDDD;
+    color: #FFFFFF;
     font-family: "Open Sans", "Cabin", Helvetica, Arial, serif;
 }
 
@@ -29,32 +30,29 @@ body {
 }
 
 /* Nav bar */
+#nav-col {
+    /* position: absolute; */
+    right: 0;
+    bottom: 0;
+}
+
+/* #nav-bar {
+    position:
+} */
+
 #nav-bar .button {
-    color: white;
+    color: black;
     font-size: 1.3em;
     font-family: Tahoma, Arial, sans-serif;
     text-align: center;
 }
 
-.nav-item {
-    border: 3px solid rgba(0, 0, 0, 0);
-    border-bottom-width: 10px;
-}
-
-#home-button {
-    background-color: #1e8ac8;
-}
-#games-button {
-    background-color: #eb9711;
-}
-#about-button {
-    background-color: #e23d06;
-}
-#extra-button {
-    background-color: #e23d41;
-}
 
 /* Main content */
 #main-content {
-    border-top: 1px solid rgba(0, 0, 0, 0.35);
+    /* border-top: 1px solid rgba(0, 0, 0, 0.35); */
+      margin-top: 6rem !important;
+}
+
+.mt-header {
 }
