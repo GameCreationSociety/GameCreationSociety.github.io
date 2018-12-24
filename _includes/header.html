@@ -1,7 +1,7 @@
 <!-- Common page header -->
 <div id="page-header" class="fixed-top">
     <div class="container mt-5">
-        <div class="row" style="background-color: blue">
+        <div class="row align-items-center">
             <!-- Logo -->
             <div class="col-3">
                 <a href="/">
@@ -11,27 +11,36 @@
 
             <!-- Nav bar -->
             <div class="col-9" id="nav-col">
-                <nav id="nav-bar" class="float-right align-bottom">
+                <nav id="nav-bar" class="float-right">
                     <ul class="nav">
                         <li class="nav-item">
-                            <a class="nav-link button active" href="/">Home</a>
+                            <a class="nav-link button" href="/">
+                                <div {% if page.title == "Home" %} class="active-nav-button" {% endif %}>Home</div>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link button" href="/about">About</a>
+                            <a class="nav-link button" href="/about">
+                                <div {% if page.title == "About" %} class="active-nav-button" {% endif %}>About</div>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link button" href="/games">Games</a>
+                            <a class="nav-link button" href="/games">
+                                <div {% if page.title == "Games" %} class="active-nav-button" {% endif %}>Games</div>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link button" href="/resources">Resources</a>
+                            <a class="nav-link button" href="/resources">
+                                <div {% if page.title == "Resources" %} class="active-nav-button" {% endif %}>Resources</div>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link button" href="/contact">Contact</a>
+                            <a class="nav-link button" href="/contact">
+                                <div {% if page.title == "Contact" %} class="active-nav-button" {% endif %}>Contact</div>
+                            </a>
                         </li>
                     </ul>
                 </nav>
             </div>
         </div>
     </div>
-</div>
 </div>
