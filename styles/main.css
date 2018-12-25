@@ -6,15 +6,20 @@
 /* Text styling */
 h1 {
     font-weight: bold;
-    margin-top: 0.8em;
-    margin-bottom: 0.8em;
+    margin-top: 0.6em;
+    margin-bottom: 0.6em;
 }
 
 /* Buttons */
 .red-button {
-    font-size: 1.3em;
+    font-size: 1.4em;
+    width: 25%;
+    height: 6vh;
     color: #FFFFFF;
     background: linear-gradient(270deg, #891222 0%, #C01930 100%);
+    padding: 0;
+    border: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 /* Body */
@@ -25,8 +30,18 @@ body {
 }
 
 /* Header */
+#page-header {
+    background: linear-gradient(0deg, #FFFFFF00 0%, #DEDDDD 8%);
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0px;
+}
+
 #header-img {
     margin-left: 20px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    width: 70%;
 }
 
 /* Nav bar */
@@ -49,9 +64,30 @@ body {
 
 /* Main content */
 #main-content {
-    margin-top: 8.5rem !important;
+    /* margin-top: 7.75rem !important; */
 }
 
 /* Home page */
-#games-reel {
+#reel-container {
+    position: relative;
+    width: 100%;
+}
+
+video#games-reel {
+    position: relative;
+    width: 100%;
+    z-index: 0;
+}
+
+#reel-overlay-outer {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    z-index: 1;
+}
+
+#reel-overlay-inner {
+    position: relative;
+    left: -50%;
+    font-size: 2em;
 }

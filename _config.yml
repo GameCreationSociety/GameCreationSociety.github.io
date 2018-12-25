@@ -1,0 +1,4 @@
+collections:
+    games:
+        output: true
+        permalink: /:collection/:title

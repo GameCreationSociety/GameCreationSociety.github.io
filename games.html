@@ -5,3 +5,7 @@ title: Games
 ---
 
 <h1>Our Games</h1>
+
+{% for game in site.games %}
+  <h2><a href="{{ game.url }}">{{ game.title }}</a> - {{ game.description }}</h2>
+{% endfor %}
