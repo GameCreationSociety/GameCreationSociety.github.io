@@ -67,6 +67,7 @@ body {
     color: #FFFFFF;
     font-family: "Open Sans", "Cabin", Helvetica, Arial, serif;
     font-weight: 600;
+    height: 100%;
 }
 
 /* Header */
@@ -84,7 +85,7 @@ body {
     margin-top: 15px;
     margin-bottom: 10px;
     width: 70%;
-    padding: 2px;
+    padding: 3px;
 }
 
 #header-img:hover {

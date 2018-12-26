@@ -79,10 +79,10 @@ video#games-reel {
     z-index: 5;
     position: relative;
     background:
-        /* Faded overlay */
-        linear-gradient(#0B0B0B88, #0B0B0B88),
-        /* Background image */
-        url("/images/showcase_1.jpg");
+    /* Faded overlay */
+    linear-gradient(#0B0B0B88, #0B0B0B88),
+    /* Background image */
+    url("/images/showcase_1.jpg");
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -104,3 +104,45 @@ video#games-reel {
 }
 
 /* Section 5 */
+#section-5 {
+    background: linear-gradient(270deg, #480F17 0%, #63101E 100%);
+}
+
+.square {
+    height: 100%;
+    padding: 25% 0 0;
+    position: relative;
+}
+
+#section-5-preview-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-size: cover;
+    background-position: top;
+}
+
+#section-5-preview-overlay {
+    position: absolute;
+    top: 60%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #00000088;
+    background-position: top;
+    color: white;
+    font-weight: normal;
+    -webkit-transition-duration: 0.15s; /* Safari */
+    transition-duration: 0.15s;
+}
+
+#section-5-preview:hover {
+    box-shadow: 0px 0px 3px 4px rgba(0, 0, 0, 0.25);
+}
+
+#section-5-preview:hover #section-5-preview-overlay {
+    background-color: #000000CC;
+    text-decoration: underline;
+}
