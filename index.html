@@ -4,31 +4,53 @@ layout: default
 title: Home
 ---
 
-<!-- <video playsinline autoplay muted loop poster="/images/arches.jpg" id="games-reel">
-<source src="/videos/Demo_Reel.mp4" type="video/mp4">
-</video> -->
+<!-- Stylesheet dependencies -->
+<link rel="stylesheet" href="/styles/home.css">
+
+<!-- Content -->
 <div id="reel-container">
     <video playsinline autoplay muted loop poster="/images/arches.jpg" id="games-reel">
+        <source src="/videos/Demo_Reel_compressed.mp4" type="video/mp4"></source>
         <source src="/videos/Demo_Reel_Trim_compressed.mp4" type="video/mp4"></source>
-        <!-- <source src="/videos/Demo_Reel_Trim_extra_compressed.mp4" type="video/mp4"></source> -->
+        <source src="/videos/Demo_Reel_Trim_extra_compressed.mp4" type="video/mp4"></source>
         <!-- <source src="/videos/sample.mp4" type="video/mp4"></source> -->
     </video>
 
     <div id="reel-overlay-outer">
         <div id="reel-overlay-inner" class="text-center">
-            <h1>Want to make games?</h1><br><br><br>
-            <button type="button" class="red-button">Learn More</button>
+            <h1 id="want-to-make-games">Want to make games?</h1><br><br><br>
+            <a href="/about">
+                <button type="button" class="red-button">Learn More</button>
+            </a>
         </div>
+    </div>
+    <div id="view-full-video-reel">
+        <a id="view-full-video-text" href="/demo-reel">View Full Video Reel >></a>
     </div>
 </div>
 
-<h1>Game Creation Society</h1>
-<p>is a student-run organization at Carnegie Mellon University, dedicated to the art and science of making games. GCS provides an environment for people of various disciplines to work together on projects as they would in a real development environment.</p>
-<p>is a student-run organization at Carnegie Mellon University, dedicated to the art and science of making games. GCS provides an environment for people of various disciplines to work together on projects as they would in a real development environment.</p>
-<p>is a student-run organization at Carnegie Mellon University, dedicated to the art and science of making games. GCS provides an environment for people of various disciplines to work together on projects as they would in a real development environment.</p>
-<p>is a student-run organization at Carnegie Mellon University, dedicated to the art and science of making games. GCS provides an environment for people of various disciplines to work together on projects as they would in a real development environment.</p>
-<p>is a student-run organization at Carnegie Mellon University, dedicated to the art and science of making games. GCS provides an environment for people of various disciplines to work together on projects as they would in a real development environment.</p>
-<p>is a student-run organization at Carnegie Mellon University, dedicated to the art and science of making games. GCS provides an environment for people of various disciplines to work together on projects as they would in a real development environment.</p>
-<p>is a student-run organization at Carnegie Mellon University, dedicated to the art and science of making games. GCS provides an environment for people of various disciplines to work together on projects as they would in a real development environment.</p>
-<p>is a student-run organization at Carnegie Mellon University, dedicated to the art and science of making games. GCS provides an environment for people of various disciplines to work together on projects as they would in a real development environment.</p>
-<p>is a student-run organization at Carnegie Mellon University, dedicated to the art and science of making games. GCS provides an environment for people of various disciplines to work together on projects as they would in a real development environment.</p>
+<div id="section-2">
+    <div class="row">
+        <div class="col-5 offset-1 black-text">
+            <br>
+            <h2>Game Creation Society</h2>
+            <p>is a student-run organization at Carnegie Mellon University, dedicated to the art and science of making games. GCS provides an environment for people of various disciplines to work together on projects as they would in a real development environment.</p>
+            <br>
+
+            <a href="/mailing-list" class="no-text-decoration">
+                <button type="button" class="red-button">Join Mailing List</button>
+            </a>
+            <br><br><br>
+        </div>
+
+        <div class="col-6 text-center align-items-center">
+            <div id="section-2-icon-container">
+                <img id="section-2-icon" src="/images/placeholder_icon.png" alt="icon">
+            </div>
+        </div>
+    </div>
+
+    <!-- <div id="section-2-icon">
+    <img id="section-2-img" src="/images/placeholder_icon.png" alt="icon">
+</div> -->
+</div>

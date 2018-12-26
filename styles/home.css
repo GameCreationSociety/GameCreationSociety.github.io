@@ -1,0 +1,61 @@
+/* Home page (index.html) styling */
+
+/* Demo reel and overlay */
+#reel-container {
+    position: relative;
+    width: 100%;
+}
+
+video#games-reel {
+    position: relative;
+    width: 100%;
+    z-index: 5;
+}
+
+#reel-overlay-outer {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    z-index: 10;
+}
+
+#reel-overlay-inner {
+    position: relative;
+    left: -50%;
+    white-space: nowrap;
+}
+
+#want-to-make-games {
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+#view-full-video-reel {
+    position: absolute;
+    font-weight: 600;
+    bottom: 3%;
+    right: 1%;
+    z-index: 10;
+}
+
+#view-full-video-text {
+    color: #FFFFFF;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+/* Section 2 */
+#section-2 {
+    z-index: 1;
+    position: relative;
+    /* top: -30px; */
+    margin-top: -0.5rem;
+    background-color: #F8F8F8
+}
+
+#section-2-icon-container {
+    height: 40%;
+}
+
+#section-2-icon {
+    max-width: 100%;
+    max-height: 100%;
+}
