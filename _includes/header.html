@@ -1,46 +1,38 @@
 <!-- Common page header -->
 <div id="page-header" class="fixed-top">
-    <div class="container mt-4 mb-3">
-        <div class="row align-items-center">
-            <!-- Logo -->
-            <div class="col-3">
-                <a href="/">
-                    <img id="header-img" src="/images/logo_official_cropped_small.png" alt="GCS Logo">
-                </a>
-            </div>
+    <!-- Logo -->
+    <a href="/">
+        <img id="header-img" src="/images/logo_official_cropped_small.png" alt="GCS Logo">
+    </a>
 
-            <!-- Nav bar -->
-            <div class="col-9" id="nav-col">
-                <nav id="nav-bar" class="float-right">
-                    <ul class="nav">
-                        <li class="nav-item">
-                            <a class="nav-link button" href="/">
-                                <div {% if page.title == "Home" %} class="active-nav-button" {% endif %}>Home</div>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link button" href="/about">
-                                <div {% if page.title == "About" %} class="active-nav-button" {% endif %}>About</div>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link button" href="/games">
-                                <div {% if page.title == "Games" %} class="active-nav-button" {% endif %}>Games</div>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link button" href="/resources">
-                                <div {% if page.title == "Resources" %} class="active-nav-button" {% endif %}>Resources</div>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link button" href="/contact">
-                                <div {% if page.title == "Contact" %} class="active-nav-button" {% endif %}>Contact</div>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </div>
+    <!-- Nav bar -->
+    <nav id="nav-bar">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link button" href="/">
+                    <div {% if page.title == "Home" %} class="active-nav-button" {% endif %}>Home</div>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link button" href="/about">
+                    <div {% if page.title == "About" %} class="active-nav-button" {% endif %}>About</div>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link button" href="/games">
+                    <div {% if page.title == "Games" %} class="active-nav-button" {% endif %}>Games</div>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link button" href="/course">
+                    <div {% if page.title == "Course" %} class="active-nav-button" {% endif %}>Course</div>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link button" href="/contact">
+                    <div {% if page.title == "Contact" %} class="active-nav-button" {% endif %}>Contact</div>
+                </a>
+            </li>
+        </ul>
+    </nav>
 </div>

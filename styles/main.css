@@ -4,6 +4,7 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
 
 /* Text styling */
+
 h1 {
     font-size: 3.2em;
     font-weight: bold;
@@ -16,6 +17,35 @@ h2 {
     font-weight: bold;
     margin-top: 0.3em;
     margin-bottom: 0.3em;
+}
+
+html {
+    font-size: 0.48em;
+}
+
+/* https://getbootstrap.com/docs/4.1/layout/overview/#responsive-breakpoints */
+@media (min-width: 576px) {
+    html {
+        font-size: 0.48em;
+    }
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 0.64em;
+    }
+}
+
+@media (min-width: 992px) {
+    html {
+        font-size: 0.82em;
+    }
+}
+
+@media (min-width: 1200px) {
+    html {
+        font-size: 1.0em;
+    }
 }
 
 .black-text {
@@ -36,8 +66,9 @@ h2 {
     cursor: pointer;
     /* width: 25%;
     height: 6vh; */
-    width: 255px;
-    height: 55px;
+    width: 100%;
+    max-width: 16em;
+    height: 3.5em;
     color: #FFFFFF;
     background: -webkit-linear-gradient(right, #891222 0%, #C01930 100%);
     background: -o-linear-gradient(right, #891222 0%, #C01930 100%);
@@ -72,19 +103,31 @@ body {
 
 /* Header */
 #page-header {
+    display: block;
+
     background: -webkit-linear-gradient(bottom, #FFFFFF00 0%, #E5E5E5 8%);
     background: -o-linear-gradient(bottom, #FFFFFF00 0%, #E5E5E5 8%);
     background: linear-gradient(to top, #FFFFFF00 0%, #E5E5E5 8%);
     position: -webkit-sticky; /* Safari */
     position: sticky;
+
     top: 0px;
+    width: 100%;
+    height: 6em;
+    padding: 1em 3em;
+
+    overflow-x: scroll;
+    white-space: nowrap;
+    overflow-y: hidden;
+    text-align: right;
+    -webkit-overflow-scrolling: touch; /* momentum scroll on ios */
 }
 
 #header-img {
-    margin-left: 20px;
-    margin-top: 15px;
-    margin-bottom: 10px;
-    width: 70%;
+    display: inline-block;
+    float: left;
+
+    height: 100%;
     padding: 3px;
 }
 
@@ -93,9 +136,15 @@ body {
 }
 
 /* Nav bar */
+#nav-bar {
+    display: inline-block;
+    white-space: nowrap;
+    margin-left: 1em;
+}
+
 #nav-bar .button {
     color: black;
-    font-size: 1.6em;
+    font-size: 1.3em;
     font-weight: 600;
     text-align: center;
 }
@@ -104,9 +153,23 @@ body {
     box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.25);
 }
 
+.nav {
+    display: block;
+    position: relative;
+    white-space: nowrap;
+
+    height: 5em;
+    max-height: 100%;
+    top: 1em;
+}
+
 .nav-item {
+    display: inline-block;
+    list-style: none;
+
     margin-left: 0.3vw;
     margin-right: 0.3vw;
+    height: 100%;
 }
 
 .active-nav-button {
