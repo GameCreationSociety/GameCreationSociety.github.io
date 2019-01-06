@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: bdcd49c64a1794f4d93c347175cf4686
+timeCreated: 1544215215
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Google Sans
+  fontNames:
+  - Google Sans
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 447a444990db34eecb29c7187388413b, type: 3}
+  - {fileID: 12800000, guid: 7989e5fa895c7442db5e7cced2dc075a, type: 3}
+  - {fileID: 12800000, guid: 0c17456cd84d04f619774ba3b3de5c78, type: 3}
+  - {fileID: 12800000, guid: 592a2d7d76d7142a89fead02d81658d3, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

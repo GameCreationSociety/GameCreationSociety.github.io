@@ -59,10 +59,27 @@ video#games-reel {
     font-weight: 600;
 }
 
-#view-full-video-reel {
+#reel-overlay-description {
+    position: relative;
+    font-weight: normal;
+    width: 46%;
+    left: 27%;
+}
+
+#reel-overlay-buttons {
+    position: relative;
+    width: 120%;
+    left: -10%;
+    vertical-align: middle;
+}
+
+#learn-more {
+    margin-right: 3em;
+}
+
+/* #view-full-video-reel {
     position: absolute;
     font-weight: 600;
-    /* bottom: 3%; */
     top: 96vh;
     right: 1%;
     z-index: 10;
@@ -71,7 +88,7 @@ video#games-reel {
 #view-full-video-text {
     color: #FFFFFF;
     text-shadow: 1px 0 black, 0 1px black;
-}
+} */
 
 /* Section 2 */
 #section-2 {

@@ -9,28 +9,28 @@
     <nav id="nav-bar">
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link button" href="/">
-                    <div {% if page.title == "Home" %} class="active-nav-button" {% endif %}>Home</div>
+                <a class="nav-link button {% if page.title == "Home" %} active-nav-button{% endif %}" href="/">
+                    Home
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link button" href="/about">
-                    <div {% if page.title == "About" %} class="active-nav-button" {% endif %}>About</div>
+                <a class="nav-link button {% if page.title == "About" %} active-nav-button{% endif %}" href="/about">
+                    About
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link button" href="/games">
-                    <div {% if page.title == "Games" %} class="active-nav-button" {% endif %}>Games</div>
+                <a class="nav-link button {% if page.title == "Games" %} active-nav-button {% endif %}" href="/games">
+                    Games
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link button" href="/course">
-                    <div {% if page.title == "Course" %} class="active-nav-button" {% endif %}>Course</div>
+                <a class="nav-link button {% if page.title == "Course" %} active-nav-button{% endif %}" href="/course">
+                    Course
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link button" href="/contact">
-                    <div {% if page.title == "Contact" %} class="active-nav-button" {% endif %}>Contact</div>
+                <a class="nav-link button {% if page.title == "Contact" %} active-nav-button{% endif %}" href="/contact">
+                    Contact
                 </a>
             </li>
         </ul>
