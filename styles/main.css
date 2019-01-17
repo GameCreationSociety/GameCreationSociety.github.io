@@ -3,6 +3,11 @@
 @import url("https://fonts.googleapis.com/css?family=Cabin");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
 
+/* Variables */
+:root {
+    --header-height: 5em;
+}
+
 /* Text styling */
 h1 {
     font-size: 3.2em;
@@ -127,7 +132,7 @@ body {
 
     top: 0px;
     width: 100%;
-    height: 5em;
+    height: var(--header-height);
     padding: 0 3em;
 
     overflow-x: auto;
@@ -215,6 +220,10 @@ body {
 }
 
 /* Main Content */
+.header-sized-top-margin {
+    margin-top: var(--header-height);
+}
+
 #main-content {
     padding-left: 0;
     padding-right: 0;
