@@ -6,6 +6,11 @@ title: Games
 
 <h1>Our Games</h1>
 
-{% for game in site.games %}
-  <h2><a href="{{ game.url }}">{{ game.title }}</a> - {{ game.description }}</h2>
+{% assign years = site.games | group_by: "year" %}
+
+{% for year in years %}
+    {% assign gamesSorted = year.items | sort: "semester" %}
+    {% for game in gamesSorted %}
+        <h2><a href="{{ game.url }}">{{ game.title }}</a> ({{game.semester}} {{game.year}}) - {{ game.description }}</h2>
+    {% endfor %}
 {% endfor %}
