@@ -2,3 +2,5 @@ collections:
     games:
         output: true
         permalink: /:collection/:title
+        
+stage_path: stage.gamecreation.org/

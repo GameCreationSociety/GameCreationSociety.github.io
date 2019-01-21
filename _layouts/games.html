@@ -1,0 +1,57 @@
+---
+# Front Matter
+layout: default
+title: Games
+# Can sort by: 'newest', 'oldest', or 'title'
+sort_by: newest
+---
+
+<!-- Stylesheet dependencies -->
+<link rel="stylesheet" href="/styles/games.css">
+
+<!-- Content -->
+<h1>Our Games</h1>
+
+
+<!-- Sorted by dropdown -->
+Sorted by:
+<div class="dropdown">
+    <button class="dropbtn">{{ page.sort_by | capitalize }}</button>
+    <div class="dropdown-content">
+        <a href="/games_newest">Newest</a>
+        <a href="/games_oldest">Oldest</a>
+        <a href="/games_title">Title</a>
+    </div>
+</div>
+
+
+{% if page.sort_by == "title" %}
+<!-- Sort games alphabetically by title -->
+
+{% assign games_sorted = site.games | sort: "title" %}
+{% include listed_game.html %}
+<!-- See listed_game.html for the formatting of each game listed -->
+
+
+{% else %}
+<!-- Sort games chronologically, by "newest" or "oldest" -->
+
+
+{% assign years = site.games | group_by: "year" %}
+{% if page.sort_by == "oldest" %}
+    {% assign years = site.games | group_by: "year" | reverse %}
+{% endif %}
+
+{% for year in years %}
+    {% assign games_sorted = year.items | sort: "semester" %}
+    {% if page.sort_by == "oldest" %}
+        {% assign games_sorted = year.items | sort: "semester" | reverse %}
+    {% endif %}
+    {% include listed_game.html %}
+    <!-- See listed_game.html for the formatting of each game listed -->
+{% endfor %}
+
+
+{% endif %}
+
+<!-- {{ content }} -->

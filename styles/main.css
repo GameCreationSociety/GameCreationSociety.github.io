@@ -6,6 +6,11 @@
 /* Variables */
 :root {
     --header-height: 5em;
+
+    --light-red: #C01930;
+    --dark-red: #891222;
+    --light-blue: #032270;
+    --dark-blue: #230579;
 }
 
 /* Text styling */
@@ -83,25 +88,25 @@ html {
 }
 
 .red-button {
-    background: -webkit-linear-gradient(right, #891222 0%, #C01930 100%);
-    background: -o-linear-gradient(right, #891222 0%, #C01930 100%);
-    background: linear-gradient(to left, #891222 0%, #C01930 100%);
+    background: -webkit-linear-gradient(right, var(--dark-red) 0%, var(--light-red) 100%);
+    background: -o-linear-gradient(right, var(--dark-red) 0%, var(--light-red) 100%);
+    background: linear-gradient(to left, var(--dark-red) 0%, var(--light-red) 100%);
 }
 .red-button:hover {
-    background: -webkit-linear-gradient(right, #C01930 0%, #891222 100%);
-    background: -o-linear-gradient(right, #C01930 0%, #891222 100%);
-    background: linear-gradient(to left, #C01930 0%, #891222 100%);
+    background: -webkit-linear-gradient(right, var(--light-red) 0%, var(--dark-red) 100%);
+    background: -o-linear-gradient(right, var(--light-red) 0%, var(--dark-red) 100%);
+    background: linear-gradient(to left, var(--light-red) 0%, var(--dark-red) 100%);
 }
 
 .blue-button {
-    background: -webkit-linear-gradient(right, #032270 0%, #230579 100%);
-    background: -o-linear-gradient(right, #032270 0%, #230579 100%);
-    background: linear-gradient(to left, #032270 0%, #230579 100%);
+    background: -webkit-linear-gradient(right, var(--dark-blue) 0%, var(--light-blue) 100%);
+    background: -o-linear-gradient(right, var(--dark-blue) 0%, var(--light-blue) 100%);
+    background: linear-gradient(to left, var(--dark-blue) 0%, var(--light-blue) 100%);
 }
 .blue-button:hover {
-    background: -webkit-linear-gradient(right, #230579 0%, #032270 100%);
-    background: -o-linear-gradient(right, #230579 0%, #032270 100%);
-    background: linear-gradient(to left, #230579 0%, #032270 100%);
+    background: -webkit-linear-gradient(right, var(--light-blue) 0%, var(--dark-blue) 100%);
+    background: -o-linear-gradient(right, var(--light-blue) 0%, var(--dark-blue) 100%);
+    background: linear-gradient(to left, var(--light-blue) 0%, var(--dark-blue) 100%);
 }
 
 /* General formatting */
@@ -180,7 +185,7 @@ body {
 
 #nav-bar .button:hover {
     /* box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.25); */
-    background-color: #C01930;
+    background-color: var(--light-red);
 }
 
 .nav {
@@ -216,7 +221,7 @@ body {
 .active-nav-button {
     font-weight: 700 !important;
     /* border-bottom: 3px solid; */
-    background-color: #C01930;
+    background-color: var(--light-red);
 }
 
 /* Main Content */

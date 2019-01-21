@@ -13,12 +13,18 @@ layout: default
 
 <!-- Builds -->
 <h2>Play</h2>
+{% for build in page.builds %}
+<p>For {{ build[0] }} | <a href="http://{{ site.stage_path }}{{ page.stage_game_path }}{{ build[1] }}">Download</a></p>
+{% endfor %}
 
 <!-- Screenshots -->
 <h2>Screenshots</h2>
 
 <!-- Project members -->
 <h2>Project Members</h2>
+{% for member in page.project_members %}
+<p>{{ member[0] }} - <i>{{ member[1] }}</i></p>
+{% endfor %}
 
 <!-- Original Soundtrack Soundcloud embed -->
 <div class="row no-margin">
@@ -32,5 +38,5 @@ layout: default
     </div>
 </div>
 
-<!-- Custom content -->
+<!-- Custom content (this could be moved up?) -->
 {{ content }}
