@@ -10,48 +10,76 @@ sort_by: newest
 <link rel="stylesheet" href="/styles/games.css">
 
 <!-- Content -->
-<h1>Our Games</h1>
+<!-- Header -->
+<div class="row no-margin">
+    <div class="col-5 offset-1">
+        <h1>Our Games</h1>
+    </div>
+</div>
 
+<!-- "Sorted by" dropdown -->
+<div class="row no-margin">
+    <div class="col-5 offset-1">
+        Sorted by:
+        <div class="dropdown">
+            <button class="dropbtn">{{ page.sort_by | capitalize }}</button>
+            <div class="dropdown-content">
+                <a href="/games-by-newest">Newest</a>
+                <a href="/games-by-oldest">Oldest</a>
+                <a href="/games-by-title">Title</a>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
 
-<!-- Sorted by dropdown -->
-Sorted by:
-<div class="dropdown">
-    <button class="dropbtn">{{ page.sort_by | capitalize }}</button>
-    <div class="dropdown-content">
-        <a href="/games_newest">Newest</a>
-        <a href="/games_oldest">Oldest</a>
-        <a href="/games_title">Title</a>
+<!-- Filtering by tags -->
+<div class="row no-margin">
+    <div class="col-5 offset-1">
+        Filter by tag:<br>
+        {% for tag in site.game_tags %}
+        <input type="checkbox" class="games_filter_checkbox" id="tag_box_{{ tag }}" onclick="update_games_filter()">
+        {{ tag }}<br>
+        {% endfor %}
     </div>
 </div>
 
 
-{% if page.sort_by == "title" %}
-<!-- Sort games alphabetically by title -->
+<!-- All listed games -->
+<div class="row no-margin">
+    {% if page.sort_by == "title" %}
+    <!-- Sort games alphabetically by title -->
 
-{% assign games_sorted = site.games | sort: "title" %}
-{% include listed_game.html %}
-<!-- See listed_game.html for the formatting of each game listed -->
-
-
-{% else %}
-<!-- Sort games chronologically, by "newest" or "oldest" -->
-
-
-{% assign years = site.games | group_by: "year" %}
-{% if page.sort_by == "oldest" %}
-    {% assign years = site.games | group_by: "year" | reverse %}
-{% endif %}
-
-{% for year in years %}
-    {% assign games_sorted = year.items | sort: "semester" %}
-    {% if page.sort_by == "oldest" %}
-        {% assign games_sorted = year.items | sort: "semester" | reverse %}
-    {% endif %}
+    {% assign games_sorted = site.games | sort: "title" %}
     {% include listed_game.html %}
     <!-- See listed_game.html for the formatting of each game listed -->
-{% endfor %}
 
 
-{% endif %}
+    {% else %}
+    <!-- Sort games chronologically, by "newest" or "oldest" -->
 
+
+    {% assign years = site.games | group_by: "year" %}
+    {% if page.sort_by == "oldest" %}
+        {% assign years = site.games | group_by: "year" | reverse %}
+    {% endif %}
+
+    {% for year in years %}
+        {% assign games_sorted = year.items | sort: "semester" %}
+        {% if page.sort_by == "oldest" %}
+            {% assign games_sorted = year.items | sort: "semester" | reverse %}
+        {% endif %}
+        {% include listed_game.html %}
+        <!-- See listed_game.html for the formatting of each game listed -->
+    {% endfor %}
+
+
+    {% endif %}
+</div>
+
+<!-- Custom content can be included somewhere -->
 <!-- {{ content }} -->
+
+
+<!-- Script dependencies -->
+<script src="/scripts/games_filter.js"></script>

@@ -1,3 +1,5 @@
 {% for game in games_sorted %}
-    <h2><a href="{{ game.url }}">{{ game.title }}</a> ({{game.semester}} {{game.year}}) - {{ game.description }}</h2>
+    <div class="col-4 listed_game {% for tag in game.tags %} {{ tag }}_game-tag {% endfor %}">
+        <h2><a href="{{ game.url }}">{{ game.title }}</a> ({{game.semester}} {{game.year}}) - {{ game.description }}</h2>
+    </div>
 {% endfor %}

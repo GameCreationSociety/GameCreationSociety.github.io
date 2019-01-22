@@ -2,5 +2,14 @@ collections:
     games:
         output: true
         permalink: /:collection/:title
-        
-stage_path: stage.gamecreation.org/
+
+# The path to the stage directory in the gcs server, where builds are hosted
+stage_path: http://stage.gamecreation.org/
+
+# Tags used for filtering games
+game_tags: [
+    "Windows",      "Mac",          "Linux",
+    "Singleplayer", "Multiplayer",
+    "Controller-Compatible",
+    "VR"
+]
