@@ -1,0 +1,56 @@
+/* Basic page (_layouts/basic-page.html) styling */
+
+body {
+	background-color: black;
+}
+
+#main-content {
+	/* background: linear-gradient(270deg, #891222 0%, #C01930 100%); */
+	background: white;
+}
+
+/* Image at top of page */
+#basic-top-image {
+	display: block;
+	overflow:auto;
+	z-index: 5;
+	position: relative;
+	/* Default image */
+	background: url("/images/showcase_1.jpg");
+	background-position: center 55%;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+#basic-top-title {
+	text-shadow: 2px 2px black;
+	margin-left: 4em;
+	margin-right: 4em;
+}
+
+/* The main content of a basic page */
+#basic-main-content {
+	color: black;
+	margin-left: 6em;
+	margin-right: 6em;
+}
+
+#basic-main-content > h1 {
+	color: #BC192F;
+	margin-left: -0.3em;
+	margin-bottom: 0.4em;
+}
+
+#basic-main-content > p {
+	/* margin-bottom: 2em; */
+}
+
+/* Link styling */
+#basic-main-content > p > a {
+	color: #BC192F;
+	text-decoration: none;
+}
+#basic-main-content > p > a:hover {
+	color: #991222;
+	text-decoration: underline;
+}

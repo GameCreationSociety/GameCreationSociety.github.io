@@ -1,0 +1,26 @@
+---
+# Front Matter
+layout: default
+noHeaderMargin: true
+---
+
+<!-- Stylesheet dependencies -->
+<link rel="stylesheet" href="/styles/basic-page.css">
+
+<!-- Top image -->
+<div id="basic-top-image" {% if page.top-img %}style="background-image: url('/images/{{page.top-img}}'); background-position: center {{page.top-img-pos}}"{% endif %}>
+    <div id="basic-top-title" class="header-sized-top-margin">
+        <!-- Title -->
+        {% if page.display-title %}
+        <h1 class="text-center">{{ page.display-title }}</h1>
+        {% else %}
+        <h1 class="text-center">{{ page.title }}</h1>
+        {% endif %}
+    </div>
+</div>
+
+<!-- <h2>About</h2>
+<p>{{ page.description }}</p> -->
+<div id="basic-main-content">
+{{ content }}
+</div>

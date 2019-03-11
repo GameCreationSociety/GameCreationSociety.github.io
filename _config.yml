@@ -1,3 +1,4 @@
+permalink: /:title
 collections:
     games:
         output: true
