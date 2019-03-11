@@ -33,24 +33,26 @@ body {
 	color: black;
 	margin-left: 6em;
 	margin-right: 6em;
+	margin-bottom: 3em;
 }
 
-#basic-main-content > h1 {
+#basic-main-content h1 {
 	color: #BC192F;
 	margin-left: -0.3em;
 	margin-bottom: 0.4em;
 }
 
-#basic-main-content > p {
-	/* margin-bottom: 2em; */
+#basic-main-content h3 {
+	margin-top: 0.8em;
+	margin-bottom: 0.8em;
 }
 
 /* Link styling */
-#basic-main-content > p > a {
+#basic-main-content a {
 	color: #BC192F;
 	text-decoration: none;
 }
-#basic-main-content > p > a:hover {
+#basic-main-content a:hover {
 	color: #991222;
 	text-decoration: underline;
 }

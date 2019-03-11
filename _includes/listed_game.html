@@ -1,5 +1,13 @@
-{% for game in games_sorted %}
-    <div class="col-4 listed_game {% for tag in game.tags %} {{ tag }}_game-tag {% endfor %}">
-        <h2><a href="{{ game.url }}">{{ game.title }}</a> ({{game.semester}} {{game.year}}) - {{ game.description }}</h2>
+<!-- Stylesheet dependencies -->
+<link rel="stylesheet" href="/styles/listed_game.css">
+
+<!-- Listed game display -->
+<a class="col-3 square listed-game-preview listed_game {% for tag in game.tags %} {{ tag }}_game-tag {% endfor %}" href="{{ game.url }}">
+    <div class="listed-game-preview-img" style="background-image: url('{{game.data_path}}{{game.logo}}')">
     </div>
-{% endfor %}
+    <div class="listed-game-preview-overlay">
+        <h5><b>{{ game.title }}</b></h5>
+        <p>{{game.semester}} {{game.year}}</p>
+        <p>{{ game.description }}</p>
+    </div>
+</a>

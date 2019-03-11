@@ -1,5 +1,32 @@
 /* Games page (_layouts/games.html) styling */
 
+/* Image at top of page */
+#games-top-image {
+	display: block;
+	overflow:auto;
+	z-index: 5;
+	position: relative;
+	/* Default image */
+	background: url("/images/arches.jpg");
+	background-position: center 18%;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+#games-top-title {
+	text-shadow: 2px 2px black;
+	margin-left: 4em;
+	margin-right: 4em;
+}
+
+/* No games found indicator */
+#no_games_found {
+	color: black;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	display: none;
+}
+
 /* Sorted by dropdown */
 .dropbtn {
     background-color: var(--light-blue);

@@ -2,6 +2,7 @@
 @import url("https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css");
 @import url("https://fonts.googleapis.com/css?family=Cabin");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
+@import url("https://use.fontawesome.com/releases/v5.7.2/css/all.css");
 
 /* Variables */
 :root {
@@ -117,6 +118,12 @@ html {
 .no-margin {
     margin-left: 0;
     margin-right: 0;
+}
+
+.square {
+    height: 100%;
+    padding: 25% 0 0;
+    position: relative;
 }
 
 /* Body */
@@ -240,4 +247,13 @@ body {
     font-family: "Cabin", Helvetica, Arial, serif;
     font-weight: normal;
     width: 100%;
+}
+
+.fab {
+    color: white;
+    margin-right: 0.5em;
+}
+.fas {
+    color: white;
+    margin-right: 0.5em;
 }

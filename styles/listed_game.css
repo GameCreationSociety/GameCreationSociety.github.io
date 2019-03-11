@@ -1,0 +1,43 @@
+/* Listed game (listed_game.html) styling */
+
+.listed-game-preview-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-size: cover;
+    background-position: top;
+}
+
+.listed-game-preview-overlay {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    max-width: 100%;
+    max-height: 100%;
+    padding: 1em;
+    vertical-align: bottom;
+
+    background-color: #00000088;
+    background-position: top;
+    color: white;
+    font-weight: normal;
+    -webkit-transition-duration: 0.15s; /* Safari */
+    transition-duration: 0.15s;
+}
+
+.listed-game-preview {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.listed-game-preview:hover {
+    box-shadow: 0px 0px 3px 4px rgba(0, 0, 0, 0.25);
+}
+
+.listed-game-preview:hover .listed-game-preview-overlay {
+    background-color: #000000CC;
+    text-decoration: underline;
+}

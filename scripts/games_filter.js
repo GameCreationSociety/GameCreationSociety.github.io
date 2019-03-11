@@ -23,6 +23,7 @@ function update_games_filter() {
 
     // Disable all listed games which don't have ALL of those tags
     var games_listed = $('.listed_game');
+    var some_displayed = false;
     games_listed.each(function(index, game) {
         var element = $(game);
         var length = applied_tags.length;
@@ -34,5 +35,14 @@ function update_games_filter() {
             }
         }
         element.css("display", "block");
+        some_displayed = true;
     });
+
+    // If no games fall within this filter, display the no_games_found div
+    var element = $('#no_games_found');
+    if (some_displayed) {
+        element.css("display", "none");
+    } else {
+        element.css("display", "block");
+    }
 }

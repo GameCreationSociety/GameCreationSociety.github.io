@@ -156,12 +156,6 @@ video#games-reel {
     background: linear-gradient(270deg, #480F17 0%, #63101E 100%);
 }
 
-.square {
-    height: 100%;
-    padding: 25% 0 0;
-    position: relative;
-}
-
 #section-5-preview-img {
     position: absolute;
     top: 0;
