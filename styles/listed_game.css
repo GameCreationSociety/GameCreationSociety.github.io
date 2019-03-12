@@ -6,15 +6,20 @@
     left: 0;
     bottom: 0;
     right: 0;
-    background-size: cover;
-    background-position: top;
+    /* background-size: cover; */
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .listed-game-preview-overlay {
+    display: none;
+
     position: absolute;
     left: 0;
     bottom: 0;
 
+    width: 100%;
     max-width: 100%;
     max-height: 100%;
     padding: 1em;
@@ -31,6 +36,7 @@
 .listed-game-preview {
     margin-top: 2em;
     margin-bottom: 2em;
+    /* background-color: black; */
 }
 
 .listed-game-preview:hover {
@@ -38,6 +44,7 @@
 }
 
 .listed-game-preview:hover .listed-game-preview-overlay {
+    display: block;
     background-color: #000000CC;
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
