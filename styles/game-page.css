@@ -1,5 +1,43 @@
 /* Game page (_layouts/game-page.html) styling */
 
+/* Text */
+#game-main-content {
+	color: black;
+	margin-left: 6em;
+	margin-right: 6em;
+	margin-top: 1em;
+	margin-bottom: 3em;
+}
+
+#game-main-content h1 {
+	color: #BC192F;
+	margin-left: -0.3em;
+	margin-bottom: 0.4em;
+}
+
+#game-main-content h3 {
+	margin-top: 0.8em;
+	margin-bottom: 0.8em;
+}
+
+/* Link styling */
+#game-main-content a {
+	color: #BC192F;
+	text-decoration: none;
+}
+#game-main-content a:hover {
+	color: #991222;
+	text-decoration: underline;
+}
+
+/* Image at top of page */
+#game-top-img {
+	width: 100%;
+    max-height: 100vh;
+    object-fit: cover;
+    height: auto;
+}
+
 /* Soundcloud embed */
 .soundcloud-embed {
     width: 100%;

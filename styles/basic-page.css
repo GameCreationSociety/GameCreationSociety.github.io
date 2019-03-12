@@ -4,11 +4,6 @@ body {
 	background-color: black;
 }
 
-#main-content {
-	/* background: linear-gradient(270deg, #891222 0%, #C01930 100%); */
-	background: white;
-}
-
 /* Image at top of page */
 #basic-top-image {
 	display: block;

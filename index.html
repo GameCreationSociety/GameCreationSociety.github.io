@@ -127,7 +127,24 @@ noHeaderMargin: true
     </div>
 
     <div class="row no-margin justify-content-around align-items-center">
-        <a id="section-5-preview" class="col-3 ml-5 square" href="/games/binary_star">
+
+        {% assign years = site.games | group_by: "year" %}
+        {% if page.sort_by == "oldest" %}
+        {% assign years = site.games | group_by: "year" | reverse %}
+        {% endif %}
+
+        {% for year in years %}
+        {% assign games_sorted = year.items | sort: "semester" %}
+        {% if page.sort_by == "oldest" %}
+        {% assign games_sorted = year.items | sort: "semester" | reverse %}
+        {% endif %}
+        {% for game in games_sorted limit:3 %}
+        {% include listed_game.html %}
+        {% endfor %}
+        <!-- See listed_game.html for the formatting of each game listed -->
+        {% endfor %}
+
+        <!-- <a id="section-5-preview" class="col-3 ml-5 square" href="/games/binary_star">
             <div id="section-5-preview-img" style="background-image: url('/game_data/binarystar/vlcsnap-2018-09-04-00h24m31s124.png')">
             </div>
             <div id="section-5-preview-overlay">
@@ -153,7 +170,7 @@ noHeaderMargin: true
                 <p>Spring 2018</p>
                 <p>description</p>
             </div>
-        </a>
+        </a> -->
     </div>
     <br><br>
     <div class="text-center">

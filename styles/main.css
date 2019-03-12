@@ -120,15 +120,26 @@ html {
     margin-right: 0;
 }
 
+.inline {
+    display: inline;
+}
+
+/* Shaped divs */
 .square {
     height: 100%;
     padding: 25% 0 0;
     position: relative;
 }
+.rectangular {
+    height: 100%;
+    padding: 18% 0 0;
+    position: relative;
+}
 
 /* Body */
 body {
-    background-color: #E5E5E5;
+    /* background-color: #E5E5E5; */
+    background-color: black;
     color: #FFFFFF;
     font-family: GoogleSans, "Open Sans", "Cabin", Helvetica, Arial, serif;
     font-weight: 600;
@@ -239,6 +250,7 @@ body {
 #main-content {
     padding-left: 0;
     padding-right: 0;
+    background: white;
 }
 
 /* Footer */

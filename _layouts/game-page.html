@@ -1,42 +1,52 @@
 ---
 # Front Matter
 layout: default
+noHeaderMargin: true
 ---
 
 <!-- Stylesheet dependencies -->
 <link rel="stylesheet" href="/styles/game-page.css">
 
-<!-- Title and description -->
-<h1>{{ page.title }}</h1>
-<h2>About</h2>
-<p>{{ page.description }}</p>
+<!-- Top image -->
+<img id="game-top-img" src="{{page.data_path}}{{page.top-img}}" style="object-fit:{{page.top-img-fit}}">
+</img>
 
-<!-- Builds -->
-<h2>Play</h2>
-{% for build in page.builds %}
+<!-- Page content -->
+<div id="game-main-content">
+    <!-- Title and year/semester -->
+    <h1 class="inline">{{ page.title }}</h1><h3 class="inline"> - {{ page.semester }} {{ page.year }}</h3>
+    <h2>About</h2>
+    <p>{{ page.description }}</p>
+
+    <!-- Builds -->
+    <h2>Play</h2>
+    {% for build in page.builds %}
     <p>For {{ build[0] }} | <a href="{{ site.stage_path }}{{ page.stage_game_path }}{{ build[1] }}">Download</a></p>
-{% endfor %}
+    {% endfor %}
 
-<!-- Screenshots -->
-<h2>Screenshots</h2>
+    <!-- Screenshots -->
+    <h2>Screenshots</h2>
 
-<!-- Project members -->
-<h2>Project Members</h2>
-{% for member in page.project_members %}
+    <!-- Project members -->
+    <h2>Project Members</h2>
+    {% for member in page.project_members %}
     <p>{{ member[0] }} - <i>{{ member[1] }}</i></p>
-{% endfor %}
+    {% endfor %}
 
-<!-- Original Soundtrack Soundcloud embed -->
-<div class="row no-margin">
-    <div class="col-5 offset-1">
-        <h2>Original Soundtrack</h2>
+    <!-- Original Soundtrack Soundcloud embed -->
+    {% if page.OST-embed %}
+    <div class="row no-margin">
+        <div class="col-5 offset-1">
+            <h2>Original Soundtrack</h2>
+        </div>
     </div>
-</div>
-<div class="row no-margin">
-    <div class="col-5 offset-1">
-        <iframe class="soundcloud-embed" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/658999401&color=%232c1529&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+    <div class="row no-margin">
+        <div class="col-5 offset-1">
+            <iframe class="soundcloud-embed" scrolling="no" frameborder="no" allow="autoplay" src="{{ page.OST-embed }}"></iframe>
+        </div>
     </div>
-</div>
+    {% endif %}
 
-<!-- Custom content (this could be moved up?) -->
-{{ content }}
+    <!-- Custom content (this could be moved up?) -->
+    {{ content }}
+</div>

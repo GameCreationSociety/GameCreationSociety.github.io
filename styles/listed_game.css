@@ -6,6 +6,7 @@
     left: 0;
     bottom: 0;
     right: 0;
+    border-radius: 3%;
     /* background-size: cover; */
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -39,7 +40,7 @@
     /* background-color: black; */
 }
 
-.listed-game-preview:hover {
+.listed-game-preview:hover .listed-game-preview-img {
     box-shadow: 0px 0px 3px 4px rgba(0, 0, 0, 0.25);
 }
 
