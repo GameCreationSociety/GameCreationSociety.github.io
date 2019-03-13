@@ -15,95 +15,79 @@ noHeaderMargin: true
 <div id="game-main-content">
     <!-- Title and year/semester -->
     <h1 class="inline">{{ page.title }}</h1><h3 class="inline"> - {{ page.semester }} {{ page.year }}</h3>
-    <h2>About</h2>
-    <p>{{ page.description }}</p>
 
-    <!-- Builds -->
-    <h2>Play</h2>
-    {% for build in page.builds %}
-    <p>For {{ build[0] }} | <a href="{{ site.stage_path }}{{ page.stage_game_path }}{{ build[1] }}">Download</a></p>
-    {% endfor %}
-
-    <!-- Screenshots -->
-    <h2>Screenshots</h2>
-    <div class="screenshot-row">
-        <div class="screenshot-column">
-            <img class="screenshot-thumbnail hover-shadow" src="/game_data/binarystar/menu.png" onclick="openModal();currentSlide(1)">
+    <div class="row no-margin">
+        <div class="col-4">
+            <!-- About -->
+            <h2>About</h2>
+            <p>{{ page.description }}</p>
         </div>
-        <div class="screenshot-column">
-            <img class="screenshot-thumbnail hover-shadow" src="/game_data/binarystar/screenshot_1.png" onclick="openModal();currentSlide(2)">
+        <div class="col-4">
+            <!-- Builds -->
+            <h2>Play</h2>
+            {% for build in page.builds %}
+            <p>For {{ build[0] }} | <a href="{{ site.stage_path }}{{ page.stage_game_path }}{{ build[1] }}">Download</a></p>
+            {% endfor %}
         </div>
-        <div class="screenshot-column">
-            <img class="screenshot-thumbnail hover-shadow" src="/game_data/binarystar/screenshot_2.png" onclick="openModal();currentSlide(3)">
-        </div>
-        <div class="screenshot-column">
-            <img class="screenshot-thumbnail hover-shadow" src="/game_data/binarystar/screenshot_3.png" onclick="openModal();currentSlide(4)">
+        <div class="col-4">
+            <!-- Project Members -->
+            <h2>Project Members</h2>
+            <p>
+                {% for member in page.project_members %}
+                {{ member[0] }} - <i>{{ member[1] }}</i><br>
+                {% endfor %}
+            </p>
         </div>
     </div>
+
+
+    <!-- Screenshots -->
+    {% if page.screenshots %}
+    <div class="row no-margin">
+        <div class="col">
+            <h2>Screenshots</h2>
+        </div>
+    </div>
+    <div class="screenshot-row">
+        {% for img in page.screenshots %}
+        <div class="screenshot-column">
+            <img class="screenshot-thumbnail hover-shadow" src="{{page.data_path}}{{img}}" onclick="openModal();currentSlide({{forloop.index}})">
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
 
     <!-- Screenshot gallery modal -->
     <div id="myModal" class="modal">
         <span class="close cursor" onclick="closeModal()">&times;</span>
         <div class="modal-content">
-
+            {% for img in page.screenshots %}
             <div class="mySlides">
-                <div class="numbertext">1 / 4</div>
-                <img class="screenshot-full" src="/game_data/binarystar/menu.png">
+                <div class="numbertext">{{forloop.index}} / {{forloop.length}}</div>
+                <img class="screenshot-full" src="{{page.data_path}}{{img}}">
             </div>
-
-            <div class="mySlides">
-                <div class="numbertext">2 / 4</div>
-                <img class="screenshot-full" src="/game_data/binarystar/screenshot_1.png">
-            </div>
-
-            <div class="mySlides">
-                <div class="numbertext">3 / 4</div>
-                <img class="screenshot-full" src="/game_data/binarystar/screenshot_2.png">
-            </div>
-
-            <div class="mySlides">
-                <div class="numbertext">4 / 4</div>
-                <img class="screenshot-full" src="/game_data/binarystar/screenshot_3.png">
-            </div>
+            {% endfor %}
 
             <!-- Next/previous controls -->
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
             <!-- Thumbnail image controls -->
-            <div class="screenshot-column">
-                <img class="screenshot-img-control" src="/game_data/binarystar/menu.png" onclick="currentSlide(1)" alt="Nature">
-            </div>
-
-            <div class="screenshot-column">
-                <img class="screenshot-img-control" src="/game_data/binarystar/screenshot_1.png" onclick="currentSlide(2)" alt="Snow">
-            </div>
-
-            <div class="screenshot-column">
-                <img class="screenshot-img-control" src="/game_data/binarystar/screenshot_2.png" onclick="currentSlide(3)" alt="Mountains">
-            </div>
-
-            <div class="screenshot-column">
-                <img class="screenshot-img-control" src="/game_data/binarystar/screenshot_3.png" onclick="currentSlide(4)" alt="Lights">
+            <div class="img-control-row">
+                {% for img in page.screenshots %}
+                <div class="screenshot-column">
+                    <img class="screenshot-img-control" src="{{page.data_path}}{{img}}" onclick="currentSlide({{forloop.index}})">
+                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
-
-    <!-- Project members -->
-    <h2>Project Members</h2>
-    {% for member in page.project_members %}
-    <p>{{ member[0] }} - <i>{{ member[1] }}</i></p>
-    {% endfor %}
 
     <!-- Original Soundtrack Soundcloud embed -->
     {% if page.OST-embed %}
     <div class="row no-margin">
-        <div class="col-5 offset-1">
+        <div class="col-5">
             <h2>Original Soundtrack</h2>
-        </div>
-    </div>
-    <div class="row no-margin">
-        <div class="col-5 offset-1">
             <iframe class="soundcloud-embed" scrolling="no" frameborder="no" allow="autoplay" src="{{ page.OST-embed }}"></iframe>
         </div>
     </div>

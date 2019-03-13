@@ -6,6 +6,7 @@
 	overflow:auto;
 	z-index: 5;
 	position: relative;
+	/* overflow: visible; */
 	/* Default image */
 	background: url("/images/arches.jpg");
 	background-position: center 18%;
@@ -29,31 +30,31 @@
 
 /* Sorted by dropdown */
 .dropbtn {
-    background-color: var(--light-blue);
-    color: white;
-    padding: 0.8em;
-    border: none;
+	background-color: var(--light-blue);
+	color: white;
+	padding: 0.8em;
+	border: none;
 }
 
 .dropdown {
-    position: relative;
-    display: inline-block;
+	position: relative;
+	display: inline-block;
 }
 
 .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 5em;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+	display: none;
+	position: absolute;
+	background-color: #f1f1f1;
+	min-width: 5em;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
 }
 
 .dropdown-content a {
-    color: black;
-    padding: 0.6em 0.8em;
-    text-decoration: none;
-    display: block;
+	color: black;
+	padding: 0.6em 0.8em;
+	text-decoration: none;
+	display: block;
 }
 
 .dropdown-content a:hover {background-color: #ddd;}
@@ -61,3 +62,13 @@
 .dropdown:hover .dropdown-content {display: block;}
 
 .dropdown:hover .dropbtn {background-color: var(--dark-blue);}
+
+/* Tag filter checkboxes */
+.checkbox-container {
+	display: inline;
+	margin-right: 0.5em;
+	margin-bottom: 2em;
+}
+
+.games_filter_checkbox {
+}
