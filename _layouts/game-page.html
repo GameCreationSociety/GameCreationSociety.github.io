@@ -8,8 +8,27 @@ noHeaderMargin: true
 <link rel="stylesheet" href="/styles/game-page.css">
 
 <!-- Top image -->
-<img id="game-top-img" src="{{page.data_path}}{{page.top-img}}" style="object-fit:{{page.top-img-fit}}">
-</img>
+<div id="game-top-container">
+    <p id="game-tags">
+        {% for tag in page.tags %}
+        {% if forloop.first %}
+        {{tag}}
+        {% else %}
+        <br>{{tag}}
+        {% endif %}
+        {% endfor %}
+    </p>
+    <p id="game-awards">
+        {% for award in page.awards %}
+        {% if forloop.first %}
+        {{award}}
+        {% else %}
+        <br>{{award}}
+        {% endif %}
+        {% endfor %}
+    </p>
+    <img id="game-top-img" src="{{page.data_path}}{{page.top-img}}" style="object-fit:{{page.top-img-fit}}">
+</div>
 
 <!-- Page content -->
 <div id="game-main-content">
@@ -25,9 +44,15 @@ noHeaderMargin: true
         <div class="col-4">
             <!-- Builds -->
             <h2>Play</h2>
-            {% for build in page.builds %}
-            <p>For {{ build[0] }} | <a href="{{ site.stage_path }}{{ page.stage_game_path }}{{ build[1] }}">Download</a></p>
-            {% endfor %}
+            <p>
+                {% for build in page.builds %}
+                For {{ build[0] }} | <a href="{{ site.stage_path }}{{ page.stage_game_path }}{{ build[1] }}">Download</a><br>
+                {% endfor %}
+            </p>
+            {% if page.build_instructions %}
+            <h3>Instructions</h3>
+            <p>{{ page.build_instructions }}</p>
+            {% endif %}
         </div>
         <div class="col-4">
             <!-- Project Members -->
@@ -42,7 +67,7 @@ noHeaderMargin: true
 
 
     <!-- Screenshots -->
-    {% if page.screenshots %}
+    {% if page.screenshots and page.screenshots[0] %}
     <div class="row no-margin">
         <div class="col">
             <h2>Screenshots</h2>
