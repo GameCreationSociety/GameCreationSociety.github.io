@@ -154,10 +154,7 @@ body {
     background: #FFFFFFC4;
     position: fixed;
 
-    top: 0px;
-    width: 100%;
     height: var(--header-height);
-    padding: 0 3em;
 
     overflow-x: auto;
     white-space: nowrap;
@@ -176,6 +173,7 @@ body {
 
     height: 80%;
     padding: 3px;
+    padding-left: 3em;
     margin-top: 0.5em;
 }
 
