@@ -4,15 +4,21 @@
 #reel-container {
     position: relative;
     width: 100%;
+    min-height: 30rem;
 }
 
 video#games-reel {
-    position: relative;
+    position: absolute;
     width: 100%;
-    z-index: 5;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
     background: url('/images/arches.jpg');
     background-size: cover;
     background-position: center center;
+
+    object-fit: cover;
 }
 
 #reel-faded-mask {
@@ -20,8 +26,8 @@ video#games-reel {
     top: 0;
     left: 0;
     width: 100%;
-    height: 99.5%;
-    z-index: 10;
+    height: 100%;
+    z-index: 5;
     background: linear-gradient(#0B0B0B66, #0B0B0B66);
     background-position: center center;
     background-size: cover;
@@ -29,34 +35,21 @@ video#games-reel {
 }
 
 #reel-overlay-outer {
-    position: absolute;
+    position: relative;
+    display: block;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
     text-align: center;
-    z-index: 10;
-}
-
-#reel-overlay-inner {
-    display: inline-block;
     vertical-align: middle;
-    width: 99%;
-    height: 20em;
-    margin: 0 auto;
-}
-
-#reel-overlay-outer:before {
-  content: "";
-  display: inline-block;
-  vertical-align: middle;
-  height: 100%;
+    z-index: 15;
 }
 
 #want-to-make-games {
     /* text-shadow: 2px 0 black, 0 2px black; */
     font-weight: 600;
-    margin-top: 5rem;
+    padding-top: 7rem;
+    margin: 0;
 }
 
 #reel-overlay-description {
@@ -64,6 +57,10 @@ video#games-reel {
     font-weight: normal;
     width: 46%;
     left: 27%;
+}
+
+#reel-overlay-buttons {
+    padding-bottom: 1rem;
 }
 
 #reel-overlay-buttons a {

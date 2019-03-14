@@ -11,27 +11,25 @@ noHeaderMargin: true
 <!-- Content -->
 <!-- Demo reel and overlay -->
 <div id="reel-container">
+    <div id="reel-overlay-outer">
+        <h1 id="want-to-make-games">Want to make games?</h1> 
+        <p id="reel-overlay-description">We are a student game development club at Carnegie Mellon University</p><br><br>
+        <div id="reel-overlay-buttons">
+            <a href="/about">
+                <button type="button" class="standard-button red-button">Learn More</button>
+            </a>
+            <a href="/demo-reel">
+                <button type="button" class="standard-button blue-button">View Video Reel</button>
+            </a>
+        </div>
+    </div>
+
     <video autoplay loop muted playsinline id="games-reel">
         <source src="/videos/GCS Demo Reel-Activities Fair compressed.mp4" type="video/mp4"></source>
         <source src="/videos/GCS Demo Reel-Activities Fair extra_compressed.mp4" type="video/mp4"></source>
         <!-- <source src="/videos/sample.mp4" type="video/mp4"></source> -->
     </video>
     <div id="reel-faded-mask"></div>
-
-    <div id="reel-overlay-outer">
-        <div id="reel-overlay-inner">
-            <h1 id="want-to-make-games">Want to make games?</h1>
-            <p id="reel-overlay-description">We are a student game development club at Carnegie Mellon University</p><br><br>
-            <div id="reel-overlay-buttons">
-                <a href="/about">
-                    <button type="button" class="standard-button red-button">Learn More</button>
-                </a>
-                <a href="/demo-reel">
-                    <button type="button" class="standard-button blue-button">View Video Reel</button>
-                </a>
-            </div>
-        </div>
-    </div>
 </div>
 
 <!-- Section 2 -->
