@@ -16,12 +16,11 @@
 }
 
 #game-main-content h2 {
-	/* margin-top: 0.6em; */
+	text-decoration: underline;
 }
 
 #game-main-content h3 {
-	margin-top: 0.8em;
-	margin-bottom: 0.8em;
+	/* margin-top: 0.8em; */
 }
 
 /* Link styling */
@@ -35,11 +34,48 @@
 }
 
 /* Image at top of page */
+#game-top-container {
+	position: relative;
+}
+
 #game-top-img {
 	width: 100%;
 	max-height: 100vh;
 	object-fit: cover;
 	height: auto;
+}
+
+#game-tags {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	margin-bottom: 0;
+	padding: 0.5em 0.5em 0.5em 0.5em;
+
+	font-size: 1.4em;
+	text-shadow: 2px 2px black;
+	background-color: #FFFFFF20;
+	border-radius: 0.5em;
+}
+
+#game-awards {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	margin-bottom: 0;
+	padding: 0.5em 0.5em 0.5em 0.5em;
+
+	font-size: 1.4em;
+	text-align: right;
+	text-shadow: 0.1em 0.1em black;
+	background-color: #FFFFFF20;
+	border-radius: 0.4em;
+}
+
+/* About, Play, and Project Members */
+.col-4 {
+	padding-left: 0.8em;
+	padding-right: 0.8em;
 }
 
 /* Screenshots */
@@ -182,7 +218,7 @@ img.screenshot-img-control {
 
 img.hover-shadow {
 	transition: 0.1s;
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .hover-shadow:hover {
