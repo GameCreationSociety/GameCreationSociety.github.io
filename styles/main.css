@@ -152,6 +152,7 @@ body {
     display: block;
 
     background: #FFFFFFC4;
+    transition: background 0.5s;
     position: fixed;
 
     height: var(--header-height);
@@ -191,6 +192,8 @@ body {
 
 #nav-bar .button {
     color: black;
+    transition: background-color 0.07s linear,
+                color 0.07s linear;
     font-size: 1em;
     font-weight: 600;
     text-align: center;
