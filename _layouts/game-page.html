@@ -27,7 +27,7 @@ noHeaderMargin: true
         {% endif %}
         {% endfor %}
     </p>
-    <img id="game-top-img" src="{{page.data_path}}{{page.top-img}}" style="object-fit:{{page.top-img-fit}}">
+    <img id="game-top-img" src="{{ site.stage_path }}{{ page.screenshot_path }}{{ page.top-img }}" style="object-fit:{{page.top-img-fit}}">
 </div>
 
 <!-- Page content -->
@@ -76,7 +76,7 @@ noHeaderMargin: true
     <div class="screenshot-row">
         {% for img in page.screenshots %}
         <div class="screenshot-column">
-            <img class="screenshot-thumbnail hover-shadow" src="{{page.data_path}}{{img}}" onclick="openModal();currentSlide({{forloop.index}})">
+            <img class="screenshot-thumbnail hover-shadow" src="{{ site.stage_path }}{{ page.screenshot_path }}{{ img }}" onclick="openModal();currentSlide({{forloop.index}})">
         </div>
         {% endfor %}
     </div>
@@ -89,7 +89,7 @@ noHeaderMargin: true
             {% for img in page.screenshots %}
             <div class="mySlides">
                 <div class="numbertext">{{forloop.index}} / {{forloop.length}}</div>
-                <img class="screenshot-full" src="{{page.data_path}}{{img}}">
+                <img class="screenshot-full" src="{{ site.stage_path }}{{ page.screenshot_path }}{{ img }}">
             </div>
             {% endfor %}
 
@@ -101,7 +101,7 @@ noHeaderMargin: true
             <div class="img-control-row">
                 {% for img in page.screenshots %}
                 <div class="screenshot-column">
-                    <img class="screenshot-img-control" src="{{page.data_path}}{{img}}" onclick="currentSlide({{forloop.index}})">
+                    <img class="screenshot-img-control" src="{{ site.stage_path }}{{ page.screenshot_path }}{{ img }}" onclick="currentSlide({{forloop.index}})">
                 </div>
                 {% endfor %}
             </div>
