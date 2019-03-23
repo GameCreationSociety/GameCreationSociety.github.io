@@ -11,6 +11,8 @@
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
+    /* Default image */
+    background-image: url("/images/official_no_back.png");
 }
 
 .listed-game-preview-overlay {

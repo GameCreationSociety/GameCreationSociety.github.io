@@ -27,7 +27,7 @@ noHeaderMargin: true
         {% endif %}
         {% endfor %}
     </p>
-    <img id="game-top-img" src="{{ site.stage_path }}{{ page.screenshot_path }}{{ page.top-img }}" style="object-fit:{{page.top-img-fit}}">
+    <img id="game-top-img" {% if page.top-img %} src="{{ site.stage_path }}{{ page.screenshot_path }}{{ page.top-img }}" style="object-fit:{{page.top-img-fit}}" {% else %} src="/images/official_no_back.png" {% endif %}>
 </div>
 
 <!-- Page content -->
