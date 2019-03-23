@@ -51,3 +51,10 @@ body {
 	color: #991222;
 	text-decoration: underline;
 }
+
+/* Mini-headers, used for Contact page */
+.mini-header {
+	color: #BC192F;
+	font-weight: bold;
+	text-decoration: underline;
+}

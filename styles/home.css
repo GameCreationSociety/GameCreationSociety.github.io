@@ -68,6 +68,7 @@ video#games-reel {
     width: 50%;
     vertical-align: middle;
     padding: 0;
+    text-decoration: none;
 }
 
 #reel-overlay-buttons a button {
@@ -75,7 +76,7 @@ video#games-reel {
     width: 80%;
 }
 
-/* The big buttons are 16/1.3em wide (for the buttons font-size is set to 1.3 
+/* The big buttons are 16/1.3em wide (for the buttons font-size is set to 1.3
    and the width of the button is changed to 16em.  em is based on font size
    so the final size is 16/1.3=~12.3  So when the screen is at 16/1.3*2=24.61538,
    we should switch the appearance of the buttons as they have gotten too small.

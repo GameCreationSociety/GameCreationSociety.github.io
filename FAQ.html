@@ -1,0 +1,41 @@
+---
+# Front Matter
+layout: basic-page
+title: FAQ
+top-img: scope_creep_top_img.png
+noHeaderMargin: true
+
+questions: {
+    "What is Game Creation Society?": "Game Creation Society (GCS) is a student-run organization at Carnegie Mellon University dedicated to learning about videogame development. The club makes projects, has discussions, hosts competitions, and has a lot of fun! It's a place for people passionate about making games!",
+    "How can I become a member?": "Simply swing by a meeting, join our mailing list, hang out on the Facebook group, or join a project. There is no formal membership process or requirements, although we recommend that you be awesome.",
+    "I am not affiliated with CMU. Can I still participate in the club? Can I join the Facebook group?": "Absolutely! If you're in the Pittsburgh area, feel free to stop by – we welcome everyone! If you are located elsewhere, our Facebook group ise open for discussion about our projects and game development in general. Feel free to make a thread or participate in discussion!",
+    "How often does GCS meet?": "We typically meet weekly on Friday afternoons at 5:30 pm (EST), in Wean 5415. We also have project work sessions, fondly referred to as Office Hours, on Sundays from 2-5:30pm, in Wean 5202 and 5207.",
+    "What happens at GCS meetings?": "At meetings, we have announcements and updates from current projects. We also often hold discussions about game development and related topics, and host competitions related to game development. Occasionally, we also have talks from speakers from the industry or alumni.",
+    "What is GCS Gold?": "GCS Gold is... [Todo - this description, and more explanation on other awards too]"
+}
+---
+
+<!-- Stylesheet dependencies -->
+<link rel="stylesheet" href="/styles/FAQ.css">
+
+<!-- Table of Contents -->
+<h1>Contents</h1>
+<ul>
+{% for q in page.questions %}
+    {% if forloop.first %}
+        <li><p><a href="#last_link">{{q[0]}}</a></p></li>
+    {% elsif forloop.last %}
+        <li id="last_link"><p><a href="#q_{{forloop.index | minus: 1}}">{{q[0]}}</a></p></li>
+    {% else %}
+        <li><p><a href="#q_{{forloop.index | minus: 1}}">{{q[0]}}</a></p></li>
+    {% endif %}
+{% endfor %}
+</ul>
+<br>
+
+<!-- Answers -->
+{% for q in page.questions %}
+<h3>{{q[0]}}</h3>
+<p id="q_{{forloop.index}}">{{q[1]}}</p>
+<br>
+{% endfor %}

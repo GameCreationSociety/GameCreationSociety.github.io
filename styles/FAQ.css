@@ -1,0 +1,11 @@
+/* FAQ page (FAQ.html) styling */
+
+/* Text styling */
+h3 {
+    text-decoration: underline;
+    margin-bottom: 0.5em !important;
+}
+
+p {
+    margin-bottom: 0.3em;
+}
