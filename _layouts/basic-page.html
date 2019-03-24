@@ -8,6 +8,7 @@ noHeaderMargin: true
 <link rel="stylesheet" href="/styles/basic-page.css">
 
 <!-- Top image -->
+{% if layout.no-top-img != true and page.no-top-img != true %}
 <div id="basic-top-image" {% if page.top-img %}style="background-image: url('/images/{{page.top-img}}'); background-position: center {{page.top-img-pos}}"{% endif %}>
     <div id="basic-top-title" class="header-sized-top-margin">
         <!-- Title -->
@@ -18,6 +19,7 @@ noHeaderMargin: true
         {% endif %}
     </div>
 </div>
+{% endif %}
 
 <!-- Page content -->
 <div id="basic-main-content">

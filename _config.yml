@@ -2,7 +2,10 @@ permalink: /:title
 collections:
     games:
         output: true
-        permalink: /:collection/:title
+        permalink: /games/:title
+    members:
+        output: true
+        permalink: /members/:title
 
 # The path to the stage directory in the gcs server, where builds are hosted
 stage_path: http://stage.gamecreation.org/
@@ -14,3 +17,6 @@ game_tags: [
     "Controller-Compatible",    "VR",
     "Game-Jam"
 ]
+
+# Update this once a class has graduated
+last_graduated_year: 2018

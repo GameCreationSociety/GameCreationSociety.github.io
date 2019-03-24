@@ -59,7 +59,17 @@ noHeaderMargin: true
             <h2>Project Members</h2>
             <p>
                 {% for member in page.project_members %}
-                {{ member[0] }} - <i>{{ member[1] }}</i><br>
+                    {% for site_member in site.members %}
+                        {% if site_member.title == member[0] %}
+                            <a href="{{site_member.url}}">{{ member[0] }}</a> - <i>{{ member[1] }}</i><br>
+                            {% assign found = true %}
+                            {% break %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if found != true %}
+                        {{ member[0] }} - <i>{{ member[1] }}</i><br>
+                    {% endif %}
+                    {% assign found = false %}
                 {% endfor %}
             </p>
         </div>
