@@ -8,10 +8,18 @@ noHeaderMargin: true
 <!-- Stylesheet dependencies -->
 <!-- <link rel="stylesheet" href="/styles/members.css"> -->
 
+<!-- Liquid variables setup -->
+{% assign last_graduated_year = "now" | date: "%Y" | plus: 0 %}
+{% assign month = "now" | date: "%m" | plus: 0 %}
+{% if month < 6 %}
+    {% assign last_graduated_year = last_graduated_year | minus: 1 %}
+{% endif %}
+
 <!-- Current Members -->
 <h1>Current Members</h1>
 <div class="row no-margin">
-    {% assign current_members = site.members | where_exp:"item", "item.class_of > site.last_graduated_year" | group_by: "class_of" %}
+    {% assign current_members = site.members | where_exp:"item", "item.class_of > last_graduated_year" | group_by: "class_of" %}
+    {% assign current_members = current_members | sort: "name" %}
     {% for class in current_members %}
         <div class="col-3">
             <h2><u>Class of {{class.name}}</u></h2>
@@ -25,7 +33,8 @@ noHeaderMargin: true
 <!-- Alumni -->
 <h1>Alumni</h1>
 <div class="row no-margin">
-    {% assign alumni = site.members | where_exp:"item", "item.class_of <= site.last_graduated_year" | group_by: "class_of" | reverse%}
+    {% assign alumni = site.members | where_exp:"item", "item.class_of <= last_graduated_year" | group_by: "class_of" %}
+    {% assign alumni = alumni | sort: "name" | reverse %}
     {% for class in alumni %}
         <div class="col-3">
             <h2><u>Class of {{class.name}}</u></h2>
