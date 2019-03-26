@@ -26,9 +26,9 @@ body {
 /* The main content of a basic page */
 #basic-main-content {
 	color: black;
-	margin-left: 6em;
-	margin-right: 6em;
-	margin-bottom: 3em;
+	margin-left: 5vw;
+	margin-right: 5vw;
+	margin-bottom: 2.5em;
 }
 
 #basic-main-content h1 {

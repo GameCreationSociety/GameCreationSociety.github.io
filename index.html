@@ -123,19 +123,22 @@ noHeaderMargin: true
     <div class="row no-margin justify-content-around align-items-center">
 
         {% assign years = site.games | group_by: "year" %}
-        {% if page.sort_by == "oldest" %}
-        {% assign years = site.games | group_by: "year" | reverse %}
-        {% endif %}
+        {% assign years = years | sort: "name" | reverse %}
 
+        {% assign game_counter = 0 %}
         {% for year in years %}
-        {% assign games_sorted = year.items | sort: "semester" %}
-        {% if page.sort_by == "oldest" %}
-        {% assign games_sorted = year.items | sort: "semester" | reverse %}
-        {% endif %}
-        {% for game in games_sorted limit:3 %}
-        {% include listed_game.html %}
-        {% endfor %}
-        <!-- See listed_game.html for the formatting of each game listed -->
+            {% assign games_sorted = year.items | sort: "semester" %}
+            {% if page.sort_by == "oldest" %}
+                {% assign games_sorted = year.items | sort: "semester" | reverse %}
+            {% endif %}
+            {% for game in games_sorted %}
+                {% if game_counter >= 3 %}
+                    {% break %}
+                {% endif %}
+                {% assign game_counter = game_counter | plus: 1 %}
+                {% include listed_game.html %}
+            {% endfor %}
+            <!-- See listed_game.html for the formatting of each game listed -->
         {% endfor %}
     </div>
     <br><br>

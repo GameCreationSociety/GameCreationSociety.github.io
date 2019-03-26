@@ -17,11 +17,11 @@ noHeaderMargin: true
 
 <!-- Current Members -->
 <h1>Current Members</h1>
-<div class="row no-margin">
+<div class="row">
     {% assign current_members = site.members | where_exp:"item", "item.class_of > last_graduated_year" | group_by: "class_of" %}
     {% assign current_members = current_members | sort: "name" %}
     {% for class in current_members %}
-        <div class="col-3">
+        <div class="col-sm-3 col-6">
             <h2><u>Class of {{class.name}}</u></h2>
             {% for member in class.items %}
                 <p><a href="{{member.url}}">{{ member.title }}</a></p><br>
@@ -32,11 +32,11 @@ noHeaderMargin: true
 
 <!-- Alumni -->
 <h1>Alumni</h1>
-<div class="row no-margin">
+<div class="row">
     {% assign alumni = site.members | where_exp:"item", "item.class_of <= last_graduated_year" | group_by: "class_of" %}
     {% assign alumni = alumni | sort: "name" | reverse %}
     {% for class in alumni %}
-        <div class="col-3">
+        <div class="col-sm-3 col-6">
             <h2><u>Class of {{class.name}}</u></h2>
             {% for member in class.items %}
                 <p><a href="{{member.url}}">{{ member.title }}</a></p><br>

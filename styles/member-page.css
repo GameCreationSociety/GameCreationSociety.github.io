@@ -1,0 +1,8 @@
+/* Member page (_layouts/member-page.html) styling */
+
+/* Profile picture */
+.profile_image {
+    width: 80%;
+    height: auto;
+	border-radius: 50%;
+}

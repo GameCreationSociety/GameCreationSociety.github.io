@@ -55,7 +55,7 @@ sort_by: newest
 
     {% assign games_sorted = site.games | sort: "title" %}
     {% for game in games_sorted %}
-    {% include listed_game.html %}
+        {% include listed_game.html %}
     {% endfor %}
     <!-- See listed_game.html for the formatting of each game listed -->
 
@@ -66,17 +66,26 @@ sort_by: newest
 
     {% assign years = site.games | group_by: "year" %}
     {% if page.sort_by == "oldest" %}
-    {% assign years = site.games | group_by: "year" | reverse %}
+        {% assign years = years | sort: "name" %}
+    {% else %}
+        {% assign years = years | sort: "name" | reverse %}
     {% endif %}
 
+    {% assign game_counter = 0 %}
     {% for year in years %}
-    {% assign games_sorted = year.items | sort: "semester" %}
-    {% if page.sort_by == "oldest" %}
-    {% assign games_sorted = year.items | sort: "semester" | reverse %}
-    {% endif %}
-    {% for game in games_sorted %}
-    {% include listed_game.html %}
-    {% endfor %}
+        {% assign games_sorted = year.items | sort: "semester" %}
+        {% if page.sort_by == "oldest" %}
+            {% assign games_sorted = year.items | sort: "semester" | reverse %}
+        {% endif %}
+        {% for game in games_sorted %}
+            {% assign game_counter_mod_3 = game_counter | modulo: 3 %}
+            {% if game_counter_mod_3 == 0 and game_counter != 0 %}
+                <!-- Force next columns to break to new line -->
+                <div class="w-100"></div>
+            {% endif %}
+            {% assign game_counter = game_counter | plus: 1 %}
+            {% include listed_game.html %}
+        {% endfor %}
     <!-- See listed_game.html for the formatting of each game listed -->
     {% endfor %}
 
