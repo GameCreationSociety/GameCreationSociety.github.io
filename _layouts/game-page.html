@@ -9,6 +9,7 @@ noHeaderMargin: true
 
 <!-- Top image -->
 <div id="game-top-container">
+    {% if page.tags and page.tags.size > 0 %}
     <p id="game-tags">
         {% for tag in page.tags %}
         {% if forloop.first %}
@@ -18,6 +19,9 @@ noHeaderMargin: true
         {% endif %}
         {% endfor %}
     </p>
+    {% endif %}
+
+    {% if page.awards and page.awards.size > 0 %}
     <p id="game-awards">
         {% for award in page.awards %}
         {% if forloop.first %}
@@ -27,6 +31,7 @@ noHeaderMargin: true
         {% endif %}
         {% endfor %}
     </p>
+    {% endif %}
     <img id="game-top-img" {% if page.top-img %} src="{{ site.stage_path }}{{page.stage_game_path}}images/{{ page.top-img }}" style="object-fit:{{page.top-img-fit}}" {% else %} src="/images/official_no_back.png" {% endif %}>
 </div>
 
