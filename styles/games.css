@@ -14,10 +14,36 @@
 	background-repeat: no-repeat;
 }
 
+h2, h3, h4 {
+	display: block;
+	width: 100%;
+	margin: 0;
+	margin-top: 0.2em;
+}
+
+#sorted-by, #tag-selector {
+	color: black;
+	vertical-align: middle;
+	width: 100%;
+	margin: 0;
+	padding: 0 0.7em;
+}
+
 #games-top-title {
 	text-shadow: 2px 2px black;
 	margin-left: 4em;
 	margin-right: 4em;
+}
+
+.toggle-group {
+	vertical-align: middle;
+}
+
+#tag-selector label {
+	padding: 0;
+	margin: 0;
+	vertical-align: middle;
+	line-height: 3.0;
 }
 
 /* No games found indicator */
@@ -34,11 +60,13 @@
 	color: white;
 	padding: 0.8em;
 	border: none;
+	vertical-align: middle;
 }
 
 .dropdown {
 	position: relative;
 	display: inline-block;
+	vertical-align: middle;
 }
 
 .dropdown-content {
@@ -66,8 +94,12 @@
 /* Tag filter checkboxes */
 .checkbox-container {
 	display: inline;
-	margin-right: 0.5em;
-	margin-bottom: 2em;
+	margin: 0.5em 0.25em;
+
+	border: 1px solid #888;
+	border-radius: 9px;
+	background-color: #f7f7f7;
+	overflow: none;
 }
 
 .games_filter_checkbox {
