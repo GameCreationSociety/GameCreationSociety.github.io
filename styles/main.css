@@ -31,25 +31,25 @@ h2 {
 }
 
 html {
-    font-size: 0.48em;
+    font-size: 0.8em;
 }
 
 /* https://getbootstrap.com/docs/4.1/layout/overview/#responsive-breakpoints */
 @media (min-width: 576px) {
     html {
-        font-size: 0.48em;
+        font-size: 0.8em;
     }
 }
 
 @media (min-width: 768px) {
     html {
-        font-size: 0.64em;
+        font-size: 0.9em;
     }
 }
 
 @media (min-width: 992px) {
     html {
-        font-size: 0.82em;
+        font-size: 1.0em;
     }
 }
 
