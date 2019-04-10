@@ -263,11 +263,29 @@ body {
     width: 100%;
 }
 
+.footer-link {
+    color: white;
+    margin-left: 0.8em;
+    margin-right: 0.8em;
+}
+.footer-link:hover {
+    color: var(--light-red);
+}
+
 .fab {
     color: white;
-    margin-right: 0.5em;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
 }
+.fab:hover {
+    color: var(--light-red);
+}
+
 .fas {
     color: white;
-    margin-right: 0.5em;
+    margin-left: 0.2em;
+    margin-right: 0.4em;
+}
+.fas:hover {
+    color: var(--light-red);
 }
