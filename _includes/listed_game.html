@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/styles/listed_game.css">
 
 <!-- Listed game display -->
-<a class="col-3 rectangular listed-game-preview listed_game {% for tag in game.tags %} {{ tag }}_game-tag {% endfor %}" href="{{ game.url }}">
+<a class="listed-game-preview listed_game {% for tag in game.tags %} {{ tag }}_game-tag {% endfor %}" href="{{ game.url }}">
     <div class="listed-game-preview-img" {% if game.thumbnail %} style="background-image: url('{{site.stage_path}}{{game.stage_game_path}}images/{{game.thumbnail}}')" {% endif %}>
     </div>
     <div class="listed-game-preview-overlay">
