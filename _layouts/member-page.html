@@ -21,7 +21,7 @@ noHeaderMargin: false
 <div class="row no-margin justify-content-center">
     <!-- Positions -->
     {% if page.current_position or page.previous_positions %}
-    <div class="col-sm-4 col-xs-12 text-center mb-2">
+    <div class="col-md-4 col-sm-12 text-center mb-2">
 
         <br>
         {% if page.current_position %}
@@ -43,14 +43,14 @@ noHeaderMargin: false
     {% endif %}
 
     {% if page.profile_pic %}
-    <div class="col-sm-4 col-xs-12 text-center">
+    <div class="col-md-4 col-sm-12 text-center">
         <img class="profile_image" src="{{site.stage_path}}Members/images/{{page.profile_pic}}" alt="Profile Image">
     </div>
     {% endif %}
 
     <!-- Personal website link -->
     {% if page.website %}
-    <div class="col-sm-4 col-xs-12 text-center">
+    <div class="col-md-4 col-sm-12 text-center">
         <!-- <h3><a href="{{page.website}}">My website</a></h3> -->
         <br>
         <a href="{{page.website}}" class="no-text-decoration">
@@ -72,7 +72,6 @@ noHeaderMargin: false
     {% assign years = site.games | group_by: "year" %}
     {% assign years = years | sort: "name" | reverse %}
 
-    {% assign game_counter = 0 %}
     {% for year in years %}
         {% assign games_sorted = year.items | sort: "semester" %}
         {% if page.sort_by == "oldest" %}
@@ -81,12 +80,6 @@ noHeaderMargin: false
         {% for game in games_sorted %}
             {% for member in game.project_members %}
             {% if member[0] == page.title %}
-                {% assign game_counter_mod_3 = game_counter | modulo: 3 %}
-                {% if game_counter_mod_3 == 0 and game_counter != 0 %}
-                    <!-- Force next columns to break to new line -->
-                    <div class="w-100"></div>
-                {% endif %}
-                {% assign game_counter = game_counter | plus: 1 %}
                 {% include listed_game.html %}
                 <!-- See listed_game.html for the formatting of each game listed -->
                 {% break %}

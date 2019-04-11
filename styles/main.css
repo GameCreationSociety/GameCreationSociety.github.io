@@ -270,6 +270,7 @@ body {
 }
 .footer-link:hover {
     color: var(--light-red);
+    text-decoration: none;
 }
 
 .fab {
@@ -284,8 +285,12 @@ body {
 .fas {
     color: white;
     margin-left: 0.2em;
-    margin-right: 0.4em;
+    margin-right: 0.2em;
 }
 .fas:hover {
     color: var(--light-red);
+}
+
+.fa-calendar {
+    margin-right: 0.4em;
 }

@@ -50,7 +50,7 @@
 
 .listed-game-preview:hover {
     box-shadow: 0px 0px 3px 4px rgba(0, 0, 0, 0.25);
-    color: white;
+    color: white !important;
 }
 
 .listed-game-preview:hover .listed-game-preview-overlay {

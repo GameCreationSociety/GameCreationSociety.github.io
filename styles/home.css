@@ -13,7 +13,6 @@ video#games-reel {
     height: 100%;
     top: 0;
     left: 0;
-    z-index: 0;
     background: url('/images/arches.jpg');
     background-size: cover;
     background-position: center center;
@@ -108,6 +107,7 @@ video#games-reel {
     margin: 0 0;
     background-color: #F8F8F8;
     color: black;
+    backface-visibility: hidden;
 }
 
 #section-2 span {
@@ -123,7 +123,9 @@ video#games-reel {
     width: 100%;
     max-width: 100%;
     float: right;
-    margin-bottom: 3em;
+    padding-bottom: 2em;
+    margin-top: 0;
+    padding-top: 1em;
 }
 
 #section-2-icon {
@@ -132,6 +134,11 @@ video#games-reel {
     margin: auto;
 
     max-width: 20rem;
+}
+
+#section-2 h2 {
+    margin-top: 0;
+    padding-top: 0.3em;
 }
 
 #section-2 button {
@@ -187,7 +194,7 @@ video#games-reel {
     float: none;
 
     padding: 0 10px;
-    
+
     margin-right: 0;
     min-width: 24em;
 }

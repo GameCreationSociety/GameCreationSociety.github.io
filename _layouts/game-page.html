@@ -41,12 +41,12 @@ noHeaderMargin: true
     <h1 class="inline">{{ page.title }}</h1><h3 class="inline"> - {{ page.semester }} {{ page.year }}</h3>
 
     <div class="row no-margin">
-        <div class="col-4">
+        <div class="game-content-section col-md-4 col-sm-6 col-xs-12">
             <!-- About -->
             <h2>About</h2>
             <p>{{ page.description }}</p>
         </div>
-        <div class="col-4">
+        <div class="game-content-section col-md-4 col-sm-6 col-xs-12">
             <!-- Builds -->
             <h2>Play</h2>
             <p>
@@ -59,7 +59,7 @@ noHeaderMargin: true
             <p>{{ page.build_instructions }}</p>
             {% endif %}
         </div>
-        <div class="col-4">
+        <div class="game-content-section col-md-4 col-sm-6 col-xs-12">
             <!-- Project Members -->
             <h2>Project Members</h2>
             <p>
@@ -126,7 +126,7 @@ noHeaderMargin: true
     <!-- Original Soundtrack Soundcloud embed -->
     {% if page.OST-embed %}
     <div class="row no-margin">
-        <div class="col-5">
+        <div class="col-md-5 col-sm-7 col-xs-10">
             <h2>Original Soundtrack</h2>
             <iframe class="soundcloud-embed" scrolling="no" frameborder="no" allow="autoplay" src="{{ page.OST-embed }}"></iframe>
         </div>
