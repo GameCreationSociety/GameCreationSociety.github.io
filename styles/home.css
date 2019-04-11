@@ -103,7 +103,6 @@ video#games-reel {
 #section-2 {
     z-index: 1;
     position: relative;
-    /* top: -30px; */
     margin: 0 0;
     background-color: #F8F8F8;
     color: black;
@@ -123,8 +122,7 @@ video#games-reel {
     width: 100%;
     max-width: 100%;
     float: right;
-    padding-bottom: 2em;
-    margin-top: 0;
+    margin-bottom: 1em;
     padding-top: 1em;
 }
 
