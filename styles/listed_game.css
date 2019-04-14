@@ -1,3 +1,6 @@
+---
+---
+
 /* Listed game (listed_game.html) styling */
 
 .listed-game-preview-img {
@@ -57,3 +60,13 @@
     background-color: #000000CC;
     /* text-decoration: underline; */
 }
+
+/* Special on-hover backgrounds */
+{% for game in site.games %}
+{% if game.screenshots and game.screenshots.size > 0 %}
+#{{ game.title | slugify }}-preview:hover .listed-game-preview-img {
+    {% assign index = game.screenshots.size | minus: 1 %}
+    background-image: url("{{site.stage_path}}{{game.stage_game_path}}images/{{game.screenshots[index]}}") !important;
+}
+{% endif %}
+{% endfor %}
