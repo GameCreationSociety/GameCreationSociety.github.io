@@ -6,6 +6,8 @@
     <div class="listed-game-preview-img"
     {% if game.thumbnail %}
         style="background-image: url('{{site.stage_path}}{{game.stage_game_path}}images/{{game.thumbnail}}')"
+    {% elsif game.screenshots.size > 0 %}
+        style="background-image: url('{{site.stage_path}}{{game.stage_game_path}}images/{{game.screenshots[0]}}')"
     {% endif %}>
     </div>
     <div class="listed-game-preview-overlay">

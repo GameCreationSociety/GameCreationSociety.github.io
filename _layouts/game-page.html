@@ -32,7 +32,15 @@ noHeaderMargin: true
         {% endfor %}
     </p>
     {% endif %}
-    <img id="game-top-img" {% if page.top-img %} src="{{ site.stage_path }}{{page.stage_game_path}}images/{{ page.top-img }}" style="object-fit:{{page.top-img-fit}}" {% else %} src="/images/official_no_back.png" {% endif %}>
+
+    {% if page.top-img %}
+        {% assign topImgSrc = site.stage_path | append: page.stage_game_path | append: "images/" | append: page.top-img %}
+    {% elsif page.screenshots.size > 0 %}
+        {% assign topImgSrc = site.stage_path | append: page.stage_game_path | append: "images/" | append: page.screenshots[0] %}
+    {% else %}
+        {% assign topImgSrc = "/images/official_no_back.png" %}
+    {% endif %}
+    <img id="game-top-img" src="{{ topImgSrc }}" style="object-fit:{{page.top-img-fit}}">
 </div>
 
 <!-- Page content -->
