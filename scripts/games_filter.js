@@ -30,7 +30,7 @@ function update_games_filter() {
 
     // Disable all listed games which don't have ALL of those tags
     var games_listed = $('.listed_game');
-    var some_displayed = false;
+    var num_games_found = 0;
     games_listed.each(function(index, game) {
         var element = $(game);
         var length = applied_tags.length;
@@ -42,14 +42,14 @@ function update_games_filter() {
             }
         }
         element.css("display", "block");
-        some_displayed = true;
+        num_games_found++;
     });
 
-    // If no games fall within this filter, display the no_games_found div
-    var element = $('#no_games_found');
-    if (some_displayed) {
-        element.css("display", "none");
+    // Update the total number of games no_games_found
+    var num_found_element = $('#number_of_games_found');
+    if (num_games_found > 0) {
+        num_found_element.text(num_games_found + " games found!");
     } else {
-        element.css("display", "block");
+        num_found_element.html("No games found :(<br>Try filtering with different tags!");
     }
 }

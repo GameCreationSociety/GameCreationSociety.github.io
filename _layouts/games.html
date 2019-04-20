@@ -9,9 +9,10 @@ sort_by: newest
 
 <!-- Stylesheet dependencies -->
 <link rel="stylesheet" href="/styles/games.css">
+<link rel="stylesheet" href="/styles/listed_game.css">
 
 <!-- Top image -->
-<div id="games-top-image" {% if page.top-img %}style="background-image: url('/images/{{page.top-img}}'); background-position: center {{page.top-img-pos}}"{% endif %}>
+<div id="games-top-image">
     <div id="games-top-title" class="header-sized-top-margin">
         <!-- Title -->
         <h1 class="text-center">GCS Games</h1>
@@ -85,10 +86,10 @@ sort_by: newest
     {% endif %}
 </div>
 
-<!-- Display when you have filtered away ALL games -->
-<div id="no_games_found" class="text-center">
-    <p>No games found  :(</p>
-    <p>Try filtering with different tags!</p>
+
+<!-- Display the total number of games after filtering -->
+<div id="bottom_text" class="text-center">
+    <p id="number_of_games_found">{{site.games.size}} games found!</p>
 </div>
 
 

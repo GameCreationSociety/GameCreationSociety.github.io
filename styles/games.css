@@ -8,8 +8,8 @@
 	position: relative;
 	/* overflow: visible; */
 	/* Default image */
-	background: url("/images/arches.jpg");
-	background-position: center 18%;
+	background: url("/images/Games_page_head.png");
+	background-position: center 70%;
 	background-size: cover;
 	background-repeat: no-repeat;
 }
@@ -47,11 +47,10 @@ h2, h3, h4 {
 }
 
 /* No games found indicator */
-#no_games_found {
+#bottom_text {
 	color: black;
 	margin-top: 1em;
 	margin-bottom: 1em;
-	display: none;
 }
 
 /* Sorted by dropdown */

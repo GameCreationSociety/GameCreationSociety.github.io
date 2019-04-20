@@ -1,6 +1,3 @@
-<!-- Stylesheet dependencies -->
-<link rel="stylesheet" href="/styles/listed_game.css">
-
 <!-- Listed game display -->
 <a class="listed-game-preview listed_game {% for tag in game.tags %} {{ tag }}_game-tag {% endfor %}"  id="{{ game.title | slugify }}-preview" href="{{ game.url }}">
     <div class="listed-game-preview-img"
