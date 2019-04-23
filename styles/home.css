@@ -117,6 +117,7 @@ video#games-reel {
     display: block;
     width: 80%;
     margin: auto;
+    border-radius: 50%;
 
     max-width: 20rem;
 }
@@ -214,6 +215,7 @@ video#games-reel {
 #section-4-icon {
     max-width: 10em;
     margin: 0 auto;
+    border-radius: 50%;
 }
 
 /* Section 5 */
