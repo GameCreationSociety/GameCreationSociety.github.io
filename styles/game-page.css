@@ -47,12 +47,24 @@
 	height: auto;
 }
 
-#game-tags {
+#game-tags-container {
 	position: absolute;
 	left: 0;
 	bottom: 0;
-	margin-bottom: 0;
-	padding: 0.5em 0.5em 0.5em 0.5em;
+	margin-left: 1em;
+	margin-bottom: 1em;
+	max-width: calc(50% - 1em);
+}
+
+#game-tags{
+	display: inline;
+	position: relative;
+	left: 0;
+	bottom: 0;
+	padding: 0.1em 0.5em;
+
+	box-decoration-break: clone;
+	-webkit-box-decoration-break: clone;
 
 	font-size: 1.4em;
 	text-shadow: 2px 2px black;
@@ -60,15 +72,27 @@
 	border-radius: 0.5em;
 }
 
-#game-awards {
+#game-awards-container {
 	position: absolute;
 	right: 0;
 	bottom: 0;
-	margin-bottom: 0;
-	padding: 0.5em 0.5em 0.5em 0.5em;
+	margin-right: 1em;
+	margin-bottom: 1em;
+	max-width: calc(50% - 1em);
+	text-align: right;
+}
+
+#game-awards {
+	position: relative;
+	display: inline;
+	right: 0;
+	bottom: 0;
+	padding: 0.1em 0.5em;
+
+	box-decoration-break: clone;
+	-webkit-box-decoration-break: clone;
 
 	font-size: 1.4em;
-	text-align: right;
 	text-shadow: 0.1em 0.1em black;
 	background-color: #FFFFFF20;
 	border-radius: 0.4em;

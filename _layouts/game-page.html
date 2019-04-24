@@ -10,27 +10,31 @@ noHeaderMargin: true
 <!-- Top image -->
 <div id="game-top-container">
     {% if page.tags and page.tags.size > 0 %}
-    <p id="game-tags">
-        {% for tag in page.tags %}
-        {% if forloop.first %}
-        {{tag}}
-        {% else %}
-        <br>{{tag}}
-        {% endif %}
-        {% endfor %}
-    </p>
+    <div id="game-tags-container">
+        <p id="game-tags">
+            {% for tag in page.tags %}
+            {% if forloop.first %}
+            {{tag}}
+            {% else %}
+            <br>{{tag}}
+            {% endif %}
+            {% endfor %}
+        </p>
+    </div>
     {% endif %}
 
     {% if page.awards and page.awards.size > 0 %}
-    <p id="game-awards">
-        {% for award in page.awards %}
-        {% if forloop.first %}
-        {{award}}
-        {% else %}
-        <br>{{award}}
-        {% endif %}
-        {% endfor %}
-    </p>
+    <div id="game-awards-container">
+        <p id="game-awards">
+            {% for award in page.awards %}
+            {% if forloop.first %}
+            {{award}}
+            {% else %}
+            <br>{{award}}
+            {% endif %}
+            {% endfor %}
+        </p>
+    </div>
     {% endif %}
 
     {% if page.top-img %}
