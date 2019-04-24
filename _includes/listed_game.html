@@ -1,5 +1,8 @@
 <!-- Listed game display -->
-<a class="listed-game-preview listed_game {% for tag in game.tags %} {{ tag }}_game-tag {% endfor %}"  id="{{ game.title | slugify }}-preview" href="{{ game.url }}">
+<a class="listed-game-preview listed_game
+{% for tag in game.tags %} {{ tag }}_game-tag {% endfor %}
+{% if game.awards and game.awards.size > 0 %} Award-Winning_game-tag {% endif %}"
+  id="{{ game.title | slugify }}-preview" href="{{ game.url }}">
     <div class="listed-game-preview-img"
     {% if game.thumbnail %}
         style="background-image: url('{{site.stage_path}}{{game.stage_game_path}}images/{{game.thumbnail}}')"

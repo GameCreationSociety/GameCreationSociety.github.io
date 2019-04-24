@@ -37,15 +37,14 @@ sort_by: newest
 <div id="tag-selector" class="row justify-content-center text-center">
     <h3>Filter by tag</h3>
     <br />
-    <!-- {% for tag in site.game_tags %}
-    <input type="checkbox" class="games_filter_checkbox" id="tag_box_{{ tag }}" onclick="update_games_filter()">
-    {{ tag }}<br>
-    {% endfor %} -->
     {% for tag in site.game_tags %}
     <div class="checkbox-container">
     <input type="checkbox" class="games_filter_checkbox" data-toggle="toggle" data-on="{{tag}}" data-off="{{tag}}" data-onstyle="success" data-offstyle="default" id="tag_box_{{ tag }}">
     </div>
     {% endfor %}
+    <div class="checkbox-container">
+    <input type="checkbox" class="games_filter_checkbox" data-toggle="toggle" data-on="Award-Winning" data-off="Award-Winning" data-onstyle="success" data-offstyle="default" id="tag_box_Award-Winning">
+    </div>
 </div>
 
 <!-- All listed games -->
