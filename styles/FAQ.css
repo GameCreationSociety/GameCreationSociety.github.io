@@ -9,3 +9,7 @@ h3 {
 p {
     margin-bottom: 0.3em;
 }
+
+#FAQ-answers p {
+	text-indent: 2.5em;
+}
