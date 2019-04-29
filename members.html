@@ -26,7 +26,10 @@ noHeaderMargin: true
         <div class="col-sm-3 col-6">
             <h2><u>Class of {{class.name}}</u></h2>
             {% for member in class.items %}
-                <p><a href="{{member.url}}">{{ member.title }}</a></p>
+        		<a href="{{member.url}}" class="no-text-decoration">
+        			<button type="button" class="thin-button red-button">{{ member.title }}</button>
+        		</a>
+            	<br>
             {% endfor %}
         </div>
     {% endfor %}
@@ -41,7 +44,10 @@ noHeaderMargin: true
         <div class="col-sm-3 col-6">
             <h2><u>Class of {{class.name}}</u></h2>
             {% for member in class.items %}
-                <p><a href="{{member.url}}">{{ member.title }}</a></p>
+        		<a href="{{member.url}}" class="no-text-decoration">
+        			<button type="button" class="thin-button red-button">{{ member.title }}</button>
+        		</a>
+            	<br>
             {% endfor %}
         </div>
     {% endfor %}
