@@ -13,6 +13,9 @@
     --dark-red: #891222;
     --light-blue: #032270;
     --dark-blue: #230579;
+
+    --extra-light-red: #af4F4b;
+    --tinted-red: #a02D28;
 }
 
 /* Text styling */
@@ -93,7 +96,7 @@ html {
     font-size: 0.95em;
     cursor: pointer;
     width: 100%;
-    max-width: 16em;
+    max-width: 15em;
     height: 2.5em;
     color: #FFFFFF;
     padding: 0;
@@ -116,6 +119,19 @@ html {
     background: -webkit-linear-gradient(right, var(--light-red) 0%, var(--dark-red) 100%);
     background: -o-linear-gradient(right, var(--light-red) 0%, var(--dark-red) 100%);
     background: linear-gradient(to left, var(--light-red) 0%, var(--dark-red) 100%);
+}
+
+.light-red-button {
+    /* background: -webkit-linear-gradient(right, var(--tinted-red) 0%, var(--extra-light-red) 100%);
+    background: -o-linear-gradient(right, var(--tinted-red) 0%, var(--extra-light-red) 100%);
+    background: linear-gradient(to left, var(--tinted-red) 0%, var(--extra-light-red) 100%); */
+    background: var(--tinted-red);
+}
+.light-red-button:hover {
+    /* background: -webkit-linear-gradient(right, var(--extra-light-red) 0%, var(--tinted-red) 100%);
+    background: -o-linear-gradient(right, var(--extra-light-red) 0%, var(--tinted-red) 100%);
+    background: linear-gradient(to left, var(--extra-light-red) 0%, var(--tinted-red) 100%); */
+    background: var(--extra-light-red);
 }
 
 .blue-button {
