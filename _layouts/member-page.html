@@ -50,14 +50,22 @@ noHeaderMargin: false
     {% endif %}
 
     <!-- Personal website link -->
-    {% if page.website %}
-    <div class="col-md-4 col-sm-12 text-center">
-        <!-- <h3><a href="{{page.website}}">My website</a></h3> -->
-        <br>
-        <a href="{{page.website}}" class="no-text-decoration">
-            <button type="button" class="standard-button red-button">My Website</button>
-        </a>
-    </div>
+    {% if page.website or page.extra_links %}
+        <div class="col-md-4 col-sm-12 text-center">
+        {% if page.website %}
+            <br>
+            <a href="{{page.website}}" class="no-text-decoration">
+                <button type="button" class="standard-button red-button">My Website</button>
+            </a>
+        {% endif %}
+
+        {% for link in page.extra_links %}
+            <br><br>
+            <a href="{{link[1]}}" class="no-text-decoration">
+                <button type="button" class="standard-button red-button">{{link[0]}}</button>
+            </a>
+        {% endfor %}
+        </div>
     {% endif %}
 </div>
 
