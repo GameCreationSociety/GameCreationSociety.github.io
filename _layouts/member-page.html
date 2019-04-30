@@ -16,6 +16,7 @@ noHeaderMargin: false
 
 {% if page.bio %}
 <p>{{page.bio}}</p>
+<br>
 {% endif %}
 
 <!-- Extra-info container -->
@@ -31,12 +32,7 @@ noHeaderMargin: false
 
         {% if page.previous_positions %}
         <h4><u>Previous GCS positions</u>:
-            {% for position in page.previous_positions %}
-            {{position}}
-            {% unless forloop.last %}
-
-            {% endunless %}
-            {% endfor %}
+            {{page.previous_positions}}
         </h4>
         {% endif %}
 
@@ -105,4 +101,13 @@ noHeaderMargin: false
 
 
 <!-- Link back to all members -->
-<h4><a href="/members">Back to all members</a></h4>
+<!-- <h4><a href="/members">Back to all members</a></h4> -->
+
+<div class="row justify-content-center">
+    <div class="col-sm-3 col-6 text-center">
+        <br>
+        <a href="/members" class="no-text-decoration">
+            <button type="button" class="thin-button light-red-button">Back to all members</button>
+        </a>
+    </div>
+</div>
