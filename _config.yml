@@ -17,3 +17,7 @@ game_tags: [
     "Controller-Compatible",    "VR",
     "Game-Jam"
 ]
+
+# Plugins
+plugins:
+  - jekyll-redirect-from
