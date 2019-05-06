@@ -18,7 +18,8 @@ h2, h3, h4 {
 	display: block;
 	width: 100%;
 	margin: 0;
-	margin-top: 0.2em;
+	margin-top: 0.6em;
+	margin-bottom: 0.2em
 }
 
 #sorted-by, #tag-selector {
@@ -88,7 +89,20 @@ h2, h3, h4 {
 
 .dropdown:hover .dropdown-content {display: block;}
 
-.dropdown:hover .dropbtn {background-color: var(--dark-blue);}
+/* .dropdown:hover .dropbtn {background-color: var(--dark-blue);} */
+
+.dropdown a .dropbtn:hover {
+	background-color: var(--dark-blue);
+	cursor: pointer;
+}
+
+.current-sort {
+	background-color: var(--green);
+}
+.current-sort:hover {
+	background-color: var(--green) !important;
+	cursor: default !important;
+}
 
 /* Tag filter checkboxes */
 .checkbox-container {

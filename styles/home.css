@@ -197,6 +197,10 @@ video#games-reel {
         margin-right: 8%;
         padding: 0;
     }
+
+    #section-3 button {
+        margin: 0;
+    }
 }
 
 /* Section 4 */

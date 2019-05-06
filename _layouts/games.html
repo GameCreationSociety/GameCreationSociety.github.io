@@ -21,21 +21,25 @@ sort_by: newest
 
 <!-- "Sorted by" dropdown -->
 <div id="sorted-by" class="row justify-content-center text-center">
-    <h3>Sorted By</h3>
+    <h3>Sort By</h3>
     <br />
     <div class="dropdown">
-        <button class="dropbtn">{{ page.sort_by | capitalize }}</button>
+        <a href="/games-by-newest"><button class="dropbtn {% if page.sort_by == "newest" %}current-sort{% endif %}">Newest</button></a>
+        <a href="/games-by-oldest"><button class="dropbtn {% if page.sort_by == "oldest" %}current-sort{% endif %}">Oldest</button></a>
+        <a href="/games-by-title"><button class="dropbtn {% if page.sort_by == "title" %}current-sort{% endif %}">Title</button></a>
+        <!-- <button class="dropbtn">{{ page.sort_by | capitalize }}</button>
         <div class="dropdown-content">
-            <a href="/games-by-newest">Newest</a>
-            <a href="/games-by-oldest">Oldest</a>
-            <a href="/games-by-title">Title</a>
-        </div>
+        <a href="/games-by-newest">Newest</a>
+        <a href="/games-by-oldest">Oldest</a>
+        <a href="/games-by-title">Title</a>
+        </div> -->
     </div>
-    <br>
+<br>
 </div>
 <!-- Filtering by tags -->
 <div id="tag-selector" class="row justify-content-center text-center">
-    <h3>Filter by tag</h3>
+    <br /><br />
+    <h3>Filter By</h3>
     <br />
     {% for tag in site.game_tags %}
     <div class="checkbox-container">

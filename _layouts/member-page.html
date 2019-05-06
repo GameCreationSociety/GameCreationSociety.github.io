@@ -9,15 +9,18 @@ noHeaderMargin: false
 <link rel="stylesheet" href="/styles/member-page.css">
 <link rel="stylesheet" href="/styles/listed_game.css">
 
-<!-- Name, class, bio, and profile pic -->
+
+<!-- Name and class -->
 <br>
 <h1 class="inline">{{ page.title }}</h1><h3 class="inline"> - Class of {{ page.class_of }}</h3>
 
 
+<!-- Bio -->
 {% if page.bio %}
 <p>{{page.bio}}</p>
 <br>
 {% endif %}
+
 
 <!-- Extra-info container -->
 <div class="row no-margin justify-content-center">
@@ -39,6 +42,7 @@ noHeaderMargin: false
     </div>
     {% endif %}
 
+    <!-- Profile picture -->
     {% if page.profile_pic %}
     <div class="col-md-4 col-sm-12 text-center">
         <img class="profile_image" src="{{site.stage_path}}Members/images/{{page.profile_pic}}" alt="Profile Image">
@@ -66,10 +70,8 @@ noHeaderMargin: false
 </div>
 
 
-
 <!-- Custom content -->
 {{ content }}
-
 
 
 <!-- My Games -->
@@ -101,8 +103,6 @@ noHeaderMargin: false
 
 
 <!-- Link back to all members -->
-<!-- <h4><a href="/members">Back to all members</a></h4> -->
-
 <div class="row justify-content-center">
     <div class="col-sm-3 col-6 text-center">
         <br>

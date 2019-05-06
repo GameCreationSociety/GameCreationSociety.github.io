@@ -3,3 +3,12 @@
 p {
 	text-indent: 2.5em;
 }
+
+#basic-main-content span {
+    position: relative;
+    display: block;
+    width: 98%;
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
