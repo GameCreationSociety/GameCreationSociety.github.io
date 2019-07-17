@@ -6,6 +6,21 @@ noHeaderMargin: true
 
 <!-- Stylesheet dependencies -->
 <link rel="stylesheet" href="/styles/game-page.css">
+<link rel="stylesheet" href="/styles/smartphoto.min.css">
+<script src="/scripts/smartphoto.min.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded',function(){
+    var sp = new SmartPhoto(".js-smartPhoto");
+    sp.on('open',function(){
+        var th = document.getElementById('page-header');
+        th.style.visibility = "hidden";
+    });
+    sp.on('close',function(){
+        var th = document.getElementById('page-header');
+        th.style.visibility = "visible";
+    });
+});
+</script>
 
 <!-- Top image -->
 <div id="game-top-container">
@@ -103,37 +118,13 @@ noHeaderMargin: true
     <div class="screenshot-row">
         {% for img in page.screenshots %}
         <div class="screenshot-column">
-            <img class="screenshot-thumbnail hover-shadow" src="{{site.stage_path}}{{page.stage_game_path}}images/{{img}}" onclick="openModal();currentSlide({{forloop.index}})">
+            <a href="{{site.stage_path}}{{page.stage_game_path}}images/{{img}}" class="js-smartPhoto" data-caption="{{page.title}}" data-id="{{forloop.index}}" data-group="game">
+                <img class="screenshot-thumbnail hover-shadow" src="{{site.stage_path}}{{page.stage_game_path}}images/{{img}}" />
+            </a>
         </div>
         {% endfor %}
     </div>
     {% endif %}
-
-    <!-- Screenshot gallery modal -->
-    <div id="myModal" class="modal">
-        <span class="close cursor" onclick="closeModal()">&times;</span>
-        <div class="modal-content">
-            {% for img in page.screenshots %}
-            <div class="mySlides">
-                <div class="numbertext">{{forloop.index}} / {{forloop.length}}</div>
-                <img class="screenshot-full" src="{{site.stage_path}}{{page.stage_game_path}}images/{{img}}">
-            </div>
-            {% endfor %}
-
-            <!-- Next/previous controls -->
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-            <!-- Thumbnail image controls -->
-            <div class="img-control-row">
-                {% for img in page.screenshots %}
-                <div class="screenshot-column">
-                    <img class="screenshot-img-control" src="{{site.stage_path}}{{page.stage_game_path}}images/{{img}}" onclick="currentSlide({{forloop.index}})">
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
 
     <!-- Original Soundtrack Soundcloud embed -->
     {% if page.OST-embed %}
@@ -150,4 +141,3 @@ noHeaderMargin: true
 </div>
 
 <!-- Script dependencies -->
-<script src="/scripts/screenshot_gallery.js"></script>
