@@ -74,6 +74,11 @@ html {
     text-decoration: none !important;
 }
 
+/* Bulleted text spacing */
+p + ul {
+    margin-top: -1em;
+}
+
 /* Buttons */
 .standard-button {
     font-size: 1.3em;
@@ -215,6 +220,20 @@ body {
 }
 
 #header-img:hover {
+    box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.25);
+}
+
+#header-scope-creep {
+    display: inline-block;
+    float: left;
+
+    height: 80%;
+    padding: 3px;
+    margin-top: 0.5em;
+    margin-left: 1em;
+}
+
+#header-scope-creep:hover {
     box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.25);
 }
 
