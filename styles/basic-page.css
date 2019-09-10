@@ -51,6 +51,13 @@ body {
 	color: #991222;
 	text-decoration: underline;
 }
+#basic-main-content a.black-link {
+	color: #000000;
+	text-decoration: none;
+}
+#basic-main-content a.black-link:hover {
+	text-decoration: underline;
+}
 
 /* Mini-headers, used for Contact page */
 .mini-header {
