@@ -53,3 +53,6 @@ function update_games_filter() {
         num_found_element.html("No games found :(<br>Try filtering with different tags!");
     }
 }
+
+// Run the filter when the page loads, in case any filters are enabled.
+update_games_filter();
