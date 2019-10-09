@@ -14,6 +14,8 @@
     background-position: center;
     /* Default image */
     background-image: url("/images/official_no_back.png");
+
+    transition: background-image 0.15s;
 }
 
 .listed-game-preview-overlay {
