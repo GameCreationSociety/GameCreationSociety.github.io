@@ -6,16 +6,17 @@ var basicPrompts = [
 
 	// Basic things
 	"Death", "Water", "Green", "Plant", "Arm", "Time", "Two", "Phone", "Sun",
-	"Sleep", "Eat", "Run", "Sick",
+	"Sleep", "Eat", "Run", "Sick", "Neighbor", "Circle",
 
 	// Categories
-	"Human", "Movie"
+	"Human", "Movie", "Game"
 ]
 var challengePrompts = [
 	// Movies
 	"E.T.", "Frankenstein", "Silence of the Lambs", "Harry Potter", "Wizard of Oz",
 	"Titanic", "The Spongebob Squarepants Movie", "Indiana Jones", "Toy Story", "Star Wars",
-	"Jaws", "Shrek", "The Matrix", "Frozen",
+	"Jaws", "Shrek", "The Matrix", "Frozen", "The Lion King", "It",
+	"The Lion, the Witch, and the Wardrobe", "2001: A Space Odyssey",
 
 	// People/Characters
 	"Mario", "Jesus Christ", "Steve Jobs", "Sherlock Holmes", "The Power Rangers",
@@ -26,7 +27,14 @@ var challengePrompts = [
 	"Movie Theater", "Clock Tower", "Castle",
 
 	// Fairy Tales
-	"Little Red Riding Hood", "Rapunzel", "Humpty Dumpty", "Jack and the Beanstalk"
+	"Little Red Riding Hood", "Rapunzel", "Humpty Dumpty", "Jack and the Beanstalk",
+
+	// Games
+	"Call of Duty", "Dungeons and Dragons", "Monopoly", "Football", "Poker", "Solitaire",
+	"Civilization", "Candy Crush", "Angry Birds",
+
+	// Extraneous
+	"Foreign", "Netflix", "The Internet", "Facebook"
 ]
 
 
