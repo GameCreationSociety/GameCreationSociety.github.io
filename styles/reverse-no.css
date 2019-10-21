@@ -1,0 +1,10 @@
+/* Reverse No play page (play/reverse_no.html) styling */
+
+.wordsContainer {
+	border: 0.1em solid black;
+}
+
+.wordInBox {
+	margin-top: 0.25rem;
+	margin-bottom: 0.25rem;
+}

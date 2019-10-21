@@ -24,7 +24,14 @@
 	<!-- Header -->
 	{% include header.html %}
 
-	<div class="container-fluid {% unless page.noHeaderMargin or layout.noHeaderMargin %}header-sized-top-margin{% endunless %}">
+	<!-- Some logic for header-sized-top-margin conditions -->
+	{% if page.noHeaderMargin == undefined %}
+		{% assign noHeaderLayout = true %}
+	{% endif %}
+	{% if noHeaderLayout and layout.noHeaderMargin %}
+		{% assign noHeaderLayout2 = true %}
+	{% endif %}
+	<div class="container-fluid {% unless page.noHeaderMargin or noHeaderLayout2 %}header-sized-top-margin{% endunless %}">
 		<div class="row">
 			<!-- Content -->
 			<div class="col-12" id="main-content">

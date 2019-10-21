@@ -1,0 +1,201 @@
+---
+# Front Matter
+layout: basic-page
+title: Reverse No
+no-top-img: true
+noHeaderMargin: false
+
+words: {
+	"and", "big", "body", "color", "do", "fast", "feel", "food", "good",
+	"gross", "have", "hot", "idea", "is", "land", "life", "love", "me",
+	"more", "new", "no", "one", "piece", "reverse", "round", "same", "side",
+	"start", "simple", "thing", "this", "umm...", "up", "wet", "with", "word"
+}
+---
+
+<!-- Stylesheet dependencies -->
+<link rel="stylesheet" href="/styles/reverse-no.css">
+
+
+<!-- Title -->
+<br>
+<div class="text-center">
+	<h1 class="inline">{{ page.title }}</h1><br>
+	<h3 class="inline">A Game of Limited Language</h3>
+</div>
+
+<!-- About -->
+<h2 class="inline"><u>About</u></h2>
+<div class="row">
+	<div class="col-sm-4">
+		<p>Reverse No is a cooperative party game about communicating ideas with a limited vocabulary, and building up your common language over time.</p>
+		<p>It was created at the 2019 Pittsburgh IGDA Board Game Jam, for the theme: "Foreign".</p>
+	</div>
+	<div class="col-sm-4 text-center">
+		<p><b>2 or more players</b></p>
+		<p><b>10-30 minutes</b></p>
+		<p><b>Ages 10+</b></p>
+	</div>
+	<div class="col-sm-4 text-center">
+		<h4>The Team:</h4>
+		<p><a href="/members/CarterWilliams">Carter Williams</a>,
+			<a href="/members/JosephPerrino">Joseph Perrino</a>,
+			<a href="/members/AdrianMester">Adrian Mester</a>,
+			<a href="/members/WoodyMcCoy">Woody McCoy</a>,
+			<a href="/members/TigerJia">Tiger Jia</a>,
+			<a href="/members/DominicCalkosz">Dominic Calkosz</a>
+		</p>
+	</div>
+</div>
+
+<!-- Rules -->
+<h2 class="inline"><u>Rules</u></h2>
+<br>
+<p>There are two groups in the game: <u>a foreigner</u>, who can only speak words from a specific list, and a group of <u>interpreters</u>, who are trying to understand what the foreigner is saying. The foreigner draws a prompt from a category. The interpreters must guess this prompt.
+</p>
+<p>At any point, the foreigner can say <i>“new word”</i>. The foreigner then says a phrase out of the allowed words, prompting the interpreters to guess the meaning of that phrase. When the interpreters correctly guess this meaning, the foreigner confirms they are correct by saying <i><b>“Reverse No!”</b></i> (“Yes!”).
+	One interpreter acts as a scribe and writes down the phrase and its meaning on a sticky note and places it on the wall, to be referenced later. These notes can be used between rounds. These phrases will build off of each other until the foreigner can use them to describe the prompt. The round ends when the interpreters correctly guess this prompt.
+</p>
+<p>You're encouraged to take turns being the foreigner, and to use phrases that have been built up over previous rounds. If you find that you've run out of prompts, or just want to get more creative, try making up your own!
+</p>
+
+<!-- Groups -->
+<h4>Foreigner</h4>
+<ul>
+	<li>Can only speak the allowed words - Cannot speak the interpreters’ translations of their phrases.</li>
+	<li>Can point - Cannot make excessive gestures (gestures only accompany words; they do not replace words).</li>
+	<li>TIP - Use "More" or "Good" to encourage guesses that are getting close. Use "Reverse no" to confirm a correct answer.</li>
+</ul>
+
+<h4>Interpreters</h4>
+<ul>
+	<li>Can shout out guesses to the foreigner - Cannot ask the foreigner direct questions.</li>
+	<li>TIP - If you're not making any progress, ask the foreigner to break the prompt up into smaller phrases by saying "new word".</li>
+</ul>
+<br>
+
+<!-- Example -->
+<div class="row text-center">
+	<div class="col-sm-12">
+		<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#gameExample" aria-expanded="false" aria-controls="gameExample">
+			Show Example
+		</button>
+	</div>
+</div>
+<div class="collapse" id="gameExample">
+	<div class="card card-body">
+		<p>The foreigner draws “Dracula” from the list of subjects.</p>
+		<ul>
+			<li>The foreigner first tries to define “person”, using “same me”. After some guessing, the interpreters successfully guess “person”. The foreigner affirms this by saying “Reverse No!”. The scribe writes “same me = person” on a note and puts it on the board.</li>
+			<li>The foreigner uses this translation for “person” to define a “dead person” with “no life same me”. The interpreters realize “no life” means “dead”, and guess “dead person”.</li>
+			<li>They then try to define an “undead person” using “reverse no life same me”. This confuses the interpreters, so the foreigner says, “new word”, to try defining another word.</li>
+			<li>The foreigner tries to define “undead” instead, using only “reverse no life”. The interpreters reference their translation for “dead”, “no life”, and realize that “reverse” must be making the dead person alive again. They excitedly write down this translation.</li>
+			<li>After communicating the phrase for “white”, the foreigner combines it and the phrases for “undead”, and “person”. The interpreters piece this together and guess “vampire”.</li>
+			<li>Finally, the foreigner tries to say this “vampire” is “Dracula”, modifying their phrase for “vampire” with more words. An interpreter guesses “Dracula” and ends the round.</li>
+		</ul>
+	</div>
+</div>
+
+<!-- Gameplay section -->
+<div class="row text-center">
+	<div class="col-sm-6">
+		<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#foreignerDiv" aria-expanded="false" aria-controls="foreignerDiv">
+			Prompts
+		</button>
+	</div>
+	<div class="col-sm-6">
+		<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#interpreterDiv" aria-expanded="false" aria-controls="interpreterDiv">
+			Notepad
+		</button>
+	</div>
+</div>
+<br>
+
+<!-- PROMPTS -->
+<div class="collapse" id="foreignerDiv">
+	<div class="card card-body">
+		<div class="row text-center justify-content-center">
+			<div class="col-md-3 col-sm-4 col-6">
+				<button class="btn btn-success" type="button" onclick="randomBasicPrompt()">
+					Basic Prompt
+				</button>
+			</div>
+			<div class="col-md-3 col-sm-4 col-6">
+				<button class="btn btn-success" type="button" onclick="randomChallengePrompt()">
+					Challenge Prompt
+				</button>
+			</div>
+		</div>
+		<br>
+		<div class="row text-center justify-content-center">
+			<div class="col-md-6 col-12">
+				<h4><i id="promptText"></i></h4>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- NOTEPAD -->
+<div class="collapse" id="interpreterDiv">
+	<div class="card card-body">
+		<div class="row text-center justify-content-center">
+			<div class="col-md-3 col-sm-4 col-6">
+				<h4><b>Phrase</b></h4>
+			</div>
+			<div class="col-md-3 col-sm-4 col-6">
+				<h4><b>Meaning</b></h4>
+			</div>
+		</div>
+
+		<div id="pairsInterpreterContainer">
+			<div id="sampleFieldPair" class="row text-center justify-content-center" style="display: none;">
+				<div class="col-md-3 col-sm-4 col-6">
+					<input type="text"></input>
+				</div>
+				<div class="col-md-3 col-sm-4 col-6">
+					<input type="text"></input>
+				</div>
+			</div>
+			<div class="row text-center justify-content-center">
+				<div class="col-md-3 col-sm-4 col-6">
+					<input type="text"></input>
+				</div>
+				<div class="col-md-3 col-sm-4 col-6">
+					<input type="text"></input>
+				</div>
+			</div>
+		</div>
+		<br>
+
+		<div class="row text-center justify-content-center">
+			<div class="col-md-3 col-sm-4 col-6">
+				<button class="btn btn-info" type="button" onclick="addInterpreterField()">
+					New Word
+				</button>
+			</div>
+			<div class="col-md-3 col-sm-4 col-6">
+				<button class="btn btn-danger" type="button" onclick="clearInterpreterFields()">
+					Clear
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+
+
+<!-- Words -->
+<div class="row text-center">
+	<div class="col-12">
+		<h2 class="inline text-center">Words</h2>
+	</div>
+	{% for w in page.words %}
+	<div class="col-lg-2 col-sm-3 col-4 wordsContainer">
+		<h5 class="wordInBox">{{ w }}</h5>
+	</div>
+	{% endfor %}
+</div>
+
+
+<!-- Script dependencies -->
+<script src="/scripts/reverse_no.js"></script>
