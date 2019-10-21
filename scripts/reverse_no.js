@@ -39,10 +39,12 @@ var challengePrompts = [
 	"Catch-22", "War and Peace", "1984", "Of Mice and Men", "A Tale of Two Cities",
 
 	// Huge
-	"When your dentist tries to talk to you when your mouth is full", "Sleeping through an important event",
+	"When your dentist tries to talk to you when your mouth is full",
+	"Sleeping through an important event",
 
 	// Extraneous
-	"Foreign", "Netflix", "The Internet", "Facebook", "Memes", "Hello", "Nostalgia"
+	"Foreign", "Netflix", "The Internet", "Facebook", "Memes", "Hello", "Nostalgia",
+	"Stress", "Friend"
 ]
 
 
