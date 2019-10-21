@@ -9,18 +9,20 @@ var basicPrompts = [
 	"Sleep", "Eat", "Run", "Sick", "Neighbor", "Circle",
 
 	// Categories
-	"Human", "Movie", "Game"
+	"Human", "Movie", "Game", "Book"
 ]
+
 var challengePrompts = [
 	// Movies
 	"E.T.", "Frankenstein", "Silence of the Lambs", "Harry Potter", "Wizard of Oz",
-	"Titanic", "The Spongebob Squarepants Movie", "Indiana Jones", "Toy Story", "Star Wars",
-	"Jaws", "Shrek", "The Matrix", "Frozen", "The Lion King", "It",
-	"The Lion, the Witch, and the Wardrobe", "2001: A Space Odyssey",
+	"Titanic", "The Spongebob Squarepants Movie", "Indiana Jones", "Toy Story",
+	"Star Wars", "Jaws", "Shrek", "The Matrix", "Frozen", "The Lion King", "It",
+	"The Lion, the Witch, and the Wardrobe", "2001: A Space Odyssey", "Cinderella",
 
 	// People/Characters
 	"Mario", "Jesus Christ", "Steve Jobs", "Sherlock Holmes", "The Power Rangers",
-	"Michael Jackson", "Genghis Khan", "Ronald McDonald", "Barack Obama",
+	"Michael Jackson", "Genghis Khan", "Ronald McDonald", "Barack Obama", "Iron Man",
+	"Captain America", "The Queen of England",
 
 	// Places/locations
 	"Airport", "Food Market", "Nature park", "Graveyard", "Gym", "Harbor", "School",
@@ -31,11 +33,18 @@ var challengePrompts = [
 
 	// Games
 	"Call of Duty", "Dungeons and Dragons", "Monopoly", "Football", "Poker", "Solitaire",
-	"Civilization", "Candy Crush", "Angry Birds",
+	"Civilization", "Candy Crush", "Angry Birds", "Pokemon", "Checkers", "Chess",
+
+	// Books
+	"Catch-22", "War and Peace", "1984", "Of Mice and Men", "A Tale of Two Cities",
+
+	// Huge
+	"When your dentist tries to talk to you when your mouth is full", "Sleeping through an important event",
 
 	// Extraneous
-	"Foreign", "Netflix", "The Internet", "Facebook"
+	"Foreign", "Netflix", "The Internet", "Facebook", "Memes", "Hello", "Nostalgia"
 ]
+
 
 
 // ========== PROMPTS LOGIC ==========
@@ -90,3 +99,6 @@ function clearInterpreterFields() {
 	newNewPair.style.display = "flex";
 	container.append(newNewPair);
 }
+
+// Init with one visible field
+addInterpreterField();

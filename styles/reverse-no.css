@@ -8,3 +8,9 @@
 	margin-top: 0.25rem;
 	margin-bottom: 0.25rem;
 }
+
+.RNInput {
+	border: 0.05em solid black;
+	border-radius: 0.4em;
+	outline: none;
+}
