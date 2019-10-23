@@ -2,14 +2,15 @@
 
 var basicPrompts = [
 	// Descriptors
-	"Hard", "Bad", "Shape", "Smart",
+	"Hard", "Bad", "Shape", "Smart", "Light",
 
 	// Basic things
 	"Death", "Water", "Green", "Plant", "Arm", "Time", "Two", "Phone", "Sun",
-	"Sleep", "Eat", "Run", "Sick", "Neighbor", "Circle",
+	"Sleep", "Eat", "Run", "Sick", "Neighbor", "Circle", "Conflict", "Sweet",
+	"Planet", "Moon",
 
 	// Categories
-	"Human", "Movie", "Game", "Book"
+	"Human", "Movie", "Game", "Book", "Art", "History"
 ]
 
 var challengePrompts = [
@@ -22,7 +23,7 @@ var challengePrompts = [
 	// People/Characters
 	"Mario", "Jesus Christ", "Steve Jobs", "Sherlock Holmes", "The Power Rangers",
 	"Michael Jackson", "Genghis Khan", "Ronald McDonald", "Barack Obama", "Iron Man",
-	"Captain America", "The Queen of England",
+	"Captain America", "The Queen of England", "Van Gogh", "The Beatles",
 
 	// Places/locations
 	"Airport", "Food Market", "Nature park", "Graveyard", "Gym", "Harbor", "School",
@@ -36,16 +37,28 @@ var challengePrompts = [
 	"Civilization", "Candy Crush", "Angry Birds", "Pokemon", "Checkers", "Chess",
 
 	// Books
-	"Catch-22", "War and Peace", "1984", "Of Mice and Men", "A Tale of Two Cities",
+	"Catch-22", "War and Peace", "1984", "Of Mice and Men",
+	"A Tale of Two Cities","Twilight", "Lord of the Rings",
+	"A Brief History of the Universe",
+
+	// Art
+	"Mona Lisa", "Starry Night", "The Last Supper",
 
 	// Huge
 	"When your dentist tries to talk to you when your mouth is full",
 	"Sleeping through an important event",
+	"A moment that changes how you see the world",
+	"Pretending to have read a book when you haven’t",
+	"Being stuck in a frustrating adventure game",
+	"Realising the answer to a problem as you explain it to someone else",
 
 	// Extraneous
 	"Foreign", "Netflix", "The Internet", "Facebook", "Memes", "Hello", "Nostalgia",
-	"Stress", "Friend"
+	"Stress", "Friend", "Migraine", "Expertise", "Lying", "Waste", "Jazz", "Literally",
+	"Passive-Aggressive", "Fairness", "Memory", "A Kiss", "Cuddling", "Awkwardness",
+	"Nuclear Bomb", "Mutually Assured Destruction", "Wedding", "Forever"
 ]
+
 
 
 
