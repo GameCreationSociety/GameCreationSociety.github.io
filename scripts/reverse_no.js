@@ -7,10 +7,10 @@ var basicPrompts = [
 	// Basic things
 	"Death", "Water", "Green", "Plant", "Arm", "Time", "Two", "Phone", "Sun",
 	"Sleep", "Eat", "Run", "Sick", "Neighbor", "Circle", "Conflict", "Sweet",
-	"Planet", "Moon",
+	"Planet", "Moon", "Cloud", "Sound", "Rain", "Truth",
 
 	// Categories
-	"Human", "Movie", "Game", "Book", "Art", "History"
+	"Human", "Movie", "Game", "Book", "Art", "History", "Animal"
 ]
 
 var challengePrompts = [
@@ -56,7 +56,8 @@ var challengePrompts = [
 	"Foreign", "Netflix", "The Internet", "Facebook", "Memes", "Hello", "Nostalgia",
 	"Stress", "Friend", "Migraine", "Expertise", "Lying", "Waste", "Jazz", "Literally",
 	"Passive-Aggressive", "Fairness", "Memory", "A Kiss", "Cuddling", "Awkwardness",
-	"Nuclear Bomb", "Mutually Assured Destruction", "Wedding", "Forever"
+	"Nuclear Bomb", "Mutually Assured Destruction", "Wedding", "Forever",
+	"Giraffe", "Musical Chairs", "Tag", "Traffic"
 ]
 
 
