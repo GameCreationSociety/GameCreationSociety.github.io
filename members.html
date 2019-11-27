@@ -10,6 +10,10 @@ noHeaderMargin: true
 <!-- Stylesheet dependencies -->
 <link rel="stylesheet" href="/styles/members.css">
 
+<!-- Below, we use Jekyll Liquid to automatically collect, categorize, and sort
+  -- all members based on the current year & month (to determine alumni status).
+  -->
+
 <!-- Liquid variables setup -->
 {% assign last_graduated_year = "now" | date: "%Y" | plus: 0 %}
 {% assign month = "now" | date: "%m" | plus: 0 %}

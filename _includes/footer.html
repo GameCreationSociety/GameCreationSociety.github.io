@@ -2,7 +2,8 @@
 <div class="container-fluid">
     <footer id="page-footer">
         <div class="footer-copyright text-center py-3">
-            ©2019 CMU Game Creation Society<br>
+            {% assign current_year = "now" | date: "%Y" | plus: 0 %}
+            ©{{ current_year }} CMU Game Creation Society<br>
             &nbsp; &nbsp;
             <a class="footer-link" href="/about">About</a>
             <a class="footer-link" href="/FAQ">FAQ</a>
