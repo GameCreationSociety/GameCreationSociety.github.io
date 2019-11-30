@@ -1,0 +1,65 @@
+---
+# Front Matter
+layout: basic-page
+title: Game Creators
+top-img: Members_page_head.png
+top-img-pos: 34%;
+noHeaderMargin: true
+---
+
+<!-- Stylesheet dependencies -->
+<!-- <link rel="stylesheet" href="/styles/members.css"> -->
+
+<!-- Below, we use Jekyll Liquid to automatically collect and sort
+  -- (alphabetically) every person that is in the credits of a game.
+  -->
+
+<!-- Source: https://stackoverflow.com/questions/41263553/how-to-create-an-array-in-a-for-loop-in-liquid -->
+
+<!-- Initialize an array for all game creators -->
+{% assign creators = '' | split: '' %}
+<!-- {% for operation in menuItems %}
+    {% assign controllerName = operation.Title | split: '_' | first | split: '' %}
+    {% assign controllers = controllers | concat: controllerName %}
+{% endfor %} -->
+
+<!-- Populate the array using all the game credits -->
+{% for game in site.games %}
+    {% for creator in game.project_members %}
+        {% assign newCreator = creator[0] | split: '_' %}
+        {% assign creators = creators | concat: newCreator %}
+    {% endfor %}
+{% endfor %}
+
+<!-- Display them, in alphabetical order (and no duplicates) -->
+{% assign creators = creators | uniq | sort_natural %}
+<br>
+<div class="row">
+{% for creator in creators %}
+    <div class="col-md-2 col-sm-3 col-4">
+        <!-- If they have a member page, link it -->
+        {% for site_member in site.members %}
+            {% if site_member.title == creator %}
+                <p><a href="{{site_member.url}}">{{ creator }}</a></p>
+                {% assign found = true %}
+                {% break %}
+            {% endif %}
+        {% endfor %}
+        {% if found != true %}
+            <p>{{ creator }}</p>
+        {% endif %}
+        {% assign found = false %}
+    </div>
+{% endfor %}
+</div>
+
+
+<!-- Button back to members -->
+<div class="row justify-content-center">
+    <div class="col-sm-3 col-6 text-center">
+        <br>
+        <a href="/members" class="no-text-decoration">
+            <button type="button" class="thin-button blue-button">Members</button>
+        </a>
+    </div>
+</div>

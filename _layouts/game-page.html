@@ -28,11 +28,11 @@ window.addEventListener('DOMContentLoaded',function(){
     <div id="game-tags-container">
         <p id="game-tags">
             {% for tag in page.tags %}
-            {% if forloop.first %}
-            {{tag}}
-            {% else %}
-            <br>{{tag}}
-            {% endif %}
+                {% if forloop.first %}
+                    {{tag}}
+                {% else %}
+                    <br>{{tag}}
+                {% endif %}
             {% endfor %}
         </p>
     </div>
@@ -42,11 +42,11 @@ window.addEventListener('DOMContentLoaded',function(){
     <div id="game-awards-container">
         <p id="game-awards">
             {% for award in page.awards %}
-            {% if forloop.first %}
-            {{award}}
-            {% else %}
-            <br>{{award}}
-            {% endif %}
+                {% if forloop.first %}
+                    {{award}}
+                {% else %}
+                    <br>{{award}}
+                {% endif %}
             {% endfor %}
         </p>
     </div>
@@ -68,12 +68,12 @@ window.addEventListener('DOMContentLoaded',function(){
     <h1 class="inline">{{ page.title }}</h1><h3 class="inline"> - {{ page.semester }} {{ page.year }}</h3>
 
     <div class="row no-margin">
-        <div class="game-content-section col-md-4 col-sm-6 col-xs-12">
+        <div class="game-content-section col-md-4 col-sm-6 col-12">
             <!-- About -->
             <h2>About</h2>
             <p>{{ page.description }}</p>
         </div>
-        <div class="game-content-section col-md-4 col-sm-6 col-xs-12">
+        <div class="game-content-section col-md-4 col-sm-6 col-12">
             <!-- Builds -->
             <h2>Play</h2>
             <p>
@@ -86,7 +86,7 @@ window.addEventListener('DOMContentLoaded',function(){
             <p>{{ page.build_instructions }}</p>
             {% endif %}
         </div>
-        <div class="game-content-section col-md-4 col-sm-6 col-xs-12">
+        <div class="game-content-section col-md-4 col-sm-6 col-12">
             <!-- Project Members -->
             <h2>Project Members</h2>
             <p>
@@ -129,7 +129,7 @@ window.addEventListener('DOMContentLoaded',function(){
     <!-- Original Soundtrack Soundcloud embed -->
     {% if page.OST-embed %}
     <div class="row no-margin">
-        <div class="col-md-5 col-sm-7 col-xs-10">
+        <div class="col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12">
             <h2>Original Soundtrack</h2>
             <iframe class="soundcloud-embed" scrolling="no" frameborder="no" allow="autoplay" src="{{ page.OST-embed }}"></iframe>
         </div>
