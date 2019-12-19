@@ -6,6 +6,9 @@ noHeaderMargin: true
 
 <!-- Stylesheet dependencies -->
 <link rel="stylesheet" href="/styles/basic-page.css">
+{% if page.title == "Contact" %}
+	<link rel="stylesheet" href="/styles/contact-page.css">
+{% endif %}
 
 <!-- Top image -->
 {% if layout.no-top-img != true and page.no-top-img != true %}
