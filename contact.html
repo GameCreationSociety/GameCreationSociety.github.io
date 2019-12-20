@@ -49,46 +49,46 @@ top-img-pos: 22%;
 {% assign treasurer = officers | where_exp: "officer", "officer.current_position == 'Treasurer'" | first %}
 
 <div class="row text-center">
-	<div class="col-md-4 col-sm-6 col-12">
+	<div class="col-md-4 col-sm-6 col-12 mb-4">
 		<p><span class="mini-header">President</span><br>
 			{{president.title}}<br>
 			<a class="black-link" href="mailto:president@gamecreation.org">president@gamecreation.org</a>
 		</p>
-       	<div class="profile-image-div"><img class="profile_image" src="{{site.stage_path}}Members/images/{{president.profile_pic}}" alt="Profile Image"></div>
+       	<img class="profile_image" src="{{site.stage_path}}Members/images/{{president.profile_pic}}" alt="Profile Image">
 	</div>
-	<div class="col-md-4 col-sm-6 col-12">
+	<div class="col-md-4 col-sm-6 col-12 mb-4">
 		<p><span class="mini-header">Vice President</span><br>
 			{{vp.title}}<br>
 			<a class="black-link" href="mailto:vicepresident@gamecreation.org">vicepresident@gamecreation.org</a>
 		</p>
-       	<div class="profile-image-div"><img class="profile_image" src="{{site.stage_path}}Members/images/{{vp.profile_pic}}" alt="Profile Image"></div>
+       	<img class="profile_image" src="{{site.stage_path}}Members/images/{{vp.profile_pic}}" alt="Profile Image">
 	</div>
-	<div class="col-md-4 col-sm-6 col-12">
+	<div class="col-md-4 col-sm-6 col-12 mb-4">
 		<p><span class="mini-header">Director of Development</span><br>
 			{{director.title}}<br>
 			<a class="black-link" href="mailto:director@gamecreation.org">director@gamecreation.org</a>
 		</p>
-       	<div class="profile-image-div"><img class="profile_image" src="{{site.stage_path}}Members/images/{{director.profile_pic}}" alt="Profile Image"></div>
+       	<img class="profile_image" src="{{site.stage_path}}Members/images/{{director.profile_pic}}" alt="Profile Image">
 	</div>
-	<div class="col-md-4 col-sm-6 col-12">
+	<div class="col-md-4 col-sm-6 col-12 mb-4">
 		<p><span class="mini-header">Public Relations Lead</span><br>
 			{{prlead.title}}<br>
 			<a class="black-link" href="mailto:pr@gamecreation.org">pr@gamecreation.org</a>
 		</p>
-		<div class="profile-image-div"><img class="profile_image" src="{{site.stage_path}}Members/images/{{prlead.profile_pic}}" alt="Profile Image"></div>
+		<img class="profile_image" src="{{site.stage_path}}Members/images/{{prlead.profile_pic}}" alt="Profile Image">
 	</div>
-	<div class="col-md-4 col-sm-6 col-12">
+	<div class="col-md-4 col-sm-6 col-12 mb-4">
 		<p><span class="mini-header">Chief of Operations</span><br>
 			{{chiefofops.title}}<br>
 			<a class="black-link" href="mailto:sysadmin@gamecreation.org">sysadmin@gamecreation.org</a>
 		</p>
-		<div class="profile-image-div"><img class="profile_image" src="{{site.stage_path}}Members/images/{{chiefofops.profile_pic}}" alt="Profile Image"></div>
+		<img class="profile_image" src="{{site.stage_path}}Members/images/{{chiefofops.profile_pic}}" alt="Profile Image">
 	</div>
-	<div class="col-md-4 col-sm-6 col-12">
+	<div class="col-md-4 col-sm-6 col-12 mb-4">
 		<p><span class="mini-header">Treasurer</span><br>
 			{{treasurer.title}}<br>
 			<a class="black-link" href="mailto:treasurer@gamecreation.org">treasurer@gamecreation.org</a>
 		</p>
-		<div class="profile-image-div"><img class="profile_image" src="{{site.stage_path}}Members/images/{{treasurer.profile_pic}}" alt="Profile Image"></div>
+		<img class="profile_image" src="{{site.stage_path}}Members/images/{{treasurer.profile_pic}}" alt="Profile Image">
 	</div>
 </div>

@@ -2,20 +2,19 @@
 
 /* Profile picture */
 .profile_image {
-    width: 100%;
+    width: 40%;
     height: auto;
 	border-radius: 50%;
 }
 
-.profile-image-div {
-    width: 50%;
-    height: auto;
-    margin: auto;
-	margin-bottom: 20px;
+@media (min-width: 576px) {
+	.profile_image {
+		width: 45%;
+	}
 }
 
-@media (max-width: 576px) {
-	.profile-image-div {
-		width: 40%;
+@media (min-width: 768px) {
+	.profile_image {
+		width: 50%;
 	}
 }
