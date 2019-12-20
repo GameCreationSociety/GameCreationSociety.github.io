@@ -65,7 +65,11 @@ window.addEventListener('DOMContentLoaded',function(){
 <!-- Page content -->
 <div id="game-main-content">
     <!-- Title and year/semester -->
-    <h1 class="inline">{{ page.title }}</h1><h3 class="inline"> - {{ page.semester }} {{ page.year }}</h3>
+    <div class="row no-margin">
+        <div class="col">
+            <h1 class="inline">{{ page.title }}</h1><h3 class="inline"> - {{ page.semester }} {{ page.year }}</h3>
+        </div>
+    </div>
 
     <div class="row no-margin">
         <div class="game-content-section col-md-4 col-sm-6 col-12">

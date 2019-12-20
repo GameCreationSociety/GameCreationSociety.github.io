@@ -1,0 +1,7 @@
+/* Header (header.html) styling */
+
+/* Style link words (basically, give a shadow to it) */
+
+div.at-top a.nav-link {
+    text-shadow: -1px -1px 3px #000, 1px -1px 3px #000, -1px 1px 3px #000, 1px 1px 3px #000;
+}

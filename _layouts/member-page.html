@@ -12,15 +12,40 @@ noHeaderMargin: false
 
 <!-- Name and class -->
 <br>
-<h1 class="inline">{{ page.title }}</h1><h3 class="inline"> - Class of {{ page.class_of }}</h3>
+<div class="row no-margin">
+    <div class="col">
+        <h1 class="inline">{{ page.title }}</h1><h3 class="inline"> - Class of {{ page.class_of }}</h3>
+    </div>
+</div>
 
+<div class="row no-margin">
+    <!-- Bio -->
+    {% if page.bio %}
+        {% if page.profile_pic %}
+        <div class="col-md-8">
+            <p>{{page.bio}}</p>
+        </div>
+        {% else %}
+        <div class="col">
+            <p>{{page.bio}}</p>
+        </div>
+        {% endif %}
+    {% endif %}
 
-<!-- Bio -->
-{% if page.bio %}
-<p>{{page.bio}}</p>
+    <!-- Profile picture -->
+    {% if page.profile_pic %}
+        {% if page.bio %}
+        <div class="col-md-4 text-center">
+            <img class="profile_image" src="{{site.stage_path}}Members/images/{{page.profile_pic}}" alt="Profile Image">
+        </div>
+        {% else %}
+        <div class="col text-center">
+            <img class="profile_image" src="{{site.stage_path}}Members/images/{{page.profile_pic}}" alt="Profile Image">
+        </div>
+        {% endif %}
+    {% endif %}
+</div>
 <br>
-{% endif %}
-
 
 <!-- Extra-info container -->
 <div class="row no-margin justify-content-center">
@@ -43,11 +68,11 @@ noHeaderMargin: false
     {% endif %}
 
     <!-- Profile picture -->
-    {% if page.profile_pic %}
+    <!-- {% if page.profile_pic %}
     <div class="col-md-4 col-sm-12 text-center">
         <img class="profile_image" src="{{site.stage_path}}Members/images/{{page.profile_pic}}" alt="Profile Image">
     </div>
-    {% endif %}
+    {% endif %} -->
 
     <!-- Personal website link -->
     {% if page.website or page.extra_links %}
