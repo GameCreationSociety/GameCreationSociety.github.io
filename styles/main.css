@@ -182,7 +182,7 @@ body {
     background-color: black;
     color: #FFFFFF;
     font-family: GoogleSans, "Open Sans", "Cabin", Helvetica, Arial, serif;
-    font-weight: 600;
+    font-weight: 500;
     height: 100%;
 }
 
@@ -349,3 +349,9 @@ body {
 .fa-calendar {
     margin-right: 0.4em;
 }
+
+/* Header */
+div.at-top a.nav-link {
+    text-shadow: -1px -1px 3px #000, 1px -1px 3px #000, -1px 1px 3px #000, 1px 1px 3px #000;
+}
+
