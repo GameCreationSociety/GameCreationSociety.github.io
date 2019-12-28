@@ -10,14 +10,26 @@
         style="background-image: url('{{site.stage_path}}{{game.stage_game_path}}images/{{game.screenshots[0]}}')"
     {% endif %}>
     </div>
-    <div class="listed-game-preview-overlay">
-        <h5><b>{{ game.title }}</b></h5>
-        <p>{{game.semester}} {{game.year}}</p>
-        <!-- <p>{{ game.description }}</p> -->
+    <div id="{{game.title | remove: ' '}}_div" class="listed-game-preview-overlay">
+        <h5 class="game_title"><b>{{ game.title }}</b></h5>
+        <p class="game_semester_year">{{game.semester}} {{game.year}}</p>
+        <p class= "game_members" style="display:none">{{ game.project_members }}</p>
     </div>
     
     <!-- Preload the on-hover screenshot -->
+    <!-- Also manually add in a stripped-down description that doesn't display (this is for searching) -->
     <script type="text/javascript">
+        // Create description element and set properties
+        var desc = document.createElement("p");
+        desc.className = "game_description";
+        desc.style.display = "none";
+
+        // Filter and strip text and then add it to a div
+        var text = "{{game.description | newline_to_br | strip_html | strip_newlines | strip | replace: '"', ''}}";
+        desc.appendChild(document.createTextNode(text));
+        document.getElementById("{{game.title | remove: ' '}}_div").appendChild(desc);
+
+        // Preloading
         preload(
             {% assign index = game.screenshots.size | minus: 1 %}
             "{{site.stage_path}}{{game.stage_game_path}}images/{{game.screenshots[index]}}"

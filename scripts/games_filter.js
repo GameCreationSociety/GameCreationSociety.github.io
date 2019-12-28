@@ -11,6 +11,9 @@ $(function() {
     $('.games_filter_checkbox').change(function() {
         update_games_filter();
     });
+    $('#search').on('input', function() {
+        update_games_filter();
+    });
 });
 
 // This is called whenever a checkbox is switched.
@@ -31,6 +34,7 @@ function update_games_filter() {
     // Disable all listed games which don't have ALL of those tags
     var games_listed = $('.listed_game');
     var num_games_found = 0;
+
     games_listed.each(function(index, game) {
         var element = $(game);
         var length = applied_tags.length;
@@ -40,6 +44,19 @@ function update_games_filter() {
                 element.css("display", "none");
                 return;
             }
+        }
+
+        // Added: Disable games which don't match search conditions if there are any
+        var search_terms = element[0].children[1].children;
+        var title = search_terms[0].textContent.toUpperCase();
+        var members = search_terms[2].textContent.toUpperCase();
+        var desc = search_terms[3].textContent.toUpperCase();
+
+        // Convert the term to all uppercase and compare it to the search terms
+        term = $('#search').val().toUpperCase();
+        if (!(title.includes(term) || members.includes(term) || desc.includes(term))) {
+            element.css("display", "none");
+            return;
         }
         element.css("display", "block");
         num_games_found++;
