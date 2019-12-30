@@ -215,7 +215,7 @@ body {
 
     height: 80%;
     padding: 3px;
-    padding-left: 3em;
+    margin-left: 2.5em;
     margin-top: 0.5em;
 }
 
@@ -354,4 +354,3 @@ body {
 div.at-top a.nav-link {
     text-shadow: -1px -1px 3px #000, 1px -1px 3px #000, -1px 1px 3px #000, 1px 1px 3px #000;
 }
-
