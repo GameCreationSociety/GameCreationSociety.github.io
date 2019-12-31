@@ -37,8 +37,10 @@ top-img-pos: 22%;
 		<p><span class="mini-header">General Information</span><br>
 			<a class="black-link" href="mailto:contact@gamecreation.org">contact@gamecreation.org</a>
 		</p>
+		<p>Contact us here for professional inquiries, such as the resume book, recruiting events, and industry or alumni talks.</p>
 	</div>
 </div>
+<br/>
 
 {% assign officers = site.members | where_exp: "member", "member.current_position" %}
 {% assign president = officers | where_exp: "officer", "officer.current_position == 'President'" | first %}
