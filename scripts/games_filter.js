@@ -6,6 +6,26 @@ var game_tags = [
     {% for tag in site.game_tags %}"{{ tag }}",{% endfor %}
 ]
 
+// Populate tags of other platforms from across the site
+var other_tags = [
+    {% for game in site.games %}
+        {% for tag in game.tags %}
+            {% unless site.game_tags contains tag %}
+            "{{ tag }}_game-tag",
+            {% endunless %}
+        {% endfor %}
+    {% endfor %}
+]
+
+// Condense tag list to only be unique
+var other_platform_tags = [];
+
+for (tag of other_tags) {
+    if (!other_platform_tags.includes(tag)) {
+        other_platform_tags.push(tag);
+    }
+}
+
 // Add the update function as a listener
 $(function() {
     $('.games_filter_checkbox').change(function() {
@@ -41,8 +61,23 @@ function update_games_filter() {
         for (var i=0; i < length; i++) {
             var class_to_keep = applied_tags[i];
             if (!element.hasClass(class_to_keep)) {
-                element.css("display", "none");
-                return;
+
+                // This is a very long check to see if other is selected and what to do if so
+                if (class_to_keep == "Other_game-tag") {
+                    var hasTag = false;
+                    for (tag of other_platform_tags) {
+                        if (element.hasClass(tag)) {
+                            hasTag = true;
+                        }
+                    }
+                    if (!hasTag) {
+                        element.css("display", "none");
+                        return;
+                    }
+                } else {
+                    element.css("display", "none");
+                    return;
+                }
             }
         }
 

@@ -12,7 +12,7 @@ stage_path: http://stage.gamecreation.org/
 
 # Tags used for filtering games
 game_tags: [
-    "Windows",                  "Mac",          "Linux",
+    "Windows",                  "Mac",          "Linux",    "Other",
     "Singleplayer",             "Multiplayer",
     "Controller-Compatible",    "VR",
     "Game-Jam"

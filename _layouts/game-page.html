@@ -29,9 +29,9 @@ window.addEventListener('DOMContentLoaded',function(){
         <p id="game-tags">
             {% for tag in page.tags %}
                 {% if forloop.first %}
-                    {{tag}}
+                    {{tag | replace: "_", " "}}
                 {% else %}
-                    <br>{{tag}}
+                    <br>{{tag | replace: "_", " "}}
                 {% endif %}
             {% endfor %}
         </p>
