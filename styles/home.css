@@ -13,7 +13,7 @@ video#games-reel {
     height: 100%;
     top: 0;
     left: 0;
-    background: url('/images/arches.jpg');
+    background: url('/images/arches.webp');
     background-size: cover;
     background-position: center center;
 
@@ -167,7 +167,7 @@ video#games-reel {
     /* Faded overlay */
     linear-gradient(#0B0B0B55, #0B0B0B55),
     /* Background image */
-    url("/images/showcase_1.jpg");
+    url("/images/showcase_1_smaller.webp");
     background-position: center 40%;
     background-size: cover;
     background-repeat: no-repeat;
