@@ -11,7 +11,7 @@ body {
 	z-index: 5;
 	position: relative;
 	/* Default image */
-	background: url("/images/showcase_1_smaller.jpg");
+	background: url("/images/showcase_1.jpg");
 	background-position: center 55%;
 	background-size: cover;
 	background-repeat: no-repeat;

@@ -350,36 +350,6 @@ body {
     margin-right: 0.4em;
 }
 
-/* Optional styling for social media icons */
-.centered-icon {
-    margin: auto;
-    clear: both;
-}
-
-.facebook-colored {
-    color: #4267B2;
-}
-
-.discord-colored {
-    color: #7289DA;
-}
-
-.envelope-colored {
-    color: #FE4A49;
-}
-
-.calendar-colored {
-    color: #FFD400;
-}
-
-a:hover i.fab {
-    color: var(--light-red);
-}
-
-a:hover i.fas {
-    color: var(--light-red);
-}
-
 /* Header */
 div.at-top a.nav-link {
     text-shadow: -1px -1px 3px #000, 1px -1px 3px #000, -1px 1px 3px #000, 1px 1px 3px #000;
