@@ -167,7 +167,7 @@ video#games-reel {
     /* Faded overlay */
     linear-gradient(#0B0B0B55, #0B0B0B55),
     /* Background image */
-    url("/images/showcase_1.jpg");
+    url("/images/showcase_1_smaller.jpg");
     background-position: center 40%;
     background-size: cover;
     background-repeat: no-repeat;

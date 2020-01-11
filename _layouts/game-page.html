@@ -103,7 +103,13 @@ window.addEventListener('DOMContentLoaded',function(){
                         {% endif %}
                     {% endfor %}
                     {% if found != true %}
-                        {{ member[0] }} - <i>{{ member[1] }}</i><br>
+                        {% if member[1] == "first" %}
+                            <h3>{{ member[0] }}</h3>
+                        {% elsif member[1] == "" %}
+                            <br/><h3>{{ member[0] }}</h3>
+                        {% else %}
+                            {{ member[0] }} - <i>{{ member[1] }}</i><br>
+                        {% endif %}
                     {% endif %}
                     {% assign found = false %}
                 {% endfor %}
@@ -136,6 +142,15 @@ window.addEventListener('DOMContentLoaded',function(){
         <div class="col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12">
             <h2>Original Soundtrack</h2>
             <iframe class="soundcloud-embed" scrolling="no" frameborder="no" allow="autoplay" src="{{ page.OST-embed }}"></iframe>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if page.gameplay-video %}
+    <div class="row no-margin">
+        <div class="col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12">
+            <h2>Gameplay Video</h2>
+            <iframe width="560" height="315" src="{{ page.gameplay-video }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
     {% endif %}
