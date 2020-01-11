@@ -32,10 +32,8 @@ if (isChrome) {
 	}
 }
 
-if (document.title == "Home | Game Creation Society") {
-	if (isChrome) {
-	document.getElementById("section-3").setAttribute("url", "/images/webp/showcase_1_smaller.webp");
-	} else if (isSafari) {
-		document.getElementById("section-3").setAttribute("url", "/images/jp2/showcase_1_smaller.jp2");
-	}
+if (isChrome) {
+document.getElementById("section-3").setAttribute("url", "/images/webp/showcase_1_smaller.webp");
+} else if (isSafari) {
+	document.getElementById("section-3").setAttribute("url", "/images/jp2/showcase_1_smaller.jp2");
 }
