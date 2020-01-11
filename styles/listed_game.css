@@ -13,7 +13,7 @@
     background-repeat: no-repeat;
     background-position: center;
     /* Default image */
-    background-image: url("/images/official_no_back_smaller.webp");
+    background-image: url("/images/official_no_back_smaller.png");
 
     transition: background-image 0.15s;
 }
