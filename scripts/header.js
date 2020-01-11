@@ -21,19 +21,19 @@ var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return
 if (isChrome) {
 	for(i = 0; i < length; i++)
 	{
-		allImages[i].src = allImages[i].src.replace("/images/", "/images/webp/");
-	    allImages[i].src = allImages[i].src.replace('.png', '.webp');
-	    allImages[i].src = allImages[i].src.replace('.jpg', '.webp');
+		allImages[i].src = allImages[i].src.slice(0, -3).replace("images", "images/webp") + "webp";
 	}
 } else if (isSafari) {
 	for(i = 0; i < length; i++)
 	{
-		allImages[i].src = allImages[i].src.replace("/images/", "/images/jp2/").replace('.png', '.jp2').replace('.jpg', '.jp2');
+		allImages[i].src = allImages[i].src.slice(0, -3).replace("images", "images/jp2") + "jp2";
 	}
 }
 
-if (isChrome) {
-document.getElementById("section-3").setAttribute("url", "/images/webp/showcase_1_smaller.webp");
-} else if (isSafari) {
-	document.getElementById("section-3").setAttribute("url", "/images/jp2/showcase_1_smaller.jp2");
+if (document.title == "Home | Game Creation Society") {
+	if (isChrome) {
+	document.getElementById("section-3").setAttribute("url", "/images/webp/showcase_1_smaller.webp");
+	} else if (isSafari) {
+		document.getElementById("section-3").setAttribute("url", "/images/jp2/showcase_1_smaller.jp2");
+	}
 }
