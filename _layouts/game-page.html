@@ -82,7 +82,13 @@ window.addEventListener('DOMContentLoaded',function(){
             <h2>Play</h2>
             <p>
                 {% for build in page.builds %}
-                For {{ build[0] }} | <a href="{{ site.stage_path }}{{ page.stage_game_path }}{{ build[1] }}">Download</a><br>
+                    {% if build[0] == "WebGL" %}
+                    <a href="{{ site.stage_path }}{{ page.stage_game_path }}{{ build[1] }}">Play Online</a><br>
+                    {% else if build[0] == "Itch.io" %}
+                    <a href="{{ build[1] }}">Play on Itch.io</a><br>
+                    {% else %}
+                    For {{ build[0] }} | <a href="{{ site.stage_path }}{{ page.stage_game_path }}{{ build[1] }}">Download</a><br>
+                    {% endif %}
                 {% endfor %}
             </p>
             {% if page.build_instructions %}
@@ -116,7 +122,6 @@ window.addEventListener('DOMContentLoaded',function(){
             </p>
         </div>
     </div>
-
 
     <!-- Screenshots -->
     {% if page.screenshots and page.screenshots[0] %}
