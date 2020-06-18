@@ -82,9 +82,13 @@ window.addEventListener('DOMContentLoaded',function(){
             <h2>Play</h2>
             <p>
                 {% for build in page.builds %}
-                    {% if build[0] == "WebGL" %}
+                    {% if build[0] == "Web" %}
                     <a href="{{ site.stage_path }}{{ page.stage_game_path }}{{ build[1] }}">Play Online</a><br>
-                    {% elsif build[0] == "Itch.io" %}
+                    {% elsif build[0] == "Web Player" %}
+                    <a href="{{ site.stage_path }}{{ page.stage_game_path }}{{ build[1] }}">Play Online (Unity Web Player Required)</a><br>
+                    {% elsif build[0] == "Web Zip" %}
+                    Web Zip | <a href="{{ site.stage_path }}{{ page.stage_game_path }}{{ build[1] }}">Download</a><br>
+                    {% elsif build[0] == "Itch-io" %}
                     <a href="{{ build[1] }}">Play on Itch.io</a><br>
                     {% else %}
                     For {{ build[0] }} | <a href="{{ site.stage_path }}{{ page.stage_game_path }}{{ build[1] }}">Download</a><br>
