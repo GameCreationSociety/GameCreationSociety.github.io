@@ -32,11 +32,11 @@ project_members: {
 }
 
 # If WebGL is provided, the value must be the filename of the HTML that loads the game specified (recommended name is play.html)
-# IMPORTANT FOR WEBGL: "Itch.io" does not work due to the period, so it needs to be stylized as "Itch-io".
+# IMPORTANT FOR ITCH.IO LINKS: "https://" cannot exist in any links provided, because the colon messes it up; just cut it out.
 stage_game_path: implicitus/
 builds: {
     Web: play.html,
-    Itch-io: "crystal-gantar.itch.io/implicitus-beta"
+    Itch.io: crystal-gantar.itch.io/implicitus-beta
 }
 
 thumbnail: "K (white).png"
