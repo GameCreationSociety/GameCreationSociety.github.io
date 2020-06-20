@@ -72,6 +72,38 @@ window.addEventListener('DOMContentLoaded',function(){
     </div>
 
     <div class="row no-margin">
+        {% if page.builds.size == 0 %}
+        <div class="game-content-section col-md-6 col-sm-6 col-12">
+            <!-- About -->
+            <h2>About</h2>
+            <p>{{ page.description }}</p>
+        </div>
+        <div class="game-content-section col-md-6 col-sm-6 col-12">
+            <!-- Project Members -->
+            <h2>Project Members</h2>
+            <p>
+                {% for member in page.project_members %}
+                    {% for site_member in site.members %}
+                        {% if site_member.title == member[0] %}
+                            <a href="{{site_member.url}}">{{ member[0] }}</a> - <i>{{ member[1] }}</i><br>
+                            {% assign found = true %}
+                            {% break %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if found != true %}
+                        {% if member[1] == "first" %}
+                            <h3>{{ member[0] }}</h3>
+                        {% elsif member[1] == "" %}
+                            <br/><h3>{{ member[0] }}</h3>
+                        {% else %}
+                            {{ member[0] }} - <i>{{ member[1] }}</i><br>
+                        {% endif %}
+                    {% endif %}
+                    {% assign found = false %}
+                {% endfor %}
+            </p>
+        </div>
+        {% else %}
         <div class="game-content-section col-md-4 col-sm-6 col-12">
             <!-- About -->
             <h2>About</h2>
@@ -89,7 +121,7 @@ window.addEventListener('DOMContentLoaded',function(){
                     {% elsif build[0] == "Web Zip" %}
                     Web Zip | <a href="{{ site.stage_path }}{{ page.stage_game_path }}{{ build[1] }}">Download</a><br>
                     {% elsif build[0] == "Itch.io" %}
-                    <a href="{{ build[1] }}">Play on Itch.io</a><br>
+                    <a href="http://{{ build[1] }}">Play on Itch.io</a><br>
                     {% else %}
                     For {{ build[0] }} | <a href="{{ site.stage_path }}{{ page.stage_game_path }}{{ build[1] }}">Download</a><br>
                     {% endif %}
@@ -125,6 +157,7 @@ window.addEventListener('DOMContentLoaded',function(){
                 {% endfor %}
             </p>
         </div>
+        {% endif %}
     </div>
 
     <!-- Screenshots -->
@@ -155,12 +188,25 @@ window.addEventListener('DOMContentLoaded',function(){
     </div>
     {% endif %}
 
-    <!-- Gameplay video -->
-    {% if page.gameplay-video %}
+    <!-- Gameplay videos -->
+    {% if page.gameplay-videos %}
     <div class="row no-margin">
-        <div class="col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12">
-            <h2>Gameplay Video</h2>
-            <iframe width="560" height="315" src="{{ page.gameplay-video }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <!--div class="col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12"-->
+        <div class="col-12">
+            {% if page.gameplay-videos.size == 1 %}
+                <h2>Gameplay Video</h2>
+            {% else %}
+                <h2>Gameplay Videos</h2>
+            {% endif %}
+            <div class="row no-margin">
+                {% for video in page.gameplay-videos %}
+                <div class="col-xl-6 col-lg-6 d-flex justify-content-center" style="padding: 8px">
+                    <div class="video-container">
+                        <iframe class="video-iframe" src="{{ video }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
     {% endif %}
