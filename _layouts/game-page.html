@@ -202,7 +202,7 @@ window.addEventListener('DOMContentLoaded',function(){
                 {% for video in page.gameplay-videos %}
                 <div class="col-xl-6 col-lg-6 d-flex justify-content-center" style="padding: 8px">
                     <div class="video-container">
-                        <iframe class="video-iframe" src="{{ video }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe class="video-iframe" src="https://{{ video }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
                 {% endfor %}
