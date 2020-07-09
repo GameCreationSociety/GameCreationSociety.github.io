@@ -6,3 +6,18 @@
     height: auto;
 	border-radius: 50%;
 }
+
+/* Social media links */
+.social-container {
+	align-items: center;
+	justify-content: center;
+}
+
+.social-link-container {
+	margin: 16px;
+}
+
+.social-link {
+	width: 64px;
+	height: auto;
+}

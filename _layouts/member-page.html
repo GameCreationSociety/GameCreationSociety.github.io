@@ -15,14 +15,6 @@ noHeaderMargin: false
 <div class="row no-margin">
     <div class="col">
         <h1 class="inline">{{ page.title }}</h1><h3 class="inline"> - Class of {{ page.class_of }}</h3>
-        <!--
-        {% if page.current_position %}
-        <h4><u>{{page.current_position}}</u></h4>
-        {% endif %}
-        {% if page.previous_positions %}
-        <h4>Previously <u>{{page.previous_positions}}</u></h4>
-        {% endif %}
-        -->
     </div>
 </div>
 
@@ -75,33 +67,72 @@ noHeaderMargin: false
     </div>
     {% endif %}
 
-    <!-- Profile picture -->
-    <!-- {% if page.profile_pic %}
-    <div class="col-md-4 col-sm-12 text-center">
-        <img class="profile_image" src="{{site.stage_path}}Members/images/{{page.profile_pic}}" alt="Profile Image">
-    </div>
-    {% endif %} -->
-
     <!-- Personal website link -->
     {% if page.website or page.extra_links %}
         <div class="col-md-4 col-sm-12 text-center">
-        {% if page.website %}
-            <br>
-            <a href="{{page.website}}" class="no-text-decoration">
-                <button type="button" class="standard-button red-button">My Website</button>
-            </a>
-        {% endif %}
+            {% if page.website %}
+                <br>
+                <a href="{{page.website}}" class="no-text-decoration">
+                    <button type="button" class="standard-button red-button">My Website</button>
+                </a>
+            {% endif %}
 
-        {% for link in page.extra_links %}
-            <br><br>
-            <a href="{{link[1]}}" class="no-text-decoration">
-                <button type="button" class="standard-button red-button">{{link[0]}}</button>
-            </a>
-        {% endfor %}
+            <!-- In case additional links are included that are too specific for "branding" covered in the social links below; only use this if the site isn't a brand and there's no image for it currently -->
+            {% for link in page.extra_links %}
+                {% if link == page.extra_links.first %}
+                    <br>
+                {% else %}
+                    <br><br>
+                {% endif %}
+                <a href="{{link[1]}}" class="no-text-decoration">
+                    <button type="button" class="standard-button red-button">{{link[0]}}</button>
+                </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Personal contact link -->
+    {% if page.email or page.phone %}
+        <div class="col-md-4 col-sm-12 text-center">
+            <div style="padding-top:24px">
+                {% if page.email %}
+                    <div class="row no-margin justify-content-center">
+                        <div class="col-md-6 col-sm-12 text-center mb-2">
+                            <a href="mailto:{{page.email}}"><h5><i class="fa fa-envelope fa-large" aria-hidden="true"></i>Email me</h5></a>
+                        </div>
+                    </div>
+                {% endif %}
+                {% if page.phone %}
+                    <div class="row no-margin justify-content-center">
+                        <div class="col-md-6 col-sm-12 text-center mb-2">
+                            <a href="tel:{{page.phone}}"><h5><i class="fa fa-phone fa-large" aria-hidden="true"></i>Call me</h5></a>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
         </div>
     {% endif %}
 </div>
 
+<!-- Social contact links -->
+{% if page.social_links %}
+    <br>
+    <h4 class="text-center">Find me here:</h4>
+    <div class="d-flex flex-wrap social-container">
+        {% for link in page.social_links %}
+            <div class="social-link-container">
+                <a href="{{link[1]}}" class="no-text-decoration">
+                    {% if link[0] == "Itch.io" or link[0] == "GitHub" %}
+                        <!-- Condition for light mode vs dark mode if implemented later -->
+                        <img src="/images/social/{{link[0]}}/logo-black.png" class="social-link">
+                    {% else %}
+                        <img src="/images/social/{{link[0]}}/logo.png" class="social-link">
+                    {% endif %}
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
 
 <!-- Custom content -->
 {{ content }}
