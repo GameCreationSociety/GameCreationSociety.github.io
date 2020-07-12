@@ -9,7 +9,6 @@ noHeaderMargin: false
 <link rel="stylesheet" href="/styles/member-page.css">
 <link rel="stylesheet" href="/styles/listed_game.css">
 
-
 <!-- Name and class -->
 <br>
 <div class="row no-margin">
@@ -92,9 +91,16 @@ noHeaderMargin: false
     {% endif %}
 
     <!-- Personal contact link -->
-    {% if page.email or page.phone %}
+    {% if page.email or page.phone or page.resume %}
         <div class="col-md-4 col-sm-12 text-center">
             <div style="padding-top:24px">
+                {% if page.resume %}
+                    <div class="row no-margin justify-content-center">
+                        <div class="col-md-6 col-sm-12 text-center mb-2">
+                            <a href="{{site.stage_path}}resumes/{{page.resume}}"><h5><i class="fa fa-file fa-large" aria-hidden="true"></i>My resume</h5></a>
+                        </div>
+                    </div>
+                {% endif %}
                 {% if page.email %}
                     <div class="row no-margin justify-content-center">
                         <div class="col-md-6 col-sm-12 text-center mb-2">
@@ -137,7 +143,6 @@ noHeaderMargin: false
 <!-- Custom content -->
 {{ content }}
 
-
 <!-- My Games -->
 <div class="text-center">
     <br>
@@ -165,7 +170,6 @@ noHeaderMargin: false
     {% endfor %}
 </div>
 
-
 <!-- Link back to all members -->
 <div class="row justify-content-center">
     <div class="col-sm-3 col-6 text-center">
@@ -175,3 +179,7 @@ noHeaderMargin: false
         </a>
     </div>
 </div>
+
+{% if page.last_updated %}
+<p><em>Updated {{page.last_updated}}</em></p>
+{% endif %}
