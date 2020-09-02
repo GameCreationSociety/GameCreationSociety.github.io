@@ -39,10 +39,19 @@ noHeaderMargin: true
     <div class="col-md-2 col-sm-3 col-4">
         <!-- If they have a member page, link it -->
         {% for site_member in site.members %}
-            {% if site_member.title == creator %}
-                <p><a href="{{site_member.url}}">{{ creator }}</a></p>
-                {% assign found = true %}
-                {% break %}
+            {% if site_member.name_id %}
+                {% assign member_name_and_id = site_member.title | append: ' ' | append: site_member.name_id %}
+                {% if member_name_and_id == creator %}
+                    <p><a href="{{site_member.url}}">{{ site_member.title }}</a></p>
+                    {% assign found = true %}
+                    {% break %}
+                {% endif %}
+            {% else %}
+                {% if site_member.title == creator %}
+                    <p><a href="{{site_member.url}}">{{ creator }}</a></p>
+                    {% assign found = true %}
+                    {% break %}
+                {% endif %}
             {% endif %}
         {% endfor %}
         {% if found != true %}

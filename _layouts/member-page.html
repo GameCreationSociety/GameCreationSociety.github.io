@@ -78,11 +78,7 @@ noHeaderMargin: false
 
             <!-- In case additional links are included that are too specific for "branding" covered in the social links below; only use this if the site isn't a brand and there's no image for it currently -->
             {% for link in page.extra_links %}
-                {% if link == page.extra_links.first %}
-                    <br>
-                {% else %}
-                    <br><br>
-                {% endif %}
+                <br><br>
                 <a href="{{link[1]}}" class="no-text-decoration">
                     <button type="button" class="standard-button red-button">{{link[0]}}</button>
                 </a>
@@ -160,7 +156,15 @@ noHeaderMargin: false
         {% endif %}
         {% for game in games_sorted %}
             {% for member in game.project_members %}
-            {% if member[0] == page.title %}
+
+            {% if page.name_id %}
+                {% assign member_string = page.title | append: " " %}
+                {% assign member_string = member_string | append: page.name_id %}
+            {% else %}
+                {% assign member_string = page.title %}
+            {% endif %}
+            
+            {% if member[0] == member_string %}
                 {% include listed_game.html %}
                 <!-- See listed_game.html for the formatting of each game listed -->
                 {% break %}

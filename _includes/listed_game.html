@@ -13,7 +13,10 @@
     <div id="{{game.title | remove: ' '}}_div" class="listed-game-preview-overlay">
         <h5 class="game_title"><b>{{ game.title }}</b></h5>
         <p class="game_semester_year">{{game.semester}} {{game.year}}</p>
-        <p class= "game_members" style="display:none">{{ game.project_members }}</p>
+        {% for member in game.project_members %}
+            <p class="game_members" style="display:none">{{member}}</p>
+        {% endfor %}
+        <!--p class= "game_members" style="display:none">{{ game.project_members }}</p-->
     </div>
     
     <!-- Preload the on-hover screenshot -->

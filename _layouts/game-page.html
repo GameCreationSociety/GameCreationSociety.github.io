@@ -88,20 +88,28 @@ window.addEventListener('DOMContentLoaded',function(){
             <h2>Project Members</h2>
             <p>
                 {% for member in page.project_members %}
+
+                    {% if member.name_id %}
+                        {% assign member_strings = member[0] | split: member.name_id %}
+                        {% assign member_string = member_strings[0] | strip %}
+                    {% else %}
+                        {% assign member_string = member[0] %}
+                    {% endif %}
+
                     {% for site_member in site.members %}
-                        {% if site_member.title == member[0] %}
-                            <a href="{{site_member.url}}">{{ member[0] }}</a> - <i>{{ member[1] }}</i><br>
+                        {% if site_member.title == member_string %}
+                            <a href="{{site_member.url}}">{{ member_string }}</a> - <i>{{ member[1] }}</i><br>
                             {% assign found = true %}
                             {% break %}
                         {% endif %}
                     {% endfor %}
                     {% if found != true %}
                         {% if member[1] == "first" %}
-                            <h3>{{ member[0] }}</h3>
+                            <h3>{{ member_string }}</h3>
                         {% elsif member[1] == "" %}
-                            <br/><h3>{{ member[0] }}</h3>
+                            <br/><h3>{{ member_string }}</h3>
                         {% else %}
-                            {{ member[0] }} - <i>{{ member[1] }}</i><br>
+                            {{ member_string }} - <i>{{ member[1] }}</i><br>
                         {% endif %}
                     {% endif %}
                     {% assign found = false %}
