@@ -3,6 +3,12 @@
 /* https://www.w3schools.com/howto/howto_css_timeline.asp */
 /* https://github.com/candraKriswinarto/Responsive-Vertical-Timeline/blob/master/style.css */
 
+.description-img {
+  max-width: 100%;
+  height: auto;
+  margin: auto;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -124,7 +130,7 @@
 
 /* Make sure all circles are at the same spot */
   .left::after, .right::after {
-    left: 15px;
+    left: 18.5px;
     z-index: 1;
   }
 
