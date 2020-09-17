@@ -99,8 +99,10 @@ window.addEventListener('DOMContentLoaded',function(){
                             {% assign member_string = member[0] | remove: "*" %}
                             {% assign member_match_string = site_member.title %}
                         {% endif %}
+
+                        {% assign single_member = member[0] | remove: "*" %}
                         
-                        {% if member[0] == member_match_string %}
+                        {% if single_member == member_match_string %}
                             <a href="{{site_member.url}}">{{ member_string }}</a> - <i>{{ member[1] }}</i><br>
                             {% assign found = true %}
                             {% break %}
@@ -164,6 +166,7 @@ window.addEventListener('DOMContentLoaded',function(){
                     {% for site_member in site.members %}
 
                         <!-- The asterisk allows someone to have multiple credits on a single project (i.e. Game Bytes) but we want to remove it -->
+                        <!-- This might also be kind of computationally expensive but it's basically the only way to account for participating in multiple games on one page or having the same name as someone else -->
 
                         {% if site_member.name_id %}
                             {% assign member_string = member[0] | remove: "*" | remove: site_member.name_id | rstrip %}
@@ -173,7 +176,9 @@ window.addEventListener('DOMContentLoaded',function(){
                             {% assign member_match_string = site_member.title %}
                         {% endif %}
 
-                        {% if member[0] == member_match_string %}
+                        {% assign single_member = member[0] | remove: "*" %}
+
+                        {% if single_member == member_match_string %}
                             <a href="{{site_member.url}}">{{ member_string }}</a> - <i>{{ member[1] }}</i><br>
                             {% assign found = true %}
                             {% break %}
