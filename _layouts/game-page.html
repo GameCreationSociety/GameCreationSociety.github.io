@@ -88,16 +88,19 @@ window.addEventListener('DOMContentLoaded',function(){
             <h2>Project Members</h2>
             <p>
                 {% for member in page.project_members %}
-
-                    {% if member.name_id %}
-                        {% assign member_strings = member[0] | split: member.name_id %}
-                        {% assign member_string = member_strings[0] | strip %}
-                    {% else %}
-                        {% assign member_string = member[0] %}
-                    {% endif %}
-
                     {% for site_member in site.members %}
-                        {% if site_member.title == member_string %}
+
+                        <!-- The asterisk allows someone to have multiple credits on a single project (i.e. Game Bytes) but we want to remove it -->
+                        
+                        {% if site_member.name_id %}
+                            {% assign member_string = member[0] | remove: "*" | remove: site_member.name_id | rstrip %}
+                            {% assign member_match_string = site_member.title | append: " " | append: site_member.name_id %}
+                        {% else %}
+                            {% assign member_string = member[0] | remove: "*" %}
+                            {% assign member_match_string = site_member.title %}
+                        {% endif %}
+                        
+                        {% if member[0] == member_match_string %}
                             <a href="{{site_member.url}}">{{ member_string }}</a> - <i>{{ member[1] }}</i><br>
                             {% assign found = true %}
                             {% break %}
@@ -105,11 +108,11 @@ window.addEventListener('DOMContentLoaded',function(){
                     {% endfor %}
                     {% if found != true %}
                         {% if member[1] == "first" %}
-                            <h3>{{ member_string }}</h3>
+                            <h3>{{ member[0] }}</h3>
                         {% elsif member[1] == "" %}
-                            <br/><h3>{{ member_string }}</h3>
+                            <br/><h3>{{ member[0] }}</h3>
                         {% else %}
-                            {{ member_string }} - <i>{{ member[1] }}</i><br>
+                            {{ member[0] }} - <i>{{ member[1] }}</i><br>
                         {% endif %}
                     {% endif %}
                     {% assign found = false %}
@@ -159,8 +162,19 @@ window.addEventListener('DOMContentLoaded',function(){
             <p>
                 {% for member in page.project_members %}
                     {% for site_member in site.members %}
-                        {% if site_member.title == member[0] %}
-                            <a href="{{site_member.url}}">{{ member[0] }}</a> - <i>{{ member[1] }}</i><br>
+
+                        <!-- The asterisk allows someone to have multiple credits on a single project (i.e. Game Bytes) but we want to remove it -->
+
+                        {% if site_member.name_id %}
+                            {% assign member_string = member[0] | remove: "*" | remove: site_member.name_id | rstrip %}
+                            {% assign member_match_string = site_member.title | append: " " | append: site_member.name_id %}
+                        {% else %}
+                            {% assign member_string = member[0] | remove: "*" %}
+                            {% assign member_match_string = site_member.title %}
+                        {% endif %}
+
+                        {% if member[0] == member_match_string %}
+                            <a href="{{site_member.url}}">{{ member_string }}</a> - <i>{{ member[1] }}</i><br>
                             {% assign found = true %}
                             {% break %}
                         {% endif %}
