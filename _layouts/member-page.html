@@ -35,11 +35,11 @@ noHeaderMargin: false
     {% if page.profile_pic %}
         {% if page.bio %}
         <div class="col-md-4 text-center">
-            <img class="profile_image" src="{{site.stage_path}}Members/images/{{page.profile_pic}}" alt="Profile Image">
+            <img class="profile_image" src="{{site.stage_path}}Members/images/{{page.profile_pic}}" alt="Profile Image" loading="lazy">
         </div>
         {% else %}
         <div class="col text-center">
-            <img class="profile_image" src="{{site.stage_path}}Members/images/{{page.profile_pic}}" alt="Profile Image">
+            <img class="profile_image" src="{{site.stage_path}}Members/images/{{page.profile_pic}}" alt="Profile Image" loading="lazy">
         </div>
         {% endif %}
     {% endif %}
@@ -126,9 +126,9 @@ noHeaderMargin: false
                 <a href="{{link[1]}}" class="no-text-decoration">
                     {% if link[0] == "Itch.io" or link[0] == "GitHub" %}
                         <!-- Condition for light mode vs dark mode if implemented later -->
-                        <img src="/images/social/{{link[0]}}/logo-black.png" class="social-link">
+                        <img src="/images/social/{{link[0]}}/logo-black.png" class="social-link" loading="lazy">
                     {% else %}
-                        <img src="/images/social/{{link[0]}}/logo.png" class="social-link">
+                        <img src="/images/social/{{link[0]}}/logo.png" class="social-link" loading="lazy">
                     {% endif %}
                 </a>
             </div>

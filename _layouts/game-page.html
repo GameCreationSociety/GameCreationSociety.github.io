@@ -59,7 +59,7 @@ window.addEventListener('DOMContentLoaded',function(){
     {% else %}
         {% assign topImgSrc = "/images/official_no_back.png" %}
     {% endif %}
-    <img id="game-top-img" src="{{ topImgSrc }}" style="object-fit:{{page.top-img-fit}}">
+    <img id="game-top-img" src="{{ topImgSrc }}" style="object-fit:{{page.top-img-fit}}" loading="lazy">
 </div>
 
 <!-- Page content -->
@@ -211,7 +211,7 @@ window.addEventListener('DOMContentLoaded',function(){
         {% for img in page.screenshots %}
         <div class="screenshot-column">
             <a href="{{site.stage_path}}{{page.stage_game_path}}images/{{img}}" class="js-smartPhoto" data-caption="{{page.title}}" data-id="{{forloop.index}}" data-group="game">
-                <img class="screenshot-thumbnail hover-shadow" src="{{site.stage_path}}{{page.stage_game_path}}images/{{img}}" />
+                <img class="screenshot-thumbnail hover-shadow" src="{{site.stage_path}}{{page.stage_game_path}}images/{{img}}"  loading="lazy"/>
             </a>
         </div>
         {% endfor %}
