@@ -5,17 +5,16 @@
         <img id="header-img" class="replaceable" src="/images/jp2/official_no_back_white_smaller.jp2" alt="GCS Logo" onerror="this.src='/images/official_no_back_white_smaller.png';" loading="lazy">
     </a>
 
-    <a href="/FAQ">
+    <a id="faq-link" href="/FAQ">
         <!--img id="header-scope-creep" src="/images/scope_creep/ScopeCreepIdle2.gif" alt="Scope Creep" loading="lazy"-->
          <!--video id="header-scope-creep" autoplay>
           <source src="images/scope_creep/ScopeCreepIdle2.mp4" type="video/mp4">
         Your browser does not support the video tag.
         </video--> 
 
-        <video id="header-scope-creep" poster="/images/scope_creep/ScopeCreepIdle2.gif" autoplay loop>
-          <source src="images/scope_creep/ScopeCreepIdle2.webm" type="video/webm">
-        Your browser does not support the video tag.
-        </video> 
+        <!--video id="header-scope-creep" autoplay loop>
+            <source src="images/scope_creep/ScopeCreepIdle2.webm" type="video/webm">
+        </video-->
     </a>
 
     <!-- Nav bar -->
@@ -54,3 +53,44 @@
         </ul>
     </nav>
 </div>
+
+<script>
+    // https://stackoverflow.com/questions/9847580/how-to-detect-safari-chrome-ie-firefox-and-opera-browser
+    
+    // Opera 8.0+
+    var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+
+    // Safari 3.0+ "[object HTMLElementConstructor]" 
+    var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+
+    // Internet Explorer 6-11
+    var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+    var elementToAppend;
+
+    if (isOpera || isSafari || isIE) {
+        var elementToAppend = document.createElement("img");
+
+        elementToAppend.src = "/images/scope_creep/ScopeCreepIdle2.gif";
+        elementToAppend.alt = "Scope Creep";
+        elementToAppend.loading = "lazy";
+    }
+    else {
+        var elementToAppend = document.createElement("video");
+
+        elementToAppend.autoplay = true;
+        elementToAppend.loop = true;
+
+        var videoSource = document.createElement("source");
+        videoSource.src = "images/scope_creep/ScopeCreepIdle2.webm";
+        videoSource.type = "video/webm";
+
+        elementToAppend.appendChild(videoSource);
+    }
+
+    elementToAppend.id = "header-scope-creep";
+
+    var faq_link = document.getElementById("faq-link");
+    faq_link.appendChild(elementToAppend);
+
+</script>
