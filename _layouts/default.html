@@ -5,6 +5,16 @@
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<!-- Non-required, but good meta tags -->
+	<meta name="author" content="Game Creation Society">
+	{% if page.description %}
+		<meta name="description" content="{{ page.description }}">
+	{% elsif page.bio %}
+		<meta name="description" content="{{ page.bio }}">
+	{% else %}
+		<meta name="description" content="{{ page.meta-description }}">
+	{% endif %}
+	<meta name="keywords" content="game, games, game creation, gamemaking, game making, unity, unreal, student, students, college, cmu, carnegie mellon, carnegie mellon university, game creation society, gcs">
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131154366-1"></script>
 	<script src="/scripts/analytics.js"></script>
