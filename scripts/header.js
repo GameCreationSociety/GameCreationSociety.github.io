@@ -11,6 +11,8 @@ window.addEventListener("scroll", function(event) {
     }
 });
 
+// DEPRECATED IMAGE SWITCH CODE
+/*
 // https://stackoverflow.com/questions/8315347/webp-image-replacement?rq=1
 var allImages = document.body.getElementsByClassName("replaceable");
 var length = allImages.length;
