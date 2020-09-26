@@ -210,8 +210,18 @@ window.addEventListener('DOMContentLoaded',function(){
     <div class="screenshot-row">
         {% for img in page.screenshots %}
         <div class="screenshot-column">
-            <a href="{{site.stage_path}}{{page.stage_game_path}}images/{{img}}" class="js-smartPhoto" data-caption="{{page.title}}" data-id="{{forloop.index}}" data-group="game">
-                <img class="screenshot-thumbnail hover-shadow" src="{{site.stage_path}}{{page.stage_game_path}}images/{{img}}"  loading="lazy"/>
+            {% assign split_screenshot_string = img | split: "." %}
+            {% if split_screenshot_string[1] == "webm" %}
+                {% assign gif_screenshot_string = split_screenshot_string[0] | append: ".gif" %}
+                <a href="{{site.stage_path}}{{page.stage_game_path}}images/{{gif_screenshot_string}}" class="js-smartPhoto" data-caption="{{page.title}}" data-id="{{forloop.index}}" data-group="game">
+                    <img class="screenshot-thumbnail hover-shadow" src="{{site.stage_path}}{{page.stage_game_path}}images/{{gif_screenshot_string}}"  loading="lazy"/>
+                    <!--video class="screenshot-thumbnail hover-shadow" autoplay loop>
+                        <source src="{{site.stage_path}}{{page.stage_game_path}}images/{{img}}" type="video/webm">
+                    </video--> 
+            {% else %}
+                <a href="{{site.stage_path}}{{page.stage_game_path}}images/{{img}}" class="js-smartPhoto" data-caption="{{page.title}}" data-id="{{forloop.index}}" data-group="game">
+                    <img class="screenshot-thumbnail hover-shadow" src="{{site.stage_path}}{{page.stage_game_path}}images/{{img}}"  loading="lazy"/>
+            {% endif %}
             </a>
         </div>
         {% endfor %}

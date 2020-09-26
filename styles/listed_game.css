@@ -29,7 +29,8 @@
     padding: 1em;
     vertical-align: bottom;
 
-    background-color: #00000088;
+    background-color: #777777;
+    /*background-color: #00000088;*/
     background-position: top;
     color: white;
     font-weight: normal;
@@ -60,7 +61,8 @@
 }
 
 .listed-game-preview:hover .listed-game-preview-overlay {
-    background-color: #000000CC;
+    background-color: #333333;
+    /*background-color: #000000CC;*/
     /* text-decoration: underline; */
 }
 
@@ -69,7 +71,30 @@
 {% if game.screenshots and game.screenshots.size > 0 %}
 #{{ game.title | slugify }}-preview:hover .listed-game-preview-img {
     {% assign index = game.screenshots.size | minus: 1 %}
-    background-image: url("{{site.stage_path}}{{game.stage_game_path}}images/{{game.screenshots[index]}}") !important;
+    {% assign split_screenshot = game.screenshots[index] | split: "." %}
+    {% if split_screenshot[1] == "webm" %}
+        background-image: url("") !important;
+    {% else %}
+        background-image: url("{{site.stage_path}}{{game.stage_game_path}}images/{{game.screenshots[index]}}") !important;
+    {% endif %}
 }
+
+#{{ game.title | slugify }}-preview > .listed-game-preview-img > .listed-game-video {
+    visibility: hidden;
+}
+
+#{{ game.title | slugify }}-preview:hover > .listed-game-preview-img > .listed-game-video {
+    visibility: visible;
+}
+
 {% endif %}
 {% endfor %}
+
+/* Video background styling */
+.listed-game-video {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    padding-bottom: 75%;
+
+}

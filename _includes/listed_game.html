@@ -3,7 +3,7 @@
 {% for tag in game.tags %} {{ tag }}_game-tag {% endfor %}
 {% if game.awards and game.awards.size > 0 %} Award-Winning_game-tag {% endif %}"
   id="{{ game.title | slugify }}-preview" href="{{ game.url }}">
-    <div class="listed-game-preview-img"
+    <div id="{{ game.title | slugify }}-preview-child" class="listed-game-preview-img"
     {% if game.thumbnail %}
         style="background-image: url('{{site.stage_path}}{{game.stage_game_path}}images/{{game.thumbnail}}')"
     {% elsif game.screenshots.size > 0 %}
@@ -32,10 +32,16 @@
         desc.appendChild(document.createTextNode(text));
         document.getElementById("{{game.title | remove: ' '}}_div").appendChild(desc);
 
+        {% assign index = game.screenshots.size | minus: 1 %}
         // Preloading
-        preload(
-            {% assign index = game.screenshots.size | minus: 1 %}
+        /*preload(
             "{{site.stage_path}}{{game.stage_game_path}}images/{{game.screenshots[index]}}"
-        )
+        )*/
+
+        {% assign split_screenshot_string = game.screenshots[index] | split: "." %}
+
+        {% if split_screenshot_string[1] == "webm" %}
+            convert("{{site.stage_path}}{{game.stage_game_path}}images/{{split_screenshot_string[0]}}", "{{game.title}}", "header-{{game.title | slugify}}", "{{ game.title | slugify }}-preview-child", true, "{{split_screenshot_string[1]}}");
+        {% endif %}
     </script>
 </a>
