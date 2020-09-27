@@ -1,0 +1,39 @@
+{
+	"short_name": "GCS",
+	"name": "Game Creation Society",
+	"description": "A club at CMU dedicated to the art and science of making games.",
+	"icons": [
+		{
+			"src": "/images/scope_creep/mask192x192.png",
+			"type": "image/png",
+			"sizes": "192x192",
+			"purpose": "any maskable"
+		},
+		{
+			"src": "/images/scope_creep/mask512x512.png",
+			"type": "image/png",
+			"sizes": "512x512",
+			"purpose": "any maskable"
+		}
+	],
+	"start_url": "/",
+	"background_color": "#b12d36",
+	"display": "standalone",
+	"theme_color": "#b12d36",
+	"shortcuts": [
+		{
+			"name": "GCS Games",
+			"short_name": "Games",
+			"description": "Browse and download GCS games",
+			"url": "/games",
+			"icons": [{ "src": "/images/scope_creep/ScopeCreep192x192.png", "sizes": "192x192" }]
+		},
+		{
+			"name": "GCS Members",
+			"short_name": "Members",
+			"description": "Browse GCS members",
+			"url": "/members",
+			"icons": [{ "src": "/images/scope_creep/ScopeCreep192x192.png", "sizes": "192x192" }]
+		}
+	]
+}
