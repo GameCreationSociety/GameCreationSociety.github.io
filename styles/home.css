@@ -13,7 +13,7 @@ video#games-reel {
     height: 100%;
     top: 0;
     left: 0;
-    background: url('/images/webp/arches.webp'), url("/images/jp2/arches.jp2"), url('/images/arches.jpg');
+    /* background: url('/images/webp/arches.webp'), url("/images/jp2/arches.jp2"), url('/images/arches.jpg'); */
     background-size: cover;
     background-position: center center;
 

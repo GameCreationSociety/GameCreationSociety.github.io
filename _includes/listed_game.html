@@ -4,10 +4,20 @@
 {% if game.awards and game.awards.size > 0 %} Award-Winning_game-tag {% endif %}"
   id="{{ game.title | slugify }}-preview" href="{{ game.url }}">
     <div id="{{ game.title | slugify }}-preview-child" class="listed-game-preview-img"
-    {% if game.thumbnail %}
-        style="background-image: url('{{site.stage_path}}{{game.stage_game_path}}images/{{game.thumbnail}}')"
-    {% elsif game.screenshots.size > 0 %}
-        style="background-image: url('{{site.stage_path}}{{game.stage_game_path}}images/{{game.screenshots[0]}}')"
+    {% if game.webp_enabled %}
+        {% if game.thumbnail %}
+            {% assign split_name = game.thumbnail | split: "." %}
+            style="background-image: url('{{site.stage_path}}{{game.stage_game_path}}images/{{split_name}}.webp')"
+        {% elsif game.screenshots.size > 0 %}
+            {% assign split_name = game.screenshots[0] | split: "." %}
+            style="background-image: url('{{site.stage_path}}{{game.stage_game_path}}images/{{split_name}}.webp')"
+        {% endif %}
+    {% else %}
+        {% if game.thumbnail %}
+            style="background-image: url('{{site.stage_path}}{{game.stage_game_path}}images/{{game.thumbnail}}')"
+        {% elsif game.screenshots.size > 0 %}
+            style="background-image: url('{{site.stage_path}}{{game.stage_game_path}}images/{{game.screenshots[0]}}')"
+        {% endif %}
     {% endif %}>
     </div>
     <div id="{{game.title | remove: ' '}}_div" class="listed-game-preview-overlay">
@@ -31,6 +41,25 @@
         var text = "{{game.description | newline_to_br | strip_html | strip_newlines | strip | replace: '"', ''}}";
         desc.appendChild(document.createTextNode(text));
         document.getElementById("{{game.title | remove: ' '}}_div").appendChild(desc);
+
+        // https://stackoverflow.com/questions/9847580/how-to-detect-safari-chrome-ie-firefox-and-opera-browser
+
+        // Opera 8.0+
+        var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+
+        // Safari 3.0+ "[object HTMLElementConstructor]" 
+        var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+
+        // Internet Explorer 6-11
+        var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+        if (isOpera || isSafari || isIE) {
+            {% if game.thumbnail %}
+                document.getElementById("{{ game.title | slugify }}-preview-child").style="background-image: url('{{site.stage_path}}{{game.stage_game_path}}images/{{game.thumbnail}}')";
+            {% elsif game.screenshots.size > 0 %}
+                document.getElementById("{{ game.title | slugify }}-preview-child").style="background-image: url('{{site.stage_path}}{{game.stage_game_path}}images/{{game.screenshots[0]}}')";
+            {% endif %}
+        }
 
         {% assign index = game.screenshots.size | minus: 1 %}
         // Preloading

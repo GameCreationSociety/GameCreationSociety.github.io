@@ -42,6 +42,31 @@ redirect_from:
     <div id="reel-faded-mask"></div>
 </div>
 
+<script>
+    // https://stackoverflow.com/questions/9847580/how-to-detect-safari-chrome-ie-firefox-and-opera-browser
+
+    // Opera 8.0+
+    var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+
+    // Safari 3.0+ "[object HTMLElementConstructor]" 
+    var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+
+    // Internet Explorer 6-11
+    var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+    var games_reel = document.getElementById("games-reel");
+
+    if ((isOpera || isIE)) {
+        games_reel.style.background = "url('/images/webp/arches.jpg')";
+    }
+    else if (isSafari) {
+        games_reel.style.background = "url('/images/webp/arches.jp2')";
+    }
+    else {
+        games_reel.style.background = "url('/images/webp/arches.webp')";
+    }
+</script>
+
 <!-- Section 2 -->
 <div id="section-2">
     <span>

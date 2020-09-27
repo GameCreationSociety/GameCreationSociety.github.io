@@ -354,3 +354,8 @@ body {
 div.at-top a.nav-link {
     text-shadow: -1px -1px 3px #000, 1px -1px 3px #000, -1px 1px 3px #000, 1px 1px 3px #000;
 }
+
+/* Font-face */
+@font-face {
+    font-display: swap;
+}
