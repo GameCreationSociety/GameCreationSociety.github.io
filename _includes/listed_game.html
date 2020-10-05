@@ -4,13 +4,13 @@
 {% if game.awards and game.awards.size > 0 %} Award-Winning_game-tag {% endif %}"
   id="{{ game.title | slugify }}-preview" href="{{ game.url }}">
     <div id="{{ game.title | slugify }}-preview-child" class="listed-game-preview-img"
-    {% if game.webp_enabled %}
+    {% if game.webp_preview_enabled %}
         {% if game.thumbnail %}
             {% assign split_name = game.thumbnail | split: "." %}
-            style="background-image: url('{{site.stage_path}}{{game.stage_game_path}}images/{{split_name}}.webp')"
+            style="background-image: url('{{site.stage_path}}{{game.stage_game_path}}images/{{split_name[0]}}.webp')"
         {% elsif game.screenshots.size > 0 %}
             {% assign split_name = game.screenshots[0] | split: "." %}
-            style="background-image: url('{{site.stage_path}}{{game.stage_game_path}}images/{{split_name}}.webp')"
+            style="background-image: url('{{site.stage_path}}{{game.stage_game_path}}images/{{split_name[0]}}.webp')"
         {% endif %}
     {% else %}
         {% if game.thumbnail %}
@@ -53,9 +53,14 @@
         // Internet Explorer 6-11
         var isIE = /*@cc_on!@*/false || !!document.documentMode;
 
+        {% assign fallback_hover_image = false %}
+
         if (isOpera || isSafari || isIE) {
+            {% assign fallback_hover_image = true %}
             {% if game.thumbnail %}
                 document.getElementById("{{ game.title | slugify }}-preview-child").style="background-image: url('{{site.stage_path}}{{game.stage_game_path}}images/{{game.thumbnail}}')";
+                /*var css = '#{{ game.title | slugify }}-preview:hover .listed-game-preview-img';
+                document.getElementById("{{ game.title | slugify }}-preview").style="background-image: url('{{site.stage_path}}{{game.stage_game_path}}images/{{game.screenshots[-1]}}')";*/
             {% elsif game.screenshots.size > 0 %}
                 document.getElementById("{{ game.title | slugify }}-preview-child").style="background-image: url('{{site.stage_path}}{{game.stage_game_path}}images/{{game.screenshots[0]}}')";
             {% endif %}
@@ -74,3 +79,18 @@
         {% endif %}
     </script>
 </a>
+
+<style>
+    #{{ game.title | slugify }}-preview:hover .listed-game-preview-img {
+        {% assign index = game.screenshots.size | minus: 1 %}
+        {% assign split_screenshot = game.screenshots[index] | split: "." %}
+
+        {% if fallback_hover_image %}
+            {% if split_screenshot[1] == "webm" || game.webm_hover_enabled %}
+                background-image: url("{{site.stage_path}}{{game.stage_game_path}}images/{{split_screenshot[0]}}.gif") !important;
+            {% else %}
+                background-image: url("{{site.stage_path}}{{game.stage_game_path}}images/{{game.screenshots[index]}}") !important;
+            {% endif %}
+        {% endif %}
+    }
+</style>

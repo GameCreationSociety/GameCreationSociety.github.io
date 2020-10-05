@@ -69,15 +69,16 @@
 /* Special on-hover backgrounds */
 {% for game in site.games %}
 {% if game.screenshots and game.screenshots.size > 0 %}
+/*
 #{{ game.title | slugify }}-preview:hover .listed-game-preview-img {
     {% assign index = game.screenshots.size | minus: 1 %}
     {% assign split_screenshot = game.screenshots[index] | split: "." %}
-    {% if split_screenshot[1] == "webm" %}
+    {% if game.webm_hover_enabled %}
         background-image: url("") !important;
     {% else %}
         background-image: url("{{site.stage_path}}{{game.stage_game_path}}images/{{game.screenshots[index]}}") !important;
     {% endif %}
-}
+}*/
 
 #{{ game.title | slugify }}-preview > .listed-game-preview-img > .listed-game-video {
     visibility: hidden;

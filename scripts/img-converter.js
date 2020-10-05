@@ -16,11 +16,14 @@ function convert(filename, alt_text, element_id, parent_element_id, is_game=fals
 
 	if ((isOpera || isSafari || isIE)) {
 		// If we're on Opera, Safari, or Internet Explorer, make an image
-		var elementToAppend = document.createElement("img");
+		// var elementToAppend = document.createElement("img");
 
-		elementToAppend.src = appendString + ".gif";
-		elementToAppend.alt = alt_text;
-		elementToAppend.loading = "lazy";
+		// elementToAppend.src = appendString + ".gif";
+		// elementToAppend.alt = alt_text;
+		// elementToAppend.loading = "lazy";
+
+		var parent = document.getElementById(parent_element_id);
+		parent.src = appendString + ".gif";
 	}
 	else if (base_ext == "webm") {
 		// Otherwise, use a video
@@ -44,12 +47,12 @@ function convert(filename, alt_text, element_id, parent_element_id, is_game=fals
 		}
 
 		elementToAppend.appendChild(videoSource);
+
+		elementToAppend.id = element_id;
+
+		var parent = document.getElementById(parent_element_id);
+		parent.appendChild(elementToAppend);
 	}
-
-	elementToAppend.id = element_id;
-
-	var parent = document.getElementById(parent_element_id);
-	parent.appendChild(elementToAppend);
 }
 
 function pause_video(video) {
