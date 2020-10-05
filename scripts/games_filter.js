@@ -91,7 +91,6 @@ function update_games_filter() {
             count++;
         }
         var desc = search_terms[search_terms.length - 1].textContent.toUpperCase();
-        console.log(search_terms);
 
         // Convert the term to all uppercase and compare it to the search terms
         term = $('#search').val().toUpperCase();
