@@ -84,8 +84,14 @@ function update_games_filter() {
         // Added: Disable games which don't match search conditions if there are any
         var search_terms = element[0].children[1].children;
         var title = search_terms[0].textContent.toUpperCase();
-        var members = search_terms[2].textContent.toUpperCase();
-        var desc = search_terms[3].textContent.toUpperCase();
+        var members = [];
+        var count = 2;
+        while (count < search_terms.length - 1) {
+            members += search_terms[count].textContent.toUpperCase();
+            count++;
+        }
+        var desc = search_terms[search_terms.length - 1].textContent.toUpperCase();
+        console.log(search_terms);
 
         // Convert the term to all uppercase and compare it to the search terms
         term = $('#search').val().toUpperCase();

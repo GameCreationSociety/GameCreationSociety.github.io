@@ -24,7 +24,7 @@
         <h5 class="game_title"><strong>{{ game.title }}</strong></h5>
         <p class="game_semester_year">{{game.semester}} {{game.year}}</p>
         {% for member in game.project_members %}
-            <p class="game_members" style="display:none">{{member}}</p>
+            <p class="game_members" style="display:none">{{member[0]}}</p>
         {% endfor %}
         <!--p class= "game_members" style="display:none">{{ game.project_members }}</p-->
     </div>
