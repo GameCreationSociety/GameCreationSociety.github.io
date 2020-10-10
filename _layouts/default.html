@@ -8,11 +8,11 @@
 	<!-- Non-required, but good meta tags -->
 	<meta name="author" content="Game Creation Society">
 	{% if page.description %}
-		<meta name="description" content="{{ page.description }}">
+		<meta name="description" content="{{ page.description | strip_html }}">
 	{% elsif page.bio %}
-		<meta name="description" content="{{ page.bio }}">
+		<meta name="description" content="{{ page.bio | strip_html }}">
 	{% else %}
-		<meta name="description" content="{{ page.meta-description }}">
+		<meta name="description" content="{{ page.meta-description | strip_html }}">
 	{% endif %}
 	<meta name="keywords" content="game, games, game creation, gamemaking, game making, unity, unreal, student, students, college, cmu, carnegie mellon, carnegie mellon university, game creation society, gcs">
 	<meta name="theme-color" content="#b12d36">
