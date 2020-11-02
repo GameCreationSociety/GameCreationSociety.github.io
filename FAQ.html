@@ -28,7 +28,7 @@ questions: {
     President: <a href='P_URL'>PRESIDENT</a><br>
     Vice President: <a href='V_URL'>VP</a><br>
     Director of Development: <a href='D_URL'>DIRECTOR</a><br>
-    Public Relations Lead: <a href='P_URL'>PRLEAD</a><br>
+    Public Relations Lead: <a href='PR_URL'>PRLEAD</a><br>
     Chief of Operations: <a href='C_URL'>CHIEFOFOPS</a><br>
     Treasurer: <a href='T_URL'>TREASURER</a>",
     "What does each officer do?" : "
@@ -89,7 +89,7 @@ meta-description: "Have questions about GCS? Check here! We've got answers on ev
     {% for q in page.questions %}
     <div class="col-md-6 col-sm-12">
         <h3>{{q[0]}}</h3>
-        <p id="q_{{forloop.index}}">{{q[1] | replace: 'PRESIDENT', president.title | replace: 'P_URL', president.url | replace: 'VP', vp.title | replace: 'V_URL', vp.url | replace: 'DIRECTOR', director.title | replace: 'D_URL', director.url | replace: 'PRLEAD', prlead.title | replace: 'P_URL', prlead.url | replace: 'CHIEFOFOPS', chiefofops.title | replace: 'C_URL', chiefofops.url | replace: 'TREASURER', treasurer.title | replace: 'T_URL', treasurer.url}}</p>
+        <p id="q_{{forloop.index}}">{{q[1] | replace: 'PRESIDENT', president.title | replace: 'P_URL', president.url | replace: 'VP', vp.title | replace: 'V_URL', vp.url | replace: 'DIRECTOR', director.title | replace: 'D_URL', director.url | replace: 'PRLEAD', prlead.title | replace: 'PR_URL', prlead.url | replace: 'CHIEFOFOPS', chiefofops.title | replace: 'C_URL', chiefofops.url | replace: 'TREASURER', treasurer.title | replace: 'T_URL', treasurer.url}}</p>
     </div>
     {% endfor %}
 </div>
