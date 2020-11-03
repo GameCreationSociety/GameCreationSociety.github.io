@@ -22,8 +22,14 @@ function convert(filename, alt_text, element_id, parent_element_id, is_game=fals
 		// elementToAppend.alt = alt_text;
 		// elementToAppend.loading = "lazy";
 
+		var elementToAppend = document.createElement("img");
+		elementToAppend.src = appendString + ".gif"
+		elementToAppend.id = element_id;
+		
 		var parent = document.getElementById(parent_element_id);
-		parent.src = appendString + ".gif";
+		parent.appendChild(elementToAppend);
+
+		// parent.src = appendString + ".gif";
 	}
 	else if (base_ext == "webm") {
 		// Otherwise, use a video
