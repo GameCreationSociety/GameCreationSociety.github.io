@@ -59,7 +59,14 @@ noHeaderMargin: false
 
         {% if page.previous_positions %}
         <h4><u>Previous GCS positions</u>:
-            {{page.previous_positions}}
+            {% assign positions = "" %}
+            {% for position in page.previous_positions %}
+                {% assign positions = positions | append: position[1] | append: ", " %}
+            {% endfor %}
+            {% assign positions = positions | split: ", " | uniq %}
+            {% for position in positions %}
+                <br>{{position}}
+            {% endfor %}
         </h4>
         {% endif %}
 
