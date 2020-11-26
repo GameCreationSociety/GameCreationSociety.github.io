@@ -1,3 +1,12 @@
+---
+# Front Matter
+title: LIMINAL
+redirect_from: 
+  - /play/liminal/liminal
+  - /play/Liminal
+---
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +19,16 @@
 <body>
 
 <tw-story></tw-story>
+
+
+<!-- Clickable house -->
+<div class="clickableHouseWrapper" style=" left: 45%; top: 15%; width: 40%">
+  <img src="images/LiminalHouse.png" alt="image" class="responsive" />
+  <!-- <img src="images/LiminalHouse.png" alt="image"  width="475" height="420" /> -->
+  <a href="first_floof.html" style="left: 18%; top: 35%;  width: 30%; height: 23%;"></a>
+  <a href="ego_beta.html" style="left: 49.5%; top: 34%; width: 29%; height: 24.5%;"></a>
+</div>
+
 
 <tw-storydata name="Liminal" startnode="1" creator="Twine" creator-version="2.3.9" ifid="F97187F6-0135-40AE-93DB-08415A2ED469" zoom="1" format="Harlowe" format-version="3.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-icon.undo {
 	display: none;
@@ -25,18 +44,64 @@ tw-link.visited {
 
 tw-link.visited:hover {
   color:#00bfff;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Liminal - Title" tags="" position="323,40.5" size="100,100">&lt;h1&gt;L I M I N A L &nbsp;&nbsp; `[beta]`&lt;/h1&gt;
+}</style>
+
+
+<style>
+  /* Main styling */
+  body {
+      background: linear-gradient(#221f1fFF, #221f1fFF);
+  }
+
+  /* Clickable styling */
+  .clickableHouseWrapper{
+      /* position: relative; */
+      position: absolute;
+      z-index: 10;
+  }
+  .clickableHouseWrapper a{
+      display: block;      
+      position: absolute;
+  }
+  .responsive {
+      /* https://www.w3schools.com/howto/howto_css_image_responsive.asp */
+      width: 100%;
+      height: auto;
+  }
+</style>
+
+
+<script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Liminal - Title" tags="" position="323,40.5" size="100,100">&lt;h1&gt;L I M I N A L
+  `[beta]`&lt;/h1&gt;
 
 
 &lt;h3&gt;[[Escape the Cold-&gt;Liminal - Entrance]]&lt;/h3&gt;
 
-(link: "Test link to cat story (from beta)")[(goto-url: 'first_floof.html')]
+<!-- (link: "Test link to cat story (from beta)")[(goto-url: 'first_floof.html')]
 
-(link: "Test link to ego (from beta)")[(goto-url: 'ego_beta.html')]
+(link: "Test link to ego (from beta)")[(goto-url: 'ego_beta.html')] -->
 
-[[Credits-&gt;Liminal - Credits]]</tw-passagedata><tw-passagedata pid="2" name="Liminal - Entrance" tags="" position="317,191.5" size="100,100">The door creaks as you push it open and step inside. A narrow slice of the dark interior is illuminated by the porch light behind you.
+[[Credits-&gt;Liminal - Credits]]
 
-Brown bearskin rug. Tall wooden desk. Gleaming service bell. Faded lampshade.
+<!-- Visibility: -->
+<!-- https://stackoverflow.com/questions/18414384/hide-element-by-class-in-pure-javascript -->
+<script>document.getElementsByClassName('clickableHouseWrapper')[0].style.visibility = 'visible';</script>	
+
+<!-- Clickable house
+<div class="clickableHouseWrapper" style=" left:40%; top: 12%; width: 50%">
+  <img src="images/LiminalHouse.png" alt="image" class="responsive" />
+  <a href="first_floof.html" style="left: 18%; top: 35%;  width: 30%; height: 23%;"></a>
+  <a href="ego_beta.html" style="left: 49.5%; top: 34%; width: 29%; height: 24.5%;"></a>
+</div>
+-->
+
+</tw-passagedata>
+
+
+<tw-passagedata pid="2" name="Liminal - Entrance" tags="" position="317,191.5" size="100,100">  
+The door creaks as you push it open and step inside. A narrow slice of the dark interior is illuminated by the porch light behind you.
+
+A brown bearskin rug hugs the floor. Behind it stands a tall wooden desk. A service bell glints in the light next to a faded lampshade.
 
 {(live: 3s)[ &quot;Hello?&quot; ] }
 
@@ -44,7 +109,15 @@ Brown bearskin rug. Tall wooden desk. Gleaming service bell. Faded lampshade.
 
 {(live: 9s)[ 
 Snow flies into the room, carried by a gust of wind. You shield your face and [[push the door shut-&gt;Liminal - Entrance 2]].
-] }</tw-passagedata><tw-passagedata pid="3" name="Liminal - Credits" tags="" position="134,141.5" size="100,100">Helena Yang
+] }
+
+<script>document.getElementsByClassName('clickableHouseWrapper')[0].style.visibility = 'hidden';</script>	
+
+</tw-passagedata>
+
+
+
+<tw-passagedata pid="3" name="Liminal - Credits" tags="" position="134,141.5" size="100,100">Helena Yang
 George Whitfield
 Catherine Wang
 Nellie Tonev
@@ -53,6 +126,8 @@ Chelsea Liu
 Grace Li
 Hayoon Choi
 Dominic Calkosz
+
+<script>document.getElementsByClassName('clickableHouseWrapper')[0].style.visibility = 'hidden';</script>	
 
 [[Back-&gt;Liminal - Title]]</tw-passagedata><tw-passagedata pid="4" name="Liminal - Entrance 2" tags="" position="318,341.5" size="100,100">Enveloped in darkness, you feel your way towards the lamp.
 

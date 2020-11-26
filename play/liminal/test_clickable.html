@@ -1,0 +1,81 @@
+---
+# Front Matter
+title: LIMINAL
+# redirect_from: 
+#  - /play/liminal/liminal
+#  - /play/Liminal
+---
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131154366-1"></script>
+	<script src="/scripts/analytics.js"></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="/images/icons/favicon.ico" type="image/vnd.microsoft.icon">
+	<!-- Web app menifest -->
+	<link rel="manifest" href="/manifest.webmanifest">
+	<!-- Apple touchscreen icon -->
+	<link rel="apple-touch-icon" href="/images/scope_creep/mask512x512.png">
+	<!-- Title -->
+	<title>{{ page.title }} | Game Creation Society</title>
+</head>
+<body>
+
+
+<!-- METHOD 1 -->
+<!-- https://www.w3schools.com/tags/tag_area.asp -->
+
+<!--
+<img src="images/LiminalHouse.png" alt="LiminalHouse" usemap="#workmap">
+<img src="images/LiminalHouse.png" alt="LiminalHouse" usemap="#workmap" width="953" height="842">
+
+<map name="workmap">
+  <area shape="rect" coords="173,294,453,500" alt="First Floof" href="first_floof.html">
+  <area shape="rect" coords="471,294,750,500" alt="Ego Beta" href="ego_beta.html">
+</map>
+-->
+
+
+<!-- METHOD 2 -->
+<!-- https://stackoverflow.com/a/26231487/12288629 -->
+
+<style>
+    /* Main styling */
+    body {
+        background: linear-gradient(#221f1fFF, #221f1fFF);
+    }
+    h1 {
+        color: #fbfaf6FF;
+    }
+
+    /* Clickable styling */
+    .clickableHouseWrapper{
+        /* position: relative; */
+        position: absolute;
+    }
+    .clickableHouseWrapper a{
+        display: block;      
+        position: absolute;
+    }
+    .responsive {
+        /* https://www.w3schools.com/howto/howto_css_image_responsive.asp */
+        width: 100%;
+        height: auto;
+    }
+</style>
+
+
+<!-- Clickable house -->
+<div class="clickableHouseWrapper" style=" left:40%; top: 10%; width: 50%">
+    <img src="images/LiminalHouse.png" alt="image" class="responsive" />
+    <!-- <img src="images/LiminalHouse.png" alt="image"  width="475" height="420" /> -->
+    <a href="first_floof.html" style="left: 18%; top: 35%;  width: 30%; height: 23%;"></a>
+    <a href="ego_beta.html" style="left: 49.5%; top: 34%; width: 29%; height: 24.5%;"></a>
+</div>
+
+
+</body>
+</html>
