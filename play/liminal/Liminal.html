@@ -22,7 +22,7 @@ redirect_from:
 
 
 <!-- Clickable house -->
-<div class="clickableHouseWrapper" style=" left: 45%; top: 15%; width: 40%">
+<div class="clickableHouseWrapper" style=" left: 55%; top: 15%; width: 40%">
   <img src="images/LiminalHouse.png" alt="image" class="responsive" />
   <!-- <img src="images/LiminalHouse.png" alt="image"  width="475" height="420" /> -->
   <a href="first_floof.html" style="left: 18%; top: 35%;  width: 30%; height: 23%;"></a>
@@ -30,7 +30,8 @@ redirect_from:
 </div>
 
 
-<tw-storydata name="Liminal" startnode="1" creator="Twine" creator-version="2.3.9" ifid="F97187F6-0135-40AE-93DB-08415A2ED469" zoom="1" format="Harlowe" format-version="3.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-icon.undo {
+<tw-storydata name="Liminal" startnode="1" creator="Twine" creator-version="2.3.9" ifid="F97187F6-0135-40AE-93DB-08415A2ED469" zoom="1" format="Harlowe" format-version="3.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">
+tw-icon.undo {
 	display: none;
 }
 tw-icon.redo {
@@ -44,7 +45,23 @@ tw-link.visited {
 
 tw-link.visited:hover {
   color:#00bfff;
-}</style>
+}
+
+tw-story {
+  font-family: helvetica, sans-serif !important;
+  padding: 4% 47% 4% 8% !important;
+}
+
+/* Light theme (when you turn on the lamp) */ 
+body.light-theme tw-story { 
+  background-color: white;
+  color: blue;
+}
+
+body.light-theme tw-passage {
+  color: black;
+}
+</style>
 
 
 <style>
@@ -71,30 +88,51 @@ tw-link.visited:hover {
 </style>
 
 
-<script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Liminal - Title" tags="" position="323,40.5" size="100,100">&lt;h1&gt;L I M I N A L
-  `[beta]`&lt;/h1&gt;
+<script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Liminal - Monolith" tags="" position="323,40.5" size="100,100">&lt;h1&gt;L I M I N A L&lt;/h1&gt;
+  [[Credits-&gt;Liminal - Credits M]]
 
 
-&lt;h3&gt;[[Escape the Cold-&gt;Liminal - Entrance]]&lt;/h3&gt;
+  (link: &quot;&lt;h3&gt;Escape the Cold&lt;/h3&gt;&quot;)[The door creaks as you push it open and step inside. A narrow slice of the dark interior is illuminated by the porch light behind you.
+  
+  A brown bearskin rug hugs the floor. Behind it stands a tall wooden desk. A service bell glints in the light next to a faded lampshade.
+  
+  (link: &quot;\&quot;Hello?\&quot;&quot;)[&quot;Hello?&quot; No response.
+  
+  Snow flies into the room, carried by a gust of wind. You shield your face and (link: &quot;push the door shut.&quot;)[push the door shut.
+  
+  Enveloped in darkness, you feel your way towards the lamp.
+  
+  Your footsteps against the cold floor echo through an unknown space. Three paces in, they soften to a light crunch.
+  
+  Hardwood meets your outstretched hand, and you (link: &quot;search blindly for the cord.&quot;)[search blindly for the cord.
+  
+  Cool metal meets your fingertips. A few inches up, you find the beaded cord and (link: &quot;give it a firm pull.&quot;)[give it a firm pull.
+  
+  &lt;i&gt;(Click on a room to continue)&lt;/i&gt;&lt;script&gt;document.body.classList.add(&quot;light-theme&quot;);&lt;/script&gt;]]]]
+  <audio src="audio/liminal_intro.mp3" autoplay></audio>]
+  <script>document.getElementsByClassName('clickableHouseWrapper')[0].style.visibility = 'visible';</script>
+</tw-passagedata>
 
-<!-- (link: "Test link to cat story (from beta)")[(goto-url: 'first_floof.html')]
+<tw-passagedata pid="8" name="Liminal - Credits M" tags="" position="826,129.5" size="100,100">Helena Yang
+  George Whitfield
+  Catherine Wang
+  Nellie Tonev
+  An Tang
+  Chelsea Liu
+  Grace Li
+  Hayoon Choi
+  Dominic Calkosz
 
-(link: "Test link to ego (from beta)")[(goto-url: 'ego_beta.html')] -->
+  <script>document.getElementsByClassName('clickableHouseWrapper')[0].style.visibility = 'hidden';</script>	
+  [[Back-&gt;Liminal - Monolith]]
 
-[[Credits-&gt;Liminal - Credits]]
-
-<!-- Visibility: -->
-<!-- https://stackoverflow.com/questions/18414384/hide-element-by-class-in-pure-javascript -->
-<script>document.getElementsByClassName('clickableHouseWrapper')[0].style.visibility = 'visible';</script>	
-
-<!-- Clickable house
-<div class="clickableHouseWrapper" style=" left:40%; top: 12%; width: 50%">
-  <img src="images/LiminalHouse.png" alt="image" class="responsive" />
-  <a href="first_floof.html" style="left: 18%; top: 35%;  width: 30%; height: 23%;"></a>
-  <a href="ego_beta.html" style="left: 49.5%; top: 34%; width: 29%; height: 24.5%;"></a>
-</div>
--->
-
+  <!-- Clickable house
+  <div class="clickableHouseWrapper" style=" left:40%; top: 12%; width: 50%">
+    <img src="images/LiminalHouse.png" alt="image" class="responsive" />
+    <a href="first_floof.html" style="left: 18%; top: 35%;  width: 30%; height: 23%;"></a>
+    <a href="ego_beta.html" style="left: 49.5%; top: 34%; width: 29%; height: 24.5%;"></a>
+  </div>
+  -->
 </tw-passagedata>
 
 
@@ -111,6 +149,7 @@ A brown bearskin rug hugs the floor. Behind it stands a tall wooden desk. A serv
 Snow flies into the room, carried by a gust of wind. You shield your face and [[push the door shut-&gt;Liminal - Entrance 2]].
 ] }
 
+<audio src="audio/liminal_intro.mp3" autoplay>
 <script>document.getElementsByClassName('clickableHouseWrapper')[0].style.visibility = 'hidden';</script>	
 
 </tw-passagedata>
