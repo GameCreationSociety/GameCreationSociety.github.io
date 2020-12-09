@@ -25,13 +25,24 @@ redirect_from:
 <div class="clickableHouseWrapper" style=" left: 55%; top: 15%; width: 40%">
   <img src="images/LiminalHouse.png" alt="image" class="responsive" />
   <!-- <img src="images/LiminalHouse.png" alt="image"  width="475" height="420" /> -->
-  <a href="Bedroom.html" style="left: 18.5%; top: 34.75%;  width: 29%; height: 24%;"></a> <!-- Top left -->
+  <!-- <a href="Bedroom.html" style="left: 18.5%; top: 34.75%;  width: 29%; height: 24%;"></a> Top left -->
   <!-- <a href="ego_beta.html" style="left: 49.5%; top: 34.75%; width: 29%; height: 24%;"></a> Top right -->
+  <a href="Bedroom.html" style="left: 18.5%; top: 34.75%;  width: 60%; height: 24%;"></a> <!-- TOP -->
   <a href="Library.html" style="left: 18.5%; top: 61.5%;  width: 43.5%; height: 33.75%;"></a> <!-- Bottom left -->
   <a href="ShoeCloset.html" style="left: 64%; top: 61.5%;  width: 14.5%; height: 33.75%;"></a> <!-- Bottom right -->
   <a href="Staircase.html" style="left: 81.25%; top: 34.75%;  width: 8.5%; height: 60.5%;"></a> <!-- Right staircase -->
 </div>
 
+
+<!-- <audio id="intro_player" src="audio/liminal_intro.mp3"></audio> -->
+<audio id="intro_player" src="audio/liminal_intro.mp3" autostart="0" autostart="false" preload ="none" name="media">
+<!-- <audio src="audio/liminal_intro.mp3" autoplay></audio> -->
+
+
+<script>
+  var intro_player = document.getElementById('intro_player');
+  var LOADED = false;
+</script>
 
 <tw-storydata name="Liminal" startnode="1" creator="Twine" creator-version="2.3.9" ifid="F97187F6-0135-40AE-93DB-08415A2ED469" zoom="1" format="Harlowe" format-version="3.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">
 tw-icon.undo {
@@ -91,32 +102,17 @@ body.light-theme tw-passage {
 </style>
 
 
-<script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Liminal - Monolith" tags="" position="323,40.5" size="100,100">&lt;h1&gt;L I M I N A L&lt;/h1&gt;
+<script role="script" id="twine-user-script" type="text/twine-javascript">
+  var intro_player = document.getElementById('intro_player');
+  var LOADED = false;
+</script>
+
+
+<tw-passagedata pid="1" name="Liminal - Monolith" tags="" position="144,31.5" size="100,100">&lt;h1&gt;L I M I N A L&lt;/h1&gt;
   [[Credits-&gt;Liminal - Credits M]]
-
-
-  (link: &quot;&lt;h3&gt;Escape the Cold&lt;/h3&gt;&quot;)[The door creaks as you push it open and step inside. A narrow slice of the dark interior is illuminated by the porch light behind you.
   
-  A brown bearskin rug hugs the floor. Behind it stands a tall wooden desk. A service bell glints in the light next to a faded lampshade.
   
-  (link: &quot;\&quot;Hello?\&quot;&quot;)[&quot;Hello?&quot; No response.
-  
-  Snow flies into the room, carried by a gust of wind. You shield your face and (link: &quot;push the door shut.&quot;)[push the door shut.
-  
-  Enveloped in darkness, you feel your way towards the lamp.
-  
-  Your footsteps against the cold floor echo through an unknown space. Three paces in, they soften to a light crunch.
-  
-  Hardwood meets your outstretched hand, and you (link: &quot;search blindly for the cord.&quot;)[search blindly for the cord.
-  
-  Cool metal meets your fingertips. A few inches up, you find the beaded cord and (link: &quot;give it a firm pull.&quot;)[give it a firm pull.
-  
-  &lt;i&gt;(Click on a room to continue)&lt;/i&gt;&lt;script&gt;document.body.classList.add(&quot;light-theme&quot;);&lt;/script&gt;]]]]
-  <audio src="audio/liminal_intro.mp3" autoplay></audio>]
-  <script>document.getElementsByClassName('clickableHouseWrapper')[0].style.visibility = 'visible';</script>
-</tw-passagedata>
-
-<tw-passagedata pid="8" name="Liminal - Credits M" tags="" position="826,129.5" size="100,100">Helena Yang
+  [[&lt;h3&gt;Escape the Cold&lt;/h3&gt;-&gt;Liminal - Monolith1]] &lt;script&gt;document.getElementsByClassName(&#39;clickableHouseWrapper&#39;)[0].style.visibility = &#39;visible&#39;;&lt;/script&gt;</tw-passagedata><tw-passagedata pid="2" name="Liminal - Credits M" tags="" position="816,131.5" size="100,100">Helena Yang
   George Whitfield
   Catherine Wang
   Nellie Tonev
@@ -125,67 +121,50 @@ body.light-theme tw-passage {
   Grace Li
   Hayoon Choi
   Dominic Calkosz
+  
+  [[Back-&gt;Liminal - Monolith]] &lt;script&gt;document.getElementsByClassName(&#39;clickableHouseWrapper&#39;)[0].style.visibility = &#39;hidden&#39;;&lt;/script&gt;	</tw-passagedata><tw-passagedata pid="3" name="Liminal - Monolith2" tags="" position="147,365.5" size="100,100">&lt;h1&gt;L I M I N A L&lt;/h1&gt;
+  
+  
+  
+  No response.
+  
+  Snow flies into the room, carried by a gust of wind. You shield your face and [[push the door shut-&gt;Liminal - Monolith3]].</tw-passagedata><tw-passagedata pid="4" name="Liminal - Monolith3" tags="" position="143,526.5" size="100,100">&lt;h1&gt;L I M I N A L&lt;/h1&gt;
+  
+  
+  
+  Enveloped in darkness, you feel your way towards the lamp.
+  
+  Your footsteps against the cold floor echo through an unknown space. Three paces in, they soften to a light crunch.
+  
+  Hardwood meets your outstretched hand, and you [[search blindly for the cord-&gt;Liminal - Monolith4]].</tw-passagedata><tw-passagedata pid="5" name="Liminal - Monolith4" tags="" position="143,696.5" size="100,100">&lt;h1&gt;L I M I N A L&lt;/h1&gt;
+  
+  
+  
+  Cool metal meets your fingertips. A few inches up, you find the beaded cord and [[give it a firm pull-&gt;Liminal - Monolith5]].</tw-passagedata><tw-passagedata pid="6" name="Liminal - Monolith5" tags="" position="145,851.5" size="100,100">&lt;h1&gt;L I M I N A L&lt;/h1&gt;
+  
+  
+  
+  &lt;i&gt;(Click on a room to continue)&lt;/i&gt;&lt;script&gt;document.body.classList.add(&quot;light-theme&quot;);&lt;/script&gt;</tw-passagedata><tw-passagedata pid="7" name="Liminal - Monolith1" tags="" position="145,193" size="100,100">&lt;h1&gt;L I M I N A L&lt;/h1&gt;
+  
+  
+  
+  The door creaks as you push it open and step inside. A narrow slice of the dark interior is illuminated by the porch light behind you.
+  
+  A brown bearskin rug hugs the floor. Behind it stands a tall wooden desk. A service bell glints in the light next to a faded lampshade.
+  
+  [[&quot;Hello?&quot;-&gt;Liminal - Monolith2]]
+  <script>
+    if (LOADED) {
+      intro_player.play();
+    }
+  </script>
+</tw-passagedata></tw-storydata>
 
-  <script>document.getElementsByClassName('clickableHouseWrapper')[0].style.visibility = 'hidden';</script>	
-  [[Back-&gt;Liminal - Monolith]]
 
-  <!-- Clickable house
-  <div class="clickableHouseWrapper" style=" left:40%; top: 12%; width: 50%">
-    <img src="images/LiminalHouse.png" alt="image" class="responsive" />
-    <a href="first_floof.html" style="left: 18%; top: 35%;  width: 30%; height: 23%;"></a>
-    <a href="ego_beta.html" style="left: 49.5%; top: 34%; width: 29%; height: 24.5%;"></a>
-  </div>
-  -->
-</tw-passagedata>
+<script>
+  var LOADED = true;
+</script> 
 
-
-<tw-passagedata pid="2" name="Liminal - Entrance" tags="" position="317,191.5" size="100,100">  
-The door creaks as you push it open and step inside. A narrow slice of the dark interior is illuminated by the porch light behind you.
-
-A brown bearskin rug hugs the floor. Behind it stands a tall wooden desk. A service bell glints in the light next to a faded lampshade.
-
-{(live: 3s)[ &quot;Hello?&quot; ] }
-
-{(live: 7s)[ No response. ] }
-
-{(live: 9s)[ 
-Snow flies into the room, carried by a gust of wind. You shield your face and [[push the door shut-&gt;Liminal - Entrance 2]].
-] }
-
-<audio src="audio/liminal_intro.mp3" autoplay>
-<script>document.getElementsByClassName('clickableHouseWrapper')[0].style.visibility = 'hidden';</script>	
-
-</tw-passagedata>
-
-
-
-<tw-passagedata pid="3" name="Liminal - Credits" tags="" position="134,141.5" size="100,100">Helena Yang
-George Whitfield
-Catherine Wang
-Nellie Tonev
-An Tang
-Chelsea Liu
-Grace Li
-Hayoon Choi
-Dominic Calkosz
-
-<script>document.getElementsByClassName('clickableHouseWrapper')[0].style.visibility = 'hidden';</script>	
-
-[[Back-&gt;Liminal - Title]]</tw-passagedata><tw-passagedata pid="4" name="Liminal - Entrance 2" tags="" position="318,341.5" size="100,100">Enveloped in darkness, you feel your way towards the lamp.
-
-Your footsteps against the cold floor echo through an uknown space. Three paces in, they soften to a light crunch.
-
-Hardwood meets your outstretched hand, and you [[search blindly for the cord-&gt;Liminal - Entrance 3]].</tw-passagedata><tw-passagedata pid="5" name="Liminal - Entrance 3" tags="" position="317,491.5" size="100,100">As your hand bumps cold metal, a bright *ding* pierces the silence and hangs in the air.
-
-{(live: 3s)[ Steadily, it returns to silence. ] }
-
-{(live: 5s)[ 
-You search further to the right, and finally feel the base of the lamp. A few inches up you find the beaded cord and [[give it a firm pull-&gt;Liminal - Entrance 4]].
-] }</tw-passagedata><tw-passagedata pid="6" name="Liminal - Entrance 4" tags="" position="317,641.5" size="100,100">You block the light from your eyes as they adjust.
-
-(*Description of entrance goes here. Perhaps the Horror group&#39;s story goes here, if there are shoes in the entrance*)
-
-(*You can see a bit of the next room over. This is someone else&#39;s room*)</tw-passagedata></tw-storydata>
 
 <script title="Twine engine code" data-main="harlowe">"use strict";function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}var _slicedToArray=function(){function e(e,t){var n=[],r=!0,i=!1,o=void 0;try{for(var a,s=e[Symbol.iterator]();!(r=(a=s.next()).done)&&(n.push(a.value),!t||n.length!==t);r=!0);}catch(e){i=!0,o=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw o}}return n}return function(t,n){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,n);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};!function(){/**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
