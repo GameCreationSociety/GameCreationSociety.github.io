@@ -1,9 +1,22 @@
 <!DOCTYPE html>
 <html data-init="no-js">
 <head>
-<meta charset="UTF-8" />
-<title>prerelease</title>
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<!-- Non-required, but good meta tags -->
+	<meta name="author" content="Game Creation Society">
+  	<meta name="description" content="A small collection of interactive narratives">
+	<meta name="keywords" content="game, games, game creation, gamemaking, game making, unity, unreal, student, students, college, cmu, carnegie mellon, carnegie mellon university, game creation society, gcs">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131154366-1"></script>
+	<script src="/scripts/analytics.js"></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+	<!-- Title -->
+  	<title>Morty's</title>
+	
 <!--
 
 SugarCube (v2.31.1): A free (gratis and libre) story format.
@@ -110,6 +123,7 @@ body #menu-item-saves{
 
 body{
   font-family: 'Inconsolata', monospace;
+  font-size: 18px;
 } 
 
 /* popover.min.css, by chapel; for use with popover.js; v1.0.0 */
@@ -259,7 +273,7 @@ Your face itches slightly but you restrain yourself from touching it, since it m
 
 You can tell just by looking at them that they’re comfy. And they’re on sale, too. A breathable exterior with a thick flexible rubber sole at the bottom. 
 
-You grab a pair and place it into your basket before [[walking out of the aisle.-&gt;aisle2]]</tw-passagedata><tw-passagedata pid="9" name="aisle2" tags="normal-store" position="676,176" size="100,100">There is a open section of the store with benches to try on different merchandise. 
+You grab a pair and place it into your basket before [[walking out of the aisle.-&gt;aisle2]]</tw-passagedata><tw-passagedata pid="9" name="aisle2" tags="normal-store" position="676,176" size="100,100">There is an open section of the store with benches to try on different merchandise. 
 To your left, is a [[Men’s-&gt;second-shoe]] section and to your right is a [[Women’s-&gt;third-shoe]] section.
 &lt;&lt;set $visited_women to false&gt;&gt;
 &lt;&lt;set $visited_men to false&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="second-shoe" tags="normal-store" position="806,118" size="100,100">&lt;div style=&quot;text-align: CENTER;&quot;&gt;AISLE 2&lt;/div&gt;
@@ -284,7 +298,7 @@ In this last aisle, rows and rows of fancy heels stretch up from the ground to t
 
 You push through the boxes until you find a pair of glossy red platform heels. 
 
-The surface of the heels is so smooth that you can see your &lt;&lt;linkreplace &quot;reflection.&quot;&gt;&gt;reflection. You reach out and it feels hard like plastic and &lt;&lt;linkreplace&quot;squishable like pizza dough.&quot;&gt;&gt;squishable like pizza dough. You&#39;re not a big fan of heels. &lt;&lt;/linkreplace&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;
+The surface of the heels is so smooth that you can see your &lt;&lt;linkreplace &quot;reflection.&quot;&gt;&gt;reflection. You reach out and it feels &lt;&lt;linkreplace&quot;squishable like pizza dough.&quot;&gt;&gt;squishable like pizza dough. You&#39;re not a big fan of heels. &lt;&lt;/linkreplace&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;
 
 You toss the shoe box into your basket and begin to [[walk out of the aisle-&gt;pre-cashier-mirror-scene-1]].</tw-passagedata><tw-passagedata pid="13" name="helena-cashier-station-1.4" tags="normal-store" position="527,478" size="100,100">&quot;Good, how are you?&quot; you say &lt;&lt;linkreplace &quot;casually&quot;&gt;&gt;&lt;&lt;linkreplace &quot;cautiously&quot;&gt;&gt;bitingly&lt;&lt;/linkreplace&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;. 
 
@@ -345,20 +359,20 @@ You can’t believe that this person has the audacity to ask if you’re okay. Y
 
 You begin to walk away from the mirror and head for the exit of the store. You try to take your mind off the unusual encounter by thinking about what you’ll do [[when you leave. -&gt;act-2-flats-2]] 
 
-You’re looking forward to taking off the disguise [[when you get home.-&gt;act-2-flats-2]] A hot shower. Chinese food. Netflix. But then you remember that you have to send a 1 page report of your shoe buying experience to the Quality Assurance manager before the end of the day. You roll your eyes.</tw-passagedata><tw-passagedata pid="23" name="act-2.4" tags="normal-store" position="220,707" size="100,100">You notice the sound of your footsteps as you walk away from the cashier. Was the store always this quiet? You continue walking towards the aisles.
+You’re looking forward to taking off the disguise [[when you get home.-&gt;act-2-flats-2]] A hot shower. Chinese food. Netflix. But then you remember that you have to send a 1 page report of your shoe buying experience to the Quality Assurance manager before the end of the day. You roll your eyes.</tw-passagedata><tw-passagedata pid="23" name="act-2.4" tags="normal-store" position="221,707" size="100,100">You notice the sound of your footsteps as you walk away from the cashier. Was the store always this quiet? You continue walking towards the aisles.
 
 Somebody has knocked a bunch of shoeboxes onto the ground in front of the mirror where you tried on your shoes. 
 
 [[&gt;&gt; Step over them.-&gt;act-2-mirror-2]]
 [[&gt;&gt; Put them back on the shelves.-&gt;act-2-mirror-3]]
 &lt;&lt;link &quot;&gt;&gt; Look at the mirror.&quot;&gt;&gt;
-&lt;&lt;popover &#39;transparent&#39;&gt;&gt;&lt;div style = &#39;text-align: CENTER&#39;&gt;&lt;img src=&quot;https://i.imgur.com/SuMBV2G.png&quot; title=&quot;source: imgur.com&quot; width=&#39;49%&#39;/&gt;&lt;/div&gt; &lt;&lt;cont&gt;&gt;&lt;&lt;dismisspopover&gt;&gt;&lt;&lt;/cont&gt;&gt;
-&lt;&lt;set $seconds to 1&gt;&gt;
+&lt;&lt;popover&gt;&gt;&lt;div style = &#39;text-align: CENTER&#39;&gt;&lt;img src=&quot;https://i.imgur.com/SuMBV2G.png&quot; title=&quot;source: imgur.com&quot; width=&#39;49%&#39;/&gt;&lt;/div&gt; &lt;&lt;cont&gt;&gt;&lt;&lt;dismisspopover&gt;&gt;&lt;&lt;/cont&gt;&gt;
+&lt;&lt;set $seconds to 3&gt;&gt;
 &lt;&lt;silently&gt;&gt;
     &lt;&lt;repeat 1s&gt;&gt;
         &lt;&lt;set $seconds to $seconds - 1&gt;&gt;
 		&lt;&lt;if $seconds eq 0&gt;&gt;
-			&lt;&lt;popover &#39;transparent&#39;&gt;&gt; &lt;div style = &#39;text-align: CENTER&#39;&gt;			&lt;img src = &quot;https://i.imgur.com/FLkFasf.png&quot; title=&quot;source: 			imgur.com&quot; width = &#39;40%&#39; /&gt; &lt;/div&gt; &lt;&lt;cont&gt;&gt;&lt;&lt;dismisspopover&gt;&gt;			&lt;&lt;/cont&gt;&gt;
+			&lt;&lt;popover&gt;&gt; &lt;div style = &#39;text-align: CENTER&#39;&gt;			&lt;img src = &quot;https://i.imgur.com/FLkFasf.png&quot; title=&quot;source: 			imgur.com&quot; width = &#39;40%&#39; /&gt; &lt;/div&gt; &lt;&lt;cont&gt;&gt;&lt;&lt;dismisspopover&gt;&gt;			&lt;&lt;/cont&gt;&gt;
 				&lt;&lt;set $seconds2 to 2&gt;&gt; 
 				&lt;&lt;silently&gt;&gt;
 					&lt;&lt;repeat 1s&gt;&gt;
@@ -377,9 +391,9 @@ Somebody has knocked a bunch of shoeboxes onto the ground in front of the mirror
 please come again soon
 + recipt
 
-[[Play Again -&gt;morty-sign]]</tw-passagedata><tw-passagedata pid="25" name="pre-cashier-mirror-scene-1" tags="normal-store" position="1030,333" size="100,100">There&#39;s a full-length mirror at the end of the aisle in front of rows and rows of neatly arranged shoeboxes. Just beyond the mirror is a small cashier station, the only one in the store. 
+[[Play Again -&gt;morty-sign]]</tw-passagedata><tw-passagedata pid="25" name="pre-cashier-mirror-scene-1" tags="normal-store" position="1029,333" size="100,100">There&#39;s a full-length mirror at the end of the aisle in front of rows and rows of neatly arranged shoeboxes. Just beyond the mirror is a small cashier station, the only one in the store. 
 
-&lt;&lt;link &quot;&gt;&gt; Try on your shoes in front of the mirror.&quot;&gt;&gt;&lt;&lt;popover &#39;transparent&#39;&gt;&gt;&lt;div style = &#39;text-align: CENTER&#39;&gt;&lt;img src=&quot;https://i.imgur.com/FLkFasf.png&quot; title=&quot;source: imgur.com&quot; width = &#39;40%&#39;/&gt;&lt;/div&gt;&lt;&lt;cont&gt;&gt;&lt;&lt;dismisspopover&gt;&gt;&lt;&lt;/cont&gt;&gt;&lt;&lt;/popover&gt;&gt;&lt;&lt;/link&gt;&gt; 
+&lt;&lt;link &quot;&gt;&gt; Try on your shoes in front of the mirror.&quot;&gt;&gt;&lt;&lt;popover&gt;&gt;&lt;div style = &#39;text-align: CENTER&#39;&gt;&lt;img src=&quot;https://i.imgur.com/FLkFasf.png&quot; title=&quot;source: imgur.com&quot; width = &#39;40%&#39;/&gt;&lt;/div&gt;&lt;&lt;cont&gt;&gt;&lt;&lt;dismisspopover&gt;&gt;&lt;&lt;/cont&gt;&gt;&lt;&lt;/popover&gt;&gt;&lt;&lt;/link&gt;&gt; 
 [[&gt;&gt; Check out your shoes.-&gt;helena-cashier-station-1.0]]</tw-passagedata><tw-passagedata pid="26" name="@pre-cashier-mirror-scene-2" tags="normal-store" position="1028,467" size="100,100">&lt;img src=&#39;https://scontent-iad3-1.xx.fbcdn.net/v/t1.15752-9/126109824_393098122004366_2747157922557048735_n.png?_nc_cat=105&amp;ccb=2&amp;_nc_sid=ae9488&amp;_nc_ohc=mTL0dGWJLDUAX8QONa2&amp;_nc_ht=scontent-iad3-1.xx&amp;oh=eaf3daf6f7b57628fcc917bcbd9265e1&amp;oe=5FDF9808&#39; width=&#39;50%&#39;/&gt;
 [[&gt;&gt; Check out your shoes.-&gt;helena-cashier-station-1.0]]</tw-passagedata><tw-passagedata pid="27" name="act-2-mirror-2" tags="normal-store" position="104,834" size="100,100">Your foot catches on something and you stumble forward, stopping your fall with your hands. 
 
