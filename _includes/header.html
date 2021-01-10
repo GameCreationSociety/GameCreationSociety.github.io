@@ -8,8 +8,14 @@
         <img id="header-img" class="replaceable" src="/images/webp/official_no_back_white_smaller.webp" alt="GCS Logo" onerror="this.src='/images/official_no_back_white_smaller.png';" loading="lazy">
     </a>
 
-    <a id="faq-link" href="/FAQ">
-        <!--img id="header-scope-creep" src="/images/scope_creep/ScopeCreepIdle2.gif" alt="Scope Creep" loading="lazy"-->
+    <!--a id="faq-link" href="/FAQ"></a-->
+        <img id="header-scope-creep" src="/images/scope_creep/ScopeCreepIdle2.gif" alt="Scope Creep" loading="lazy">
+
+        <!-- 
+            The style for this is at header-scope-creep in main.css. 
+            If you make this a link again, you should uncomment that style.
+        -->
+
          <!--video id="header-scope-creep" autoplay>
           <source src="images/scope_creep/ScopeCreepIdle2.mp4" type="video/mp4">
         Your browser does not support the video tag.
@@ -17,8 +23,8 @@
 
         <!--video id="header-scope-creep" autoplay loop>
             <source src="images/scope_creep/ScopeCreepIdle2.webm" type="video/webm">
-        </video-->
-    </a>
+        </video>
+    </a-->
 
     <!-- Nav bar -->
     <nav id="nav-bar">
@@ -31,6 +37,11 @@
             <li class="nav-item">
                 <a class="nav-link button {% if page.title == "About" %} active-nav-button{% endif %}" href="/about">
                     About
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link button {% if page.title == "FAQ" %} active-nav-button{% endif %}" href="/FAQ">
+                    FAQ
                 </a>
             </li>
             <li class="nav-item">
