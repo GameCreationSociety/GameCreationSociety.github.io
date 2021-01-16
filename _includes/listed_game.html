@@ -1,5 +1,5 @@
 <!-- Listed game display -->
-<a class="listed-game-preview listed_game
+<a class="listed-game-preview listed_game ml-1 mr-1
 {% for tag in game.tags %} {{ tag }}_game-tag {% endfor %}
 {% if game.awards and game.awards.size > 0 %} Award-Winning_game-tag {% endif %}"
   id="{{ game.title | slugify }}-preview" href="{{ game.url }}">
@@ -81,16 +81,18 @@
 </a>
 
 <style>
-    #{{ game.title | slugify }}-preview:hover .listed-game-preview-img {
-        {% assign index = game.screenshots.size | minus: 1 %}
-        {% assign split_screenshot = game.screenshots[index] | split: "." %}
+    {% if game.screenshots.size > 1 %}
+        #{{ game.title | slugify }}-preview:hover .listed-game-preview-img {
+            {% assign index = game.screenshots.size | minus: 1 %}
+            {% assign split_screenshot = game.screenshots[index] | split: "." %}
 
-        {% if fallback_hover_image %}
-            {% if split_screenshot[1] == "webm" || game.webm_hover_enabled %}
-                background-image: url("{{site.stage_path}}{{game.stage_game_path}}images/{{split_screenshot[0]}}.gif") !important;
-            {% else %}
-                background-image: url("{{site.stage_path}}{{game.stage_game_path}}images/{{game.screenshots[index]}}") !important;
+            {% if fallback_hover_image %}
+                {% if split_screenshot[1] == "webm" || game.webm_hover_enabled %}
+                    background-image: url("{{site.stage_path}}{{game.stage_game_path}}images/{{split_screenshot[0]}}.gif") !important;
+                {% else %}
+                    background-image: url("{{site.stage_path}}{{game.stage_game_path}}images/{{game.screenshots[index]}}") !important;
+                {% endif %}
             {% endif %}
-        {% endif %}
-    }
+        }
+    {% endif %}
 </style>
