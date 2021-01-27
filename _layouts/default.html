@@ -23,6 +23,8 @@
 	<meta property="og:url" content="{{ site.url }}{{ page.url }}">
 	{% if page.thumbnail %}
 		<meta property="og:image" content="{{site.stage_path}}{{page.stage_game_path}}images/{{page.thumbnail}}">
+	{% elsif page.profile_pic %}
+		<meta property="og:image" content="{{site.stage_path}}Members/images/{{page.profile_pic}}">
 	{% else %}
 		<meta property="og:image" content="{{ site.url }}/images/official_no_back_white.png">
 	{% endif %}
