@@ -8,7 +8,7 @@ collections:
         permalink: /members/:title
 
 # The path to the stage directory in the gcs server, where builds are hosted
-stage_path: http://stage.gamecreation.org/
+stage_path: https://stage.gamecreation.org/
 
 # Tags used for filtering games
 game_tags: [
