@@ -9,13 +9,23 @@
 	<meta name="author" content="Game Creation Society">
 	{% if page.description %}
 		<meta name="description" content="{{ page.description | strip_html }}">
+		<meta property="og:description" content="{{ page.description | strip_html }}">
 	{% elsif page.bio %}
 		<meta name="description" content="{{ page.bio | strip_html }}">
+		<meta property="og:description" content="{{ page.bio | strip_html }}">
 	{% else %}
 		<meta name="description" content="{{ page.meta-description | strip_html }}">
+		<meta property="og:description" content="{{ page.meta-description | strip_html }}">
 	{% endif %}
 	<meta name="keywords" content="game, games, game creation, gamemaking, game making, unity, unreal, student, students, college, cmu, carnegie mellon, carnegie mellon university, game creation society, gcs">
 	<meta name="theme-color" content="#b12d36">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+	{% if page.thumbnail %}
+		<meta property="og:image" content="{{site.stage_path}}{{page.stage_game_path}}images/{{page.thumbnail}}">
+	{% else %}
+		<meta property="og:image" content="{{ site.url }}/images/official_no_back_white.png">
+	{% endif %}
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131154366-1"></script>
 	<script src="/scripts/analytics.js"></script>
@@ -30,6 +40,7 @@
 	<link rel="stylesheet" href="/styles/fonts.css">
 	<!-- Title -->
 	<title>{{ page.title }} | Game Creation Society</title>
+	<meta property="og:title" content="{{ page.title }} | Game Creation Society">
 </head>
 
 <body>
