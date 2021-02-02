@@ -223,14 +223,66 @@ body {
     box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.25);
 }
 
-#header-scope-creep {
+#header-scope-creep-container {
     display: inline-block;
     float: left;
-
+    position: relative;
     height: 80%;
     padding: 3px;
     margin-top: 0.5em;
     margin-left: 1em;
+}
+
+#header-scope-creep {
+    height: 100%;
+}
+
+@keyframes flippy {
+    0% {
+        transform: rotate(0deg);
+    }
+    15% {
+        transform: rotate(0deg);
+    }
+    85% {
+        transform: rotate(-360deg);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes jumpy {
+    0% {
+        transform: translateY(0%) scaleY(100%);
+        animation-timing-function: linear;
+    }
+    3% {
+        transform: translateY(25%) scaleY(50%);
+        animation-timing-function: cubic-bezier(1,0,0,1);
+    }
+    47% {
+        transform: translateY(-50%) scaleY(100%);
+        animation-timing-function: cubic-bezier(1,0,0,1);
+    }
+    53% {
+        transform: translateY(-50%) scaleY(100%);
+        animation-timing-function: cubic-bezier(1,0,0,1);
+    }
+    93% {
+        transform: translateY(25%) scaleY(50%);
+        animation-timing-function: linear;
+    }
+    100% {
+        transform: translateY(0%) scaleY(100%);
+    }
+}
+
+#hacky-input:checked + label #header-scope-creep {
+    animation: flippy .8s 1;    
+}
+#hacky-input:checked + label #header-scope-creep-container {
+    animation: jumpy .8s 1; 
 }
 
 /* Uncomment this if you make the Scope Creep a link again
