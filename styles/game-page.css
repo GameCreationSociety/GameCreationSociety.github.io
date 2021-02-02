@@ -70,6 +70,9 @@
 	text-shadow: 2px 2px black;
 	background-color: #FFFFFF20;
 	border-radius: 0.5em;
+
+	/* Prevents the Game-Jam tag from breaking due to Jekyll parsing whitespace */
+	white-space: nowrap;
 }
 
 #game-awards-container {
