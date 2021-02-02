@@ -223,7 +223,7 @@ body {
     box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.25);
 }
 
-#header-scope-creep-container {
+#header-scope-creep-container{
     display: inline-block;
     float: left;
     position: relative;
@@ -234,6 +234,7 @@ body {
 }
 
 #header-scope-creep {
+    display: inline-block;
     height: 100%;
 }
 
@@ -254,27 +255,27 @@ body {
 
 @keyframes jumpy {
     0% {
-        transform: translateY(0%) scaleY(100%);
+        transform: translateY(0%) scaleY(1);
         animation-timing-function: linear;
     }
     3% {
-        transform: translateY(25%) scaleY(50%);
+        transform: translateY(25%) scaleY(.5);
         animation-timing-function: cubic-bezier(1,0,0,1);
     }
     47% {
-        transform: translateY(-50%) scaleY(100%);
+        transform: translateY(-50%) scaleY(1);
         animation-timing-function: cubic-bezier(1,0,0,1);
     }
     53% {
-        transform: translateY(-50%) scaleY(100%);
+        transform: translateY(-50%) scaleY(1);
         animation-timing-function: cubic-bezier(1,0,0,1);
     }
     93% {
-        transform: translateY(25%) scaleY(50%);
+        transform: translateY(25%) scaleY(.5);
         animation-timing-function: linear;
     }
     100% {
-        transform: translateY(0%) scaleY(100%);
+        transform: translateY(0%) scaleY(1);
     }
 }
 
