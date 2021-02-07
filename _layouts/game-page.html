@@ -147,6 +147,9 @@ window.addEventListener('DOMContentLoaded',function(){
                     <!-- "Itch.io" denotes a game that is hosted on Itch.io (i.e. Implicitus). This requires an absolute link to an Itch.io page. -->
                     {% elsif build[0] == "Itch.io" %}
                     <a href="http://{{ build[1] }}">Play on Itch.io</a><br>
+                    <!-- "iOS" and "Android" denotes a game that is available for download from the App Store and Google Play store respectively (i.e. Pair of Hearts). -->
+                    {% elsif build[0] == "iOS" or build[0] == "Android" %}
+                    <a href="http://{{ build[1] }}">Download for {{ build[0] }}</a><br>
                     <!-- Blanket else for every other game type. -->
                     {% else %}
                     For {{ build[0] }} | <a href="{{ site.stage_path }}{{ page.stage_game_path }}{{ build[1] }}">Download</a><br>
