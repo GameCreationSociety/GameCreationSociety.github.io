@@ -1,4 +1,19 @@
 <!-- Listed game display -->
+
+<!-- First, determine what the hover image should be (if any) -->
+{% assign hover_img = nil %}
+{% if game.screenshots.size > 0 %}
+    {% assign index = game.screenshots.size | minus: 1 %}
+    {% assign split_screenshot = game.screenshots[index] | split: "." %}
+
+    {% if split_screenshot[1] == "webm" || game.webm_hover_enabled %}
+        {% assign hover_img = site.stage_path | append: game.stage_game_path | append: "images/" | append: split_screenshot[0] | append: ".gif" %}
+    {% else %}
+        {% assign hover_img = site.stage_path | append: game.stage_game_path | append: "images/" | append: game.screenshots[index] %}
+    {% endif %}
+{% endif %}
+
+<!-- The display itself -->
 <a class="listed-game-preview listed_game ml-1 mr-1
 {% for tag in game.tags %} {{ tag }}_game-tag {% endfor %}
 {% if game.awards and game.awards.size > 0 %} Award-Winning_game-tag {% endif %}"
@@ -20,27 +35,33 @@
         {% endif %}
     {% endif %}>
     </div>
-    <div id="{{game.title | remove: ' '}}_div" class="listed-game-preview-overlay">
+    <div style="display:none"><img id="{{ game.title | slugify }}_hover_preload" src="{{hover_img}}"></div>
+    <div id="{{ game.title | slugify }}_div" class="listed-game-preview-overlay">
         <h5 class="game_title"><strong>{{ game.title }}</strong></h5>
         <p class="game_semester_year">{{game.semester}} {{game.year}}</p>
         {% for member in game.project_members %}
             <p class="game_members" style="display:none">{{member[0]}}</p>
         {% endfor %}
-        <!--p class= "game_members" style="display:none">{{ game.project_members }}</p-->
+        <!-- Stripped-down description that doesn't display (this is for searching) -->
+        <p class="game_description" style="display:none">{{game.description | newline_to_br | strip_html | strip_newlines | strip | replace: '"', ''}}</p>
     </div>
     
     <!-- Preload the on-hover screenshot -->
-    <!-- Also manually add in a stripped-down description that doesn't display (this is for searching) -->
     <script type="text/javascript">
-        // Create description element and set properties
-        var desc = document.createElement("p");
-        desc.className = "game_description";
-        desc.style.display = "none";
+        function once_loaded() {
+            document.getElementById("{{ game.title | slugify }}-preview-child").classList.add("hover-img-loaded");
+        }
 
-        // Filter and strip text and then add it to a div
-        var text = "{{game.description | newline_to_br | strip_html | strip_newlines | strip | replace: '"', ''}}";
-        desc.appendChild(document.createTextNode(text));
-        document.getElementById("{{game.title | remove: ' '}}_div").appendChild(desc);
+        var img = document.getElementById("{{ game.title | slugify }}_hover_preload");
+        if (img.complete) {
+            once_loaded();
+        } else {
+            img.addEventListener('load', once_loaded);
+            img.addEventListener('error', function() {
+                console.error("failed to load hover image:");
+                console.error(img);
+            });
+        }
 
         // https://stackoverflow.com/questions/9847580/how-to-detect-safari-chrome-ie-firefox-and-opera-browser
 
@@ -80,19 +101,15 @@
     </script>
 </a>
 
+{% if hover_img %}
 <style>
-    {% if game.screenshots.size > 1 %}
-        #{{ game.title | slugify }}-preview:hover .listed-game-preview-img {
+        #{{ game.title | slugify }}-preview:hover .listed-game-preview-img.hover-img-loaded {
             {% assign index = game.screenshots.size | minus: 1 %}
             {% assign split_screenshot = game.screenshots[index] | split: "." %}
 
             {% if fallback_hover_image %}
-                {% if split_screenshot[1] == "webm" || game.webm_hover_enabled %}
-                    background-image: url("{{site.stage_path}}{{game.stage_game_path}}images/{{split_screenshot[0]}}.gif") !important;
-                {% else %}
-                    background-image: url("{{site.stage_path}}{{game.stage_game_path}}images/{{game.screenshots[index]}}") !important;
-                {% endif %}
+                background-image: url("{{hover_img}}") !important;
             {% endif %}
         }
-    {% endif %}
 </style>
+{% endif %}
