@@ -13,6 +13,12 @@
     {% endif %}
 {% endif %}
 
+<!-- A macro to toggle the hover image preload system.
+  -- If enabled, it will preload the hover image for each listed game, BUT not apply the hover style until the image has loaded.
+  -- This avoids the thumbnail appearing white when you mouse over it but it hasn't loaded yet.
+  -->
+{% assign hover_img_preload = true %}
+
 <!-- The display itself -->
 <a class="listed-game-preview listed_game ml-1 mr-1
 {% for tag in game.tags %} {{ tag }}_game-tag {% endfor %}
@@ -35,7 +41,9 @@
         {% endif %}
     {% endif %}>
     </div>
-    <div style="display:none"><img id="{{ game.title | slugify }}_hover_preload" src="{{hover_img}}"></div>
+    {% if hover_img_preload %}
+        <div style="display:none"><img id="{{ game.title | slugify }}_hover_preload" src="{{hover_img}}"></div>
+    {% endif %}
     <div id="{{ game.title | slugify }}_div" class="listed-game-preview-overlay">
         <h5 class="game_title"><strong>{{ game.title }}</strong></h5>
         <p class="game_semester_year">{{game.semester}} {{game.year}}</p>
@@ -48,20 +56,22 @@
     
     <!-- Preload the on-hover screenshot -->
     <script type="text/javascript">
-        function once_loaded() {
-            document.getElementById("{{ game.title | slugify }}-preview-child").classList.add("hover-img-loaded");
-        }
+        {% if hover_img_preload %}
+            function once_loaded() {
+                document.getElementById("{{ game.title | slugify }}-preview-child").classList.add("hover-img-loaded");
+            }
 
-        var img = document.getElementById("{{ game.title | slugify }}_hover_preload");
-        if (img.complete) {
-            once_loaded();
-        } else {
-            img.addEventListener('load', once_loaded);
-            img.addEventListener('error', function() {
-                console.error("failed to load hover image:");
-                console.error(img);
-            });
-        }
+            var img = document.getElementById("{{ game.title | slugify }}_hover_preload");
+            if (img.complete) {
+                once_loaded();
+            } else {
+                img.addEventListener('load', once_loaded);
+                img.addEventListener('error', function() {
+                    console.error("failed to load hover image:");
+                    console.error(img);
+                });
+            }
+        {% endif %}
 
         // https://stackoverflow.com/questions/9847580/how-to-detect-safari-chrome-ie-firefox-and-opera-browser
 
@@ -103,13 +113,17 @@
 
 {% if hover_img %}
 <style>
-        #{{ game.title | slugify }}-preview:hover .listed-game-preview-img.hover-img-loaded {
-            {% assign index = game.screenshots.size | minus: 1 %}
-            {% assign split_screenshot = game.screenshots[index] | split: "." %}
+    {% if hover_img_preload %}
+    #{{ game.title | slugify }}-preview:hover .listed-game-preview-img.hover-img-loaded {
+    {% else %}
+    #{{ game.title | slugify }}-preview:hover .listed-game-preview-img {
+    {% endif %}
+        {% assign index = game.screenshots.size | minus: 1 %}
+        {% assign split_screenshot = game.screenshots[index] | split: "." %}
 
-            {% if fallback_hover_image %}
-                background-image: url("{{hover_img}}") !important;
-            {% endif %}
-        }
+        {% if fallback_hover_image %}
+            background-image: url("{{hover_img}}") !important;
+        {% endif %}
+    }
 </style>
 {% endif %}
