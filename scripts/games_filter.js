@@ -82,7 +82,7 @@ function update_games_filter() {
         }
 
         // Added: Disable games which don't match search conditions if there are any
-        var search_terms = element[0].children[1].children;
+        var search_terms = element[0].querySelector('.listed-game-preview-overlay').children;
         var title = search_terms[0].textContent.toUpperCase();
         var members = [];
         var count = 2;
@@ -93,10 +93,13 @@ function update_games_filter() {
         var desc = search_terms[search_terms.length - 1].textContent.toUpperCase();
 
         // Convert the term to all uppercase and compare it to the search terms
-        term = $('#search').val().toUpperCase();
-        if (!(title.includes(term) || members.includes(term) || desc.includes(term))) {
-            element.css("display", "none");
-            return;
+        var terms = $('#search').val().toUpperCase().split(' ');
+        for (let i=0; i < terms.length; i++) {
+            let term = terms[i];
+            if (!(title.includes(term) || members.includes(term) || desc.includes(term))) {
+                element.css("display", "none");
+                return;
+            }
         }
         element.css("display", "block");
         num_games_found++;
