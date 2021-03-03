@@ -36,7 +36,11 @@ function convert(filename, alt_text, element_id, parent_element_id, is_game=fals
 			elementToAppend.src = appendString + ".gif"
 			elementToAppend.id = element_id;
 
-			parent.appendChild(elementToAppend);
+			if (parent) {
+				parent.appendChild(elementToAppend);
+			} else {
+				console.warn("Can't find element with Id: " + parent_element_id + " for convert() in img-converter.js");
+			}
 		}
 	}
 	else if (base_ext == "webm") {
@@ -65,7 +69,11 @@ function convert(filename, alt_text, element_id, parent_element_id, is_game=fals
 		elementToAppend.id = element_id;
 
 		var parent = document.getElementById(parent_element_id);
-		parent.appendChild(elementToAppend);
+		if (parent) {
+			parent.appendChild(elementToAppend);
+		} else {
+			console.warn("Can't find element with Id: " + parent_element_id + " for convert() in img-converter.js");
+		}
 	}
 }
 

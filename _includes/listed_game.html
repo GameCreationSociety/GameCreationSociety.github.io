@@ -44,7 +44,7 @@
     {% if hover_img_preload %}
         <div style="display:none"><img id="{{ game.title | slugify }}_hover_preload" src="{{hover_img}}"></div>
     {% endif %}
-    <div id="{{ game.title | slugify }}_div" class="listed-game-preview-overlay">
+    <div id="{{ game.title | remove: ' ' }}_div" class="listed-game-preview-overlay">
         <h5 class="game_title"><strong>{{ game.title }}</strong></h5>
         <p class="game_semester_year">{{game.semester}} {{game.year}}</p>
         {% for member in game.project_members %}
