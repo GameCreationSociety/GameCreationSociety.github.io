@@ -161,22 +161,18 @@ noHeaderMargin: false
         {% if page.sort_by == "oldest" %}
             {% assign games_sorted = year.items | sort: "semester" | reverse %}
         {% endif %}
+        {% if page.name_id %}
+            {% assign member_string = page.title | append: " " %}
+            {% assign member_string = member_string | append: page.name_id %}
+        {% else %}
+            {% assign member_string = page.title %}
+        {% endif %}
         {% for game in games_sorted %}
-            {% for member in game.project_members %}
-
-            {% if page.name_id %}
-                {% assign member_string = page.title | append: " " %}
-                {% assign member_string = member_string | append: page.name_id %}
-            {% else %}
-                {% assign member_string = page.title %}
-            {% endif %}
-            
-            {% if member[0] == member_string %}
+            {% assign game_members = game.project_members %}
+            {% if game_members contains member_string %}
                 {% include listed_game.html %}
                 <!-- See listed_game.html for the formatting of each game listed -->
-                {% break %}
             {% endif %}
-            {% endfor %}
         {% endfor %}
     {% endfor %}
 </div>
