@@ -73,138 +73,79 @@ window.addEventListener('DOMContentLoaded',function(){
 
     <div class="row no-margin">
         {% if page.builds.size == 0 %}
-        <div class="game-content-section col-md-6 col-sm-6 col-12">
-            <!-- About -->
-            <h2>About</h2>
-            <p>{{ page.description }}</p>
-
-            {% if page.build_instructions %}
-            <h3>Instructions</h3>
-            <p>{{ page.build_instructions }}</p>
-            {% endif %}
-        </div>
-        <div class="game-content-section col-md-6 col-sm-6 col-12">
-            <!-- Project Members -->
-            <h2>Project Members</h2>
-            <p>
-                {% for member in page.project_members %}
-                    {% for site_member in site.members %}
-
-                        <!-- The asterisk allows someone to have multiple credits on a single project (i.e. Game Bytes) but we want to remove it -->
-                        
-                        {% if site_member.name_id %}
-                            {% assign member_string = member[0] | remove: "*" | remove: site_member.name_id | rstrip %}
-                            {% assign member_match_string = site_member.title | append: " " | append: site_member.name_id %}
-                        {% else %}
-                            {% assign member_string = member[0] | remove: "*" %}
-                            {% assign member_match_string = site_member.title %}
-                        {% endif %}
-
-                        {% assign single_member = member[0] | remove: "*" %}
-                        
-                        {% if single_member == member_match_string %}
-                            <a href="{{site_member.url}}">{{ member_string }}</a> - <i>{{ member[1] }}</i><br>
-                            {% assign found = true %}
-                            {% break %}
-                        {% endif %}
-                    {% endfor %}
-                    {% if found != true %}
-                        {% if member[1] == "first" %}
-                            <h3>{{ member[0] }}</h3>
-                        {% elsif member[1] == "" %}
-                            <br/><h3>{{ member[0] }}</h3>
-                        {% else %}
-                            {{ member[0] }} - <i>{{ member[1] }}</i><br>
-                        {% endif %}
-                    {% endif %}
-                    {% assign found = false %}
-                {% endfor %}
-            </p>
-        </div>
+            {% assign other_column_width = "col-md-6"%}
         {% else %}
-        <div class="game-content-section col-md-4 col-sm-6 col-12">
+            {% assign other_column_width = "col-md-4"%}
+        {% endif %}
+        <div class="game-content-section {{other_column_width}} col-sm-6 col-12">
             <!-- About -->
             <h2>About</h2>
             <p>{{ page.description }}</p>
         </div>
-        <div class="game-content-section col-md-4 col-sm-6 col-12">
-            <!-- Builds -->
-            <h2>Play</h2>
-            <p>
-                {% for build in page.builds %}
-                    <!-- "Web" denotes a game that is already built and hosted on the GCS server, through WebGl or similar means (i.e. Pair of Hearts). -->
-                    {% if build[0] == "Web" %}
-                    <a href="{{ site.stage_path }}{{ page.stage_game_path }}{{ build[1] }}">Play Online</a><br>
-                    <!-- "Web HTML" denotes a game that is hosted on the site, but isn't WebGL and has its own dedicated HTML page (i.e., Reverse No). The argument specified must be the name of the HTML file present in the play folder in the root-level directory of the repo. -->
-                    {% elsif build[0] == "Web HTML" %}
-                    <a href="../play/{{ build[1] }}">Play Online</a><br>
-                    <!-- "Web Player" denotes an older game that requires the deprecated Unity Web Player to run (i.e. Bleat Beater). This should never be used for new games. -->
-                    {% elsif build[0] == "Web Player" %}
-                    <a href="{{ site.stage_path }}{{ page.stage_game_path }}{{ build[1] }}">Play Online (Unity Web Player Required)</a><br>
-                    <!-- "Web Zip" denotes a game that can theoretically be played via web, but can only be downloaded via zip file (i.e. Battery Assault). This should never be used for newer games. -->
-                    {% elsif build[0] == "Web Zip" %}
-                    Web Zip | <a href="{{ site.stage_path }}{{ page.stage_game_path }}{{ build[1] }}">Download</a><br>
-                    <!-- "Itch.io" denotes a game that is hosted on Itch.io (i.e. Implicitus). This requires an absolute link to an Itch.io page. -->
-                    {% elsif build[0] == "Itch.io" %}
-                    <a href="http://{{ build[1] }}">Play on Itch.io</a><br>
-                    <!-- "iOS" and "Android" denotes a game that is available for download from the App Store and Google Play store respectively (i.e. Pair of Hearts). -->
-                    {% elsif build[0] == "iOS" or build[0] == "Android" %}
-                    <a href="http://{{ build[1] }}">Download for {{ build[0] }}</a><br>
-                    <!-- Blanket else for every other game type. -->
-                    {% else %}
-                    For {{ build[0] }} | <a href="{{ site.stage_path }}{{ page.stage_game_path }}{{ build[1] }}">Download</a><br>
-                    {% endif %}
-                {% endfor %}
-            </p>
-            {% if page.build_instructions %}
-            <h3>Instructions</h3>
-            <p>{{ page.build_instructions }}</p>
-            {% endif %}
-            {% if page.extra_content %}
-            <h3>Extra Content</h3>
-            <p>{{ page.extra_content }}</p>
-            {% endif %}
-        </div>
-        <div class="game-content-section col-md-4 col-sm-6 col-12">
+        {% if page.builds.size > 0 %}
+            <div class="game-content-section col-md-4 col-sm-6 col-12">
+                <!-- Builds -->
+                <h2>Play</h2>
+                <p>
+                    {% for build in page.builds %}
+                        {% case build_type %}
+                            <!-- "Web" denotes a game that is already built and hosted on the GCS server, through WebGl or similar means (i.e. Pair of Hearts). -->
+                            {% when "Web" %}
+                                <a href="{{ site.stage_path }}{{ page.stage_game_path }}{{ build[1] }}">Play Online</a><br>
+                            <!-- "Web HTML" denotes a game that is hosted on the site, but isn't WebGL and has its own dedicated HTML page (i.e., Reverse No). The argument specified must be the name of the HTML file present in the play folder in the root-level directory of the repo. -->
+                            {% when "Web HTML" %}
+                                <a href="../play/{{ build[1] }}">Play Online</a><br>
+                            <!-- "Web Player" denotes an older game that requires the deprecated Unity Web Player to run (i.e. Bleat Beater). This should never be used for new games. -->
+                            {% when "Web Player" %}
+                                <a href="{{ site.stage_path }}{{ page.stage_game_path }}{{ build[1] }}">Play Online (Unity Web Player Required)</a><br>
+                            <!-- "Web Zip" denotes a game that can theoretically be played via web, but can only be downloaded via zip file (i.e. Battery Assault). This should never be used for newer games. -->
+                            {% when "Web Zip" %}
+                                Web Zip | <a href="{{ site.stage_path }}{{ page.stage_game_path }}{{ build[1] }}">Download</a><br>
+                            <!-- "Itch.io" denotes a game that is hosted on Itch.io (i.e. Implicitus). This requires an absolute link to an Itch.io page. -->
+                            {% when "Itch.io" %}
+                                <a href="http://{{ build[1] }}">Play on Itch.io</a><br>
+                            <!-- "iOS" and "Android" denotes a game that is available for download from the App Store and Google Play store respectively (i.e. Pair of Hearts). -->
+                            {% when "iOS", "Android" %}
+                                <a href="http://{{ build[1] }}">Download for {{ build[0] }}</a><br>
+                            <!-- Blanket else for every other game type. -->
+                            {% else %}
+                                For {{ build[0] }} | <a href="{{ site.stage_path }}{{ page.stage_game_path }}{{ build[1] }}">Download</a><br>
+                        {% endcase %}
+                    {% endfor %}
+                </p>
+                {% if page.build_instructions %}
+                <h3>Instructions</h3>
+                <p>{{ page.build_instructions }}</p>
+                {% endif %}
+                {% if page.extra_content %}
+                <h3>Extra Content</h3>
+                <p>{{ page.extra_content }}</p>
+                {% endif %}
+            </div>
+        {% endif %}
+        <div class="game-content-section {{other_column_width}} col-sm-6 col-12">
             <!-- Project Members -->
             <h2>Project Members</h2>
+            {% assign member_pages = site.members | map: "url" %}
             <p>
                 {% for member in page.project_members %}
-                    {% for site_member in site.members %}
-
-                        <!-- The asterisk allows someone to have multiple credits on a single project (i.e. Game Bytes) but we want to remove it -->
-                        <!-- This might also be kind of computationally expensive but it's basically the only way to account for participating in multiple games on one page or having the same name as someone else -->
-
-                        {% if site_member.name_id %}
-                            {% assign member_string = member[0] | remove: "*" | remove: site_member.name_id | rstrip %}
-                            {% assign member_match_string = site_member.title | append: " " | append: site_member.name_id %}
-                        {% else %}
-                            {% assign member_string = member[0] | remove: "*" %}
-                            {% assign member_match_string = site_member.title %}
-                        {% endif %}
-
-                        {% assign single_member = member[0] | remove: "*" %}
-
-                        {% if single_member == member_match_string %}
-                            <a href="{{site_member.url}}">{{ member_string }}</a> - <i>{{ member[1] }}</i><br>
-                            {% assign found = true %}
-                            {% break %}
-                        {% endif %}
-                    {% endfor %}
-                    {% if found != true %}
+                    {% assign member_match_string = member[0] | remove: " " | remove: "*" | rstrip | prepend: "/members/" %}
+                    <!-- Removes numeric characters (the member name ID). Please replace this if they ever add a better filter for removing numbers...-->
+                    {% assign member_display_name = member[0] | remove: "*" | remove: "0" | remove: "1" | remove: "2" | remove: "3" | remove: "4" | remove: "5" | remove: "6" | remove: "7" | remove: "8" | remove: "9" | rstrip %}
+                    {% if member_pages contains member_match_string %}
+                        <a href="{{member_match_string}}">{{ member_display_name }}</a> - <i>{{ member[1] }}</i><br>
+                    {% else %}
                         {% if member[1] == "first" %}
                             <h3>{{ member[0] }}</h3>
                         {% elsif member[1] == "" %}
                             <br/><h3>{{ member[0] }}</h3>
                         {% else %}
-                            {{ member[0] }} - <i>{{ member[1] }}</i><br>
+                            {{ member_display_name }} - <i>{{ member[1] }}</i><br>
                         {% endif %}
                     {% endif %}
-                    {% assign found = false %}
                 {% endfor %}
             </p>
         </div>
-        {% endif %}
     </div>
 
     <!-- Screenshots -->
