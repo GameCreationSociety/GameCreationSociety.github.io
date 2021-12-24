@@ -28,7 +28,7 @@ meta-description: "We thrive as a club thanks to the many talented CMU students 
 {% for game in site.games %}
     {% for creator in game.project_members %}
         {% if creator[1] != "first" and creator[1] != "" %}
-            {% assign newCreator = creator[0] | split: '_' %}
+            {% assign newCreator = creator[0] | remove: "*" | split: '_' %}
             {% assign creators = creators | concat: newCreator %}
         {% endif %}
     {% endfor %}
