@@ -129,9 +129,19 @@ window.addEventListener('DOMContentLoaded',function(){
             {% assign member_pages = site.members | map: "url" %}
             <p>
                 {% for member in page.project_members %}
-                    {% assign member_match_string = member[0] | remove: " " | remove: "*" | rstrip | prepend: "/members/" %}
+                    {% assign member_match_string = member[0] | remove: " " | remove: "*" | rstrip %}
+                    {% assign firstpart = member_match_string | split: "(" | first %}
+                    {% assign lastpart = member_match_string | split: ")" | last %}
+                    {% if firstpart == lastpart %}
+                        {% assign member_match_string = member_match_string | prepend: "/members/" %}
+                    {% else %}
+                        {% assign member_match_string = firstpart | append: lastpart | prepend: "/members/" %}
+                    {% endif %}
+
                     <!-- Removes numeric characters (the member name ID). Please replace this if they ever add a better filter for removing numbers...-->
                     {% assign member_display_name = member[0] | remove: "*" | remove: "0" | remove: "1" | remove: "2" | remove: "3" | remove: "4" | remove: "5" | remove: "6" | remove: "7" | remove: "8" | remove: "9" | rstrip %}
+                    
+                    <p>member match string: {{member_match_string}}</p>
                     {% if member_pages contains member_match_string %}
                         <a href="{{member_match_string}}">{{ member_display_name }}</a> - <i>{{ member[1] }}</i><br>
                     {% else %}
