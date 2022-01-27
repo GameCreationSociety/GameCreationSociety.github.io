@@ -141,7 +141,7 @@ window.addEventListener('DOMContentLoaded',function(){
                     <!-- Removes numeric characters (the member name ID). Please replace this if they ever add a better filter for removing numbers...-->
                     {% assign member_display_name = member[0] | remove: "*" | remove: "0" | remove: "1" | remove: "2" | remove: "3" | remove: "4" | remove: "5" | remove: "6" | remove: "7" | remove: "8" | remove: "9" | rstrip %}
                     
-                    <p>member match string: {{member_match_string}}</p>
+                    <!-- <p>member match string: {{member_match_string}}</p> -->
                     {% if member_pages contains member_match_string %}
                         <a href="{{member_match_string}}">{{ member_display_name }}</a> - <i>{{ member[1] }}</i><br>
                     {% else %}
