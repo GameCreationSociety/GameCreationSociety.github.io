@@ -15,7 +15,7 @@ game_tags: [
     "Windows",                  "Mac",          "Linux",    "Web",   "Other",
     "Singleplayer",             "Multiplayer",
     "Controller-Compatible",    "VR",
-    "Game-Jam", "Unity", "Unreal"
+    "Game-Jam", "Unity", "Unreal", "iOS", "Android"
 ]
 
 # Plugins
