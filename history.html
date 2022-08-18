@@ -108,55 +108,62 @@ meta-description: "The Game Creation Society has been an active club at CMU sinc
 <div>
     <h2>Officer History</h2>
 
-    {% assign current_officers = site.members | where_exp: "member", "member.current_position" %}
-    {% assign previous_officers = site.members | where_exp: "member", "member.previous_positions" %}
+    <div class="row no-margin justify-content-center">
 
-    {% assign current_year = "now" | date: "%Y" | plus: 0 %}
+        {% assign current_officers = site.members | where_exp: "member", "member.current_position" %}
+        {% assign previous_officers = site.members | where_exp: "member", "member.previous_positions" %}
 
-    <h3>{{current_year}} (Current)</h3>
-    {% for officer in current_officers %}
-        {{ officer.current_position }}: <a href="{{officer.url}}">{{ officer.title }}</a><br>
-    {% endfor %}
+        {% assign current_year = "now" | date: "%Y" | plus: 0 %}
 
-    {% assign years = "" %}
+        <div class="col-sm-4 col-12">
+            <h3>{{current_year}} (Current)</h3>
+            {% for officer in current_officers %}
+                {{ officer.current_position }}: <a href="{{officer.url}}">{{ officer.title }}</a><br>
+            {% endfor %}
+        </div>
 
-    {% for officer in previous_officers %}
-        {% for position in officer.previous_positions %}
-            {% assign years = years | append: position[0] %}
-            {% assign years = years | append: "," %}
-        {% endfor %}
-    {% endfor %}
-
-    {% assign years = years | split: "," %}
-    {% assign other_years = "2006" | split: "," %}
-    {% assign years = years | concat: other_years %}
-
-    <!-- This is ugly, but it works (and unfortunately spacing does not work) -->
-    {% assign other_officers = "2004 (Spring)=Founder, Main Organizer: Curt Bererton|2004 (Spring)=Cofounder, Website Designer: Parhaum Toofanian|2004 (_Fall)=Meeting Minutes: Matt Sarnoff|2004 (_Fall)=Advertising: Jimi Okelana|2005=Meeting Minutes: Matt Sarnoff|2005=Server Administrator: Tom Cauchois:|2005=Advertising: Jimi Okelana|2006=General Manager: Roy Concepcion|2006=Chief Operating Officer: Matt Sarnoff|2006=Information & Access Admin: Andrew Fox|2006=Public Relations Lead: Robert Strickland|2006=Communications Admin: Jeff Baxendale|2007=General Manager: Raphael Mun|2007=Information & Access Admin: Andrew Fox|2007=Public Relations Lead: Diana Archer|2007=Communication Admin: Justin Lokey|2007=Chief Financial Officer: Henry Wladkowski|2008=President: Andrew Fox|2008=Systems Administrator: Geoff Cameron|2008=Public Relations Lead: Erin McCarty|2008=Treasurer: Adam Greene|2009=President: Kristin Siu|2009=Public Relations Lead: Sarah Scialli|2009=Communications Administrator: Susan Lin|2009=Systems Administrator: Dmitry Portnoy|2009=Treasurer: Kyle Neblett|2010=Director of Development: Duncan Boehle|2010=Public Relations Lead: Valeria Reznitskaya|2010=Systems Administrator: Billy Keyes|2010=Treasurer: Kyle Neblett|2011=Director of Development: Duncan Boehle|2011=Public Relations Lead: Valeria Reznitskaya|2011=System Administrator: Billy Keyes|2012=Systems Administrator: Timothy Vaughan|2012=Treasurer: Jane Threefoot|2013=Director of Development: Leon Zhang|2013=Public Relations Lead: Alex Moser|2013=Systems Administrator: Jane Threefoot|2013=Treasurer: Kim Lister|2014=President: MacKenzie Bates|2014=Director of Development: Cory Chang|2014=Public Relations Lead: Alex Moser|2014=Treasurer: Kim Lister|2015=Director of Development: John Choi|2015=Public Relations Lead: Madeline Duque|2015=Systems Administrator: Roger Liu|2015=Treasurer: Miranda Jacoby|2016=Public Relations Lead: Madeline Duque|2016=Systems Administrator: Roger Liu|2016=Treasurer: Miranda Jacoby"%}
-    
-    {% assign other_year_officers = other_officers | split: "|" %}
-
-    {% assign years = years | uniq | sort | reverse %}
-    {% for year in years %}
-        <h3>{{year | replace: "_", ""}}</h3>
+        {% assign years = "" %}
 
         {% for officer in previous_officers %}
             {% for position in officer.previous_positions %}
-                {% assign pos_yr = position[0] | lstrip | rstrip %}
-                {% assign s_year = year | lstrip | rstrip %}
-                {% if pos_yr == s_year %}
-                    {{ position[1] }}: <a href="{{officer.url}}">{{ officer.title }}</a><br>
-                {% endif %}
+                {% assign years = years | append: position[0] %}
+                {% assign years = years | append: "," %}
             {% endfor %}
         {% endfor %}
 
-        {% for other_year_data in other_year_officers %}
-            {% assign split_string = year | append: "=" %}
-            {% assign split_data = other_year_data | split: "=" %}
-            {% if split_data[0] == year %}
-                {{ split_data[1] }}<br>
-            {% endif %}
-        {% endfor %}
+        {% assign years = years | split: "," %}
+        {% assign other_years = "2006" | split: "," %}
+        {% assign years = years | concat: other_years %}
 
-    {% endfor %}
+        <!-- This is ugly, but it works (and unfortunately spacing does not work) -->
+        {% assign other_officers = "2004 (Spring)=Founder, Main Organizer: Curt Bererton|2004 (Spring)=Cofounder, Website Designer: Parhaum Toofanian|2004 (_Fall)=Meeting Minutes: Matt Sarnoff|2004 (_Fall)=Advertising: Jimi Okelana|2005=Meeting Minutes: Matt Sarnoff|2005=Server Administrator: Tom Cauchois:|2005=Advertising: Jimi Okelana|2006=General Manager: Roy Concepcion|2006=Chief Operating Officer: Matt Sarnoff|2006=Information & Access Admin: Andrew Fox|2006=Public Relations Lead: Robert Strickland|2006=Communications Admin: Jeff Baxendale|2007=General Manager: Raphael Mun|2007=Information & Access Admin: Andrew Fox|2007=Public Relations Lead: Diana Archer|2007=Communication Admin: Justin Lokey|2007=Chief Financial Officer: Henry Wladkowski|2008=President: Andrew Fox|2008=Systems Administrator: Geoff Cameron|2008=Public Relations Lead: Erin McCarty|2008=Treasurer: Adam Greene|2009=President: Kristin Siu|2009=Public Relations Lead: Sarah Scialli|2009=Communications Administrator: Susan Lin|2009=Systems Administrator: Dmitry Portnoy|2009=Treasurer: Kyle Neblett|2010=Director of Development: Duncan Boehle|2010=Public Relations Lead: Valeria Reznitskaya|2010=Systems Administrator: Billy Keyes|2010=Treasurer: Kyle Neblett|2011=Director of Development: Duncan Boehle|2011=Public Relations Lead: Valeria Reznitskaya|2011=System Administrator: Billy Keyes|2012=Systems Administrator: Timothy Vaughan|2012=Treasurer: Jane Threefoot|2013=Director of Development: Leon Zhang|2013=Public Relations Lead: Alex Moser|2013=Systems Administrator: Jane Threefoot|2013=Treasurer: Kim Lister|2014=President: MacKenzie Bates|2014=Director of Development: Cory Chang|2014=Public Relations Lead: Alex Moser|2014=Treasurer: Kim Lister|2015=Director of Development: John Choi|2015=Public Relations Lead: Madeline Duque|2015=Systems Administrator: Roger Liu|2015=Treasurer: Miranda Jacoby|2016=Public Relations Lead: Madeline Duque|2016=Systems Administrator: Roger Liu|2016=Treasurer: Miranda Jacoby"%}
+        
+        {% assign other_year_officers = other_officers | split: "|" %}
+
+        {% assign years = years | uniq | sort | reverse %}
+        {% for year in years %}
+
+        <div class="col-sm-4 col-12">
+            <h3>{{year | replace: "_", ""}}</h3>
+
+            {% for officer in previous_officers %}
+                {% for position in officer.previous_positions %}
+                    {% assign pos_yr = position[0] | lstrip | rstrip %}
+                    {% assign s_year = year | lstrip | rstrip %}
+                    {% if pos_yr == s_year %}
+                        {{ position[1] }}: <a href="{{officer.url}}">{{ officer.title }}</a><br>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+
+            {% for other_year_data in other_year_officers %}
+                {% assign split_string = year | append: "=" %}
+                {% assign split_data = other_year_data | split: "=" %}
+                {% if split_data[0] == year %}
+                    {{ split_data[1] }}<br>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
 </div>
