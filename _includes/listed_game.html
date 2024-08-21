@@ -7,9 +7,9 @@
     {% assign split_screenshot = game.screenshots[index] | split: "." %}
 
     {% if split_screenshot[1] == "webm" || game.webm_hover_enabled %}
-        {% assign hover_img = site.stage_path | append: game.stage_game_path | append: "images/" | append: split_screenshot[0] | append: ".gif" %}
+        {% assign hover_img = site.games_path | append: game.stage_game_path | append: "images/" | append: split_screenshot[0] | append: ".gif" %}
     {% else %}
-        {% assign hover_img = site.stage_path | append: game.stage_game_path | append: "images/" | append: game.screenshots[index] %}
+        {% assign hover_img = site.games_path | append: game.stage_game_path | append: "images/" | append: game.screenshots[index] %}
     {% endif %}
 {% endif %}
 
@@ -28,16 +28,16 @@
     {% if game.webp_preview_enabled %}
         {% if game.thumbnail %}
             {% assign split_name = game.thumbnail | split: "." %}
-            style="background-image: url('{{site.stage_path}}{{game.stage_game_path}}images/{{split_name[0]}}.webp')"
+            style="background-image: url('{{site.games_path}}{{game.stage_game_path}}images/{{split_name[0]}}.webp')"
         {% elsif game.screenshots.size > 0 %}
             {% assign split_name = game.screenshots[0] | split: "." %}
-            style="background-image: url('{{site.stage_path}}{{game.stage_game_path}}images/{{split_name[0]}}.webp')"
+            style="background-image: url('{{site.games_path}}{{game.stage_game_path}}images/{{split_name[0]}}.webp')"
         {% endif %}
     {% else %}
         {% if game.thumbnail %}
-            style="background-image: url('{{site.stage_path}}{{game.stage_game_path}}images/{{game.thumbnail}}')"
+            style="background-image: url('{{site.games_path}}{{game.stage_game_path}}images/{{game.thumbnail}}')"
         {% elsif game.screenshots.size > 0 %}
-            style="background-image: url('{{site.stage_path}}{{game.stage_game_path}}images/{{game.screenshots[0]}}')"
+            style="background-image: url('{{site.games_path}}{{game.stage_game_path}}images/{{game.screenshots[0]}}')"
         {% endif %}
     {% endif %}>
     </div>
@@ -89,24 +89,24 @@
         if (isOpera || isSafari || isIE) {
             {% assign fallback_hover_image = true %}
             {% if game.thumbnail %}
-                document.getElementById("{{ game.title | slugify }}-preview-child").style="background-image: url('{{site.stage_path}}{{game.stage_game_path}}images/{{game.thumbnail}}')";
+                document.getElementById("{{ game.title | slugify }}-preview-child").style="background-image: url('{{site.games_path}}{{game.stage_game_path}}images/{{game.thumbnail}}')";
                 /*var css = '#{{ game.title | slugify }}-preview:hover .listed-game-preview-img';
-                document.getElementById("{{ game.title | slugify }}-preview").style="background-image: url('{{site.stage_path}}{{game.stage_game_path}}images/{{game.screenshots[-1]}}')";*/
+                document.getElementById("{{ game.title | slugify }}-preview").style="background-image: url('{{site.games_path}}{{game.stage_game_path}}images/{{game.screenshots[-1]}}')";*/
             {% elsif game.screenshots.size > 0 %}
-                document.getElementById("{{ game.title | slugify }}-preview-child").style="background-image: url('{{site.stage_path}}{{game.stage_game_path}}images/{{game.screenshots[0]}}')";
+                document.getElementById("{{ game.title | slugify }}-preview-child").style="background-image: url('{{site.games_path}}{{game.stage_game_path}}images/{{game.screenshots[0]}}')";
             {% endif %}
         }
 
         {% assign index = game.screenshots.size | minus: 1 %}
         // Preloading
         /*preload(
-            "{{site.stage_path}}{{game.stage_game_path}}images/{{game.screenshots[index]}}"
+            "{{site.games_path}}{{game.stage_game_path}}images/{{game.screenshots[index]}}"
         )*/
 
         {% assign split_screenshot_string = game.screenshots[index] | split: "." %}
 
         {% if split_screenshot_string[1] == "webm" %}
-            convert("{{site.stage_path}}{{game.stage_game_path}}images/{{split_screenshot_string[0]}}", "{{game.title}}", "header-{{game.title | slugify}}", "{{ game.title | slugify }}-preview-child", true, "{{split_screenshot_string[1]}}");
+            convert("{{site.games_path}}{{game.stage_game_path}}images/{{split_screenshot_string[0]}}", "{{game.title}}", "header-{{game.title | slugify}}", "{{ game.title | slugify }}-preview-child", true, "{{split_screenshot_string[1]}}");
         {% endif %}
     </script>
 </a>

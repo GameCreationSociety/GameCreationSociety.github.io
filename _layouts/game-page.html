@@ -53,9 +53,9 @@ window.addEventListener('DOMContentLoaded',function(){
     {% endif %}
 
     {% if page.top-img %}
-        {% assign topImgSrc = site.stage_path | append: page.stage_game_path | append: "images/" | append: page.top-img %}
+        {% assign topImgSrc = site.games_path | append: page.stage_game_path | append: "images/" | append: page.top-img %}
     {% elsif page.screenshots.size > 0 %}
-        {% assign topImgSrc = site.stage_path | append: page.stage_game_path | append: "images/" | append: page.screenshots[0] %}
+        {% assign topImgSrc = site.games_path | append: page.stage_game_path | append: "images/" | append: page.screenshots[0] %}
     {% else %}
         {% assign topImgSrc = "/images/official_no_back.png" %}
     {% endif %}
@@ -91,16 +91,16 @@ window.addEventListener('DOMContentLoaded',function(){
                         {% case build[0] %}
                             <!-- "Web" denotes a game that is already built and hosted on the GCS server, through WebGl or similar means (i.e. Pair of Hearts). -->
                             {% when "Web" %}
-                                For Web | <a href="{{ site.stage_path }}{{ page.stage_game_path }}{{ build[1] }}">Play</a><br>
+                                For Web | <a href="{{ site.games_path }}{{ page.stage_game_path }}{{ build[1] }}">Play</a><br>
                             <!-- "Web HTML" denotes a game that is hosted on the site, but isn't WebGL and has its own dedicated HTML page (i.e., Reverse No). The argument specified must be the name of the HTML file present in the play folder in the root-level directory of the repo. -->
                             {% when "Web HTML" %}
                                 For Web | <a href="../play/{{ build[1] }}">Play</a><br>
                             <!-- "Web Player" denotes an older game that requires the deprecated Unity Web Player to run (i.e. Bleat Beater). This should never be used for new games. -->
                             {% when "Web Player" %}
-                                For Web | <a href="{{ site.stage_path }}{{ page.stage_game_path }}{{ build[1] }}">Play (Unity Web Player Required)</a><br>
+                                For Web | <a href="{{ site.games_path }}{{ page.stage_game_path }}{{ build[1] }}">Play (Unity Web Player Required)</a><br>
                             <!-- "Web Zip" denotes a game that can theoretically be played via web, but can only be downloaded via zip file (i.e. Battery Assault). This should never be used for newer games. -->
                             {% when "Web Zip" %}
-                                For Web | <a href="{{ site.stage_path }}{{ page.stage_game_path }}{{ build[1] }}">Download</a><br>
+                                For Web | <a href="{{ site.games_path }}{{ page.stage_game_path }}{{ build[1] }}">Download</a><br>
                             <!-- "Itch.io" denotes a game that is hosted on Itch.io (i.e. Implicitus). This requires an absolute link to an Itch.io page. -->
                             {% when "Itch.io" %}
                                 On Itch.io | <a href="http://{{ build[1] }}">Play</a><br>
@@ -109,7 +109,7 @@ window.addEventListener('DOMContentLoaded',function(){
                                 For {{ build[0] }} | <a href="http://{{ build[1] }}">Download</a><br>
                             <!-- Blanket else for every other game type. -->
                             {% else %}
-                                For {{ build[0] }} | <a href="{{ site.stage_path }}{{ page.stage_game_path }}{{ build[1] }}">Download</a><br>
+                                For {{ build[0] }} | <a href="{{ site.games_path }}{{ page.stage_game_path }}{{ build[1] }}">Download</a><br>
                         {% endcase %}
                     {% endfor %}
                 </p>
@@ -171,14 +171,14 @@ window.addEventListener('DOMContentLoaded',function(){
             {% assign split_screenshot_string = img | split: "." %}
             {% if split_screenshot_string[1] == "webm" %}
                 {% assign gif_screenshot_string = split_screenshot_string[0] | append: ".gif" %}
-                <a href="{{site.stage_path}}{{page.stage_game_path}}images/{{gif_screenshot_string}}" class="js-smartPhoto" data-caption="{{page.title}}" data-id="{{forloop.index}}" data-group="game">
-                    <img class="screenshot-thumbnail hover-shadow" src="{{site.stage_path}}{{page.stage_game_path}}images/{{gif_screenshot_string}}"  loading="lazy"/>
+                <a href="{{site.games_path}}{{page.stage_game_path}}images/{{gif_screenshot_string}}" class="js-smartPhoto" data-caption="{{page.title}}" data-id="{{forloop.index}}" data-group="game">
+                    <img class="screenshot-thumbnail hover-shadow" src="{{site.games_path}}{{page.stage_game_path}}images/{{gif_screenshot_string}}"  loading="lazy"/>
                     <!--video class="screenshot-thumbnail hover-shadow" autoplay loop>
-                        <source src="{{site.stage_path}}{{page.stage_game_path}}images/{{img}}" type="video/webm">
+                        <source src="{{site.games_path}}{{page.stage_game_path}}images/{{img}}" type="video/webm">
                     </video--> 
             {% else %}
-                <a href="{{site.stage_path}}{{page.stage_game_path}}images/{{img}}" class="js-smartPhoto" data-caption="{{page.title}}" data-id="{{forloop.index}}" data-group="game">
-                    <img class="screenshot-thumbnail hover-shadow" src="{{site.stage_path}}{{page.stage_game_path}}images/{{img}}"  loading="lazy"/>
+                <a href="{{site.games_path}}{{page.stage_game_path}}images/{{img}}" class="js-smartPhoto" data-caption="{{page.title}}" data-id="{{forloop.index}}" data-group="game">
+                    <img class="screenshot-thumbnail hover-shadow" src="{{site.games_path}}{{page.stage_game_path}}images/{{img}}"  loading="lazy"/>
             {% endif %}
             </a>
         </div>

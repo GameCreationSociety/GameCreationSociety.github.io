@@ -9,13 +9,18 @@ collections:
 
 # The path to the stage directory in the gcs server, where builds are hosted
 stage_path: https://stage.gamecreation.org/
+games_path: https://stage.gamecreation.org/games/
 
 # Tags used for filtering games
 game_tags: [
-    "Windows",                  "Mac",          "Linux",    "Web",   "Other",
-    "Singleplayer",             "Multiplayer",
-    "Controller-Compatible",    "VR",
-    "Game-Jam", "Unity", "Unreal", "iOS", "Android"
+    # Platform
+    "Windows", "Mac", "Linux", "Web", "iOS", "Android", "Board", "Other",
+    # Players
+    "Singleplayer", "Multiplayer",
+    # Engines
+    "Unity", "Unreal", "Godot",
+    # Extras
+    "Controller-Compatible", "VR", "Game-Jam", "Independent"
 ]
 
 # Plugins
