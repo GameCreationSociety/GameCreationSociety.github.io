@@ -14,13 +14,15 @@ games_path: https://stage.gamecreation.org/games/
 # Tags used for filtering games
 game_tags: [
     # Platform
-    "Windows", "Mac", "Linux", "Web", "iOS", "Android", "Board", "Other",
+    "Windows", "Mac", "Linux", "Web", "Flash", "iOS", "Android", "Other",
     # Players
     "Singleplayer", "Multiplayer",
     # Engines
-    "Unity", "Unreal", "Godot",
+    "Unity", "Unreal", "Godot", "Pygame", "Twine", "Board",
+    # Input methods
+    "Controller-Compatible", "VR", "Kinect",
     # Extras
-    "Controller-Compatible", "VR", "Game-Jam", "Independent"
+    "Game-Jam", "Independent"
 ]
 
 # Plugins

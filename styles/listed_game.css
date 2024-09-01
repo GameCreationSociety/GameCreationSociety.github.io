@@ -6,7 +6,7 @@
 .listed-game-preview-img {
     display: block;
     width: 100%;
-    padding-bottom: 75%; /* 4:3 aspect ratio */
+    padding-bottom: 60%; /* 5:3 aspect ratio for image */
 
     /* background-size: cover; */
     background-size: 100% 100%;
@@ -41,7 +41,7 @@
 .listed-game-preview {
     display: inline-block;
     position: relative;
-    max-width: 20em;
+    max-width: 18em;
     width: 100%;
 
     margin-top: 2em;
