@@ -3,11 +3,15 @@
 ---
 // Populate an array of all the game tags being used
 var game_tags = [
-    {% for tag in site.game_tags %}"{{ tag }}",{% endfor %}
+    {% for taglist in site.tag_lists %}
+    {% for tag in taglist.tags %}
+    "{{ tag }}",
+    {% endfor %}
+    {% endfor %}
 ]
 
 // Populate tags of other platforms from across the site
-var other_tags = [
+var other_tags_raw = [
     {% for game in site.games %}
         {% for tag in game.tags %}
             {% unless site.game_tags contains tag %}
@@ -20,7 +24,7 @@ var other_tags = [
 // Condense tag list to only be unique
 var other_platform_tags = [];
 
-for (tag of other_tags) {
+for (tag of other_tags_raw) {
     if (!other_platform_tags.includes(tag)) {
         other_platform_tags.push(tag);
     }
@@ -28,7 +32,7 @@ for (tag of other_tags) {
 
 // Add the update function as a listener
 $(function() {
-    $('.games_filter_checkbox').change(function() {
+    $('.filter_dropdown').change(function() {
         update_games_filter();
     });
     $('#search').on('input', function() {
@@ -36,19 +40,17 @@ $(function() {
     });
 });
 
-// This is called whenever a checkbox is switched.
-// It determines which tags are enabled and then
-// disables all listed games which do not have ALL of those tags.
+// Update listed games to match ALL tags requested
 function update_games_filter() {
     // Figure out which tags are enabled
     var applied_tags = [];
-    var checkboxes = $('.games_filter_checkbox');
+    var checkboxes = $('.filter_dropdown');
     checkboxes.each(function(index, box) {
-        if (box.checked || $(box).prop('checked')) {
-            var id = $(box).attr('id');
-            var class_to_keep = id.substring("tag_box_".length, id.length) + "_game-tag";
-            applied_tags.push(class_to_keep);
-        }
+        // if (box.checked || $(box).prop('checked')) {
+        //     var id = $(box).attr('id');
+        //     var class_to_keep = id.substring("tag_box_".length, id.length) + "_game-tag";
+        //     applied_tags.push(class_to_keep);
+        // }
     });
 
     // Disable all listed games which don't have ALL of those tags
@@ -108,7 +110,8 @@ function update_games_filter() {
     // Update the total number of games no_games_found
     var num_found_element = $('#number_of_games_found');
     if (num_games_found > 0) {
-        num_found_element.text(num_games_found + " games found!");
+        // num_found_element.text(num_games_found + " games found!");
+        num_found_element.html(game_tags + "\n" + other_platform_tags + "\n" + Math.random());
     } else {
         num_found_element.html("No games found :(<br>Try filtering with different tags!");
     }

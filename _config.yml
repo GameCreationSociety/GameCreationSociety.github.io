@@ -12,17 +12,32 @@ stage_path: https://stage.gamecreation.org/
 games_path: https://stage.gamecreation.org/games/
 
 # Tags used for filtering games
-game_tags: [
-    # Platform
-    "Windows", "Mac", "Linux", "Web", "Flash", "iOS", "Android", "Other",
-    # Players
-    "Singleplayer", "Multiplayer",
-    # Engines
-    "Unity", "Unreal", "Godot", "Pygame", "Twine", "Board",
-    # Input methods
-    "Controller-Compatible", "VR", "Kinect",
-    # Extras
-    "Game-Jam", "Independent"
+tag_lists: [
+    {
+        "id": "platform",
+        "name": "Platform",
+        "tags": ["Windows", "Mac", "Linux", "Web", "iOS", "Android", "Other"]
+    },
+    {
+        "id": "players",
+        "name": "Players",
+        "tags": ["Singleplayer", "Multiplayer"]
+    },
+    {
+        "id": "engine",
+        "name": "Engine",
+        "tags": ["Unity", "Unreal", "Godot", "Flash", "Pygame", "Twine", "Board"]
+    },
+    {
+        "id": "input_methods",
+        "name": "Input Methods",
+        "tags": ["Controller-Compatible", "VR", "Kinect"]
+    },
+    {
+        "id": "extras",
+        "name": "Extras",
+        "tags": ["Game-Jam", "Independent"]
+    }
 ]
 
 # Plugins
