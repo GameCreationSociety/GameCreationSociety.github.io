@@ -32,7 +32,7 @@ for (tag of other_tags_raw) {
 
 // Add the update function as a listener
 $(function() {
-    $('.filter_dropdown').change(function() {
+    $('.filter-dropdown').change(function() {
         update_games_filter();
     });
     $('#search').on('input', function() {
@@ -44,13 +44,16 @@ $(function() {
 function update_games_filter() {
     // Figure out which tags are enabled
     var applied_tags = [];
-    var checkboxes = $('.filter_dropdown');
-    checkboxes.each(function(index, box) {
-        // if (box.checked || $(box).prop('checked')) {
-        //     var id = $(box).attr('id');
-        //     var class_to_keep = id.substring("tag_box_".length, id.length) + "_game-tag";
-        //     applied_tags.push(class_to_keep);
-        // }
+    var dropdownDivs = $('.filter-dropdown');
+    var dropdowns = [];
+    dropdownDivs.each(function(index, dropdown) {
+        dropdowns.push(dropdown.childNodes.item(0));
+    });
+    dropdowns.each(function(index, dropdown) {
+        if (dropdown.selectedIndex > 0) {
+            var class_to_keep = dropdown.item(0).value + "_game-tag";
+            applied_tags.push(class_to_keep);
+        }
     });
 
     // Disable all listed games which don't have ALL of those tags
@@ -111,7 +114,7 @@ function update_games_filter() {
     var num_found_element = $('#number_of_games_found');
     if (num_games_found > 0) {
         // num_found_element.text(num_games_found + " games found!");
-        num_found_element.html(game_tags + "\n" + other_platform_tags + "\n" + Math.random());
+        num_found_element.html(dropdowns[0].value + "\n" + Math.random());
     } else {
         num_found_element.html("No games found :(<br>Try filtering with different tags!");
     }

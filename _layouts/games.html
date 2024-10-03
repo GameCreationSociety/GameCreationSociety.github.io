@@ -59,7 +59,7 @@ sort_by: newest
         <div class="filter-box">
             {{taglist.name}}<br />
             <div class="filter-dropdown">
-                <select name="dropdown_{{taglist.id}}" id="dropdown_{{taglist.id}}">
+                <select name="dropdown" id="dropdown_{{taglist.id}}">
                     <option value="All">All</option>
                     {% for tag in taglist.tags %}
                         <option value="{{tag}}">{{tag}}</option>
