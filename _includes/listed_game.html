@@ -22,7 +22,8 @@
 <!-- The display itself -->
 <a class="listed-game-preview listed_game ml-1 mr-1
 {% for tag in game.tags %} {{ tag }}_game-tag {% endfor %}
-{% if game.awards and game.awards.size > 0 %} Award-Winning_game-tag {% endif %}"
+{% for tag in game.awards %} {{ tag }}_award-tag {% endfor %}
+{% if game.awards and game.awards.size > 0 %} Award-Winning_award-tag {% endif %}"
   id="{{ game.title | slugify }}-preview" href="{{ game.url }}">
     <div id="{{ game.title | slugify }}-preview-child" class="listed-game-preview-img"
     {% if game.webp_preview_enabled %}

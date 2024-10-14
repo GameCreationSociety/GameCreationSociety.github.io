@@ -1,7 +1,7 @@
 ---
 # Front Matter
 ---
-// Populate an array of all the game tags being used
+// Populate an array of all the game tags being used by _config.yml
 var game_tags = [
     {% for taglist in site.tag_lists %}
     {% for tag in taglist.tags %}
@@ -10,25 +10,7 @@ var game_tags = [
     {% endfor %}
 ]
 
-// Populate tags of other platforms from across the site
-var other_tags_raw = [
-    {% for game in site.games %}
-        {% for tag in game.tags %}
-            {% unless site.game_tags contains tag %}
-            "{{ tag }}_game-tag",
-            {% endunless %}
-        {% endfor %}
-    {% endfor %}
-]
-
-// Condense tag list to only be unique
-var other_platform_tags = [];
-
-for (tag of other_tags_raw) {
-    if (!other_platform_tags.includes(tag)) {
-        other_platform_tags.push(tag);
-    }
-}
+var debug = ["Arcade", "Fighting", "Horror", "Party", "Platformer", "Puzzle", "Rhythm", "Rougelike", "RPG", "Shooter", "Strategy", "Visual-Novel"]
 
 // Add the update function as a listener
 $(function() {
@@ -47,14 +29,17 @@ function update_games_filter() {
     var dropdownDivs = $('.filter-dropdown');
     var dropdowns = [];
     dropdownDivs.each(function(index, dropdown) {
-        dropdowns.push(dropdown.childNodes.item(0));
+        // get the dropdown item
+        dropdowns.push(dropdown.childNodes.item(1));
     });
-    dropdowns.each(function(index, dropdown) {
+
+    for (var dropdown of dropdowns) {
         if (dropdown.selectedIndex > 0) {
-            var class_to_keep = dropdown.item(0).value + "_game-tag";
+            var tag = (dropdown.id == "dropdown_awards") ? "_award-tag" : "_game-tag";
+            var class_to_keep = dropdown.value + tag;
             applied_tags.push(class_to_keep);
         }
-    });
+    };
 
     // Disable all listed games which don't have ALL of those tags
     var games_listed = $('.listed_game');
@@ -65,24 +50,17 @@ function update_games_filter() {
         var length = applied_tags.length;
         for (var i=0; i < length; i++) {
             var class_to_keep = applied_tags[i];
-            if (!element.hasClass(class_to_keep)) {
-
-                // This is a very long check to see if other is selected and what to do if so
-                if (class_to_keep == "Other_game-tag") {
-                    var hasTag = false;
-                    for (tag of other_platform_tags) {
-                        if (element.hasClass(tag)) {
-                            hasTag = true;
-                        }
-                    }
-                    if (!hasTag) {
+            if (class_to_keep == "Untagged_game-tag") {
+                for (var g of debug) {
+                    if (element.hasClass(g + "_game-tag")) {
                         element.css("display", "none");
                         return;
                     }
-                } else {
-                    element.css("display", "none");
-                    return;
                 }
+            }
+            else if (!element.hasClass(class_to_keep)) {
+                element.css("display", "none");
+                return;
             }
         }
 
@@ -113,12 +91,12 @@ function update_games_filter() {
     // Update the total number of games no_games_found
     var num_found_element = $('#number_of_games_found');
     if (num_games_found > 0) {
-        // num_found_element.text(num_games_found + " games found!");
-        num_found_element.html(dropdowns[0].value + "\n" + Math.random());
+        num_found_element.text(num_games_found + " games found!");
     } else {
         num_found_element.html("No games found :(<br>Try filtering with different tags!");
     }
 }
 
-// Run the filter when the page loads, in case any filters are enabled.
-update_games_filter();
+// refresh on page load
+for (var i = 1; i < 4; i++)
+    setTimeout(() => { update_games_filter(); }, 100 * i * i);

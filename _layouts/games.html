@@ -33,22 +33,6 @@ sort_by: newest
     </div>
 <br>
 </div>
-<!-- Filtering by tags -->
-<!--
-<div id="tag-selector" class="row justify-content-center text-center">
-    <br /><br />
-    <h3>Filter By</h3>
-    <br />
-    {% for tag in site.game_tags %}
-    <div class="checkbox-container">
-    <input type="checkbox" class="games_filter_checkbox" data-toggle="toggle" data-on="{{tag}}" data-off="{{tag}}" data-onstyle="success" data-offstyle="default" id="tag_box_{{ tag }}">
-    </div>
-    {% endfor %}
-    <div class="checkbox-container">
-    <input type="checkbox" class="games_filter_checkbox" data-toggle="toggle" data-on="Award-Winning" data-off="Award-Winning" data-onstyle="success" data-offstyle="default" id="tag_box_Award-Winning">
-    </div>
-</div>
--->
 
 <!-- Filter dropdowns -->
 <div id="tag-selector" class="row justify-content-center text-center vertical-align">
@@ -60,7 +44,7 @@ sort_by: newest
             {{taglist.name}}<br />
             <div class="filter-dropdown">
                 <select name="dropdown" id="dropdown_{{taglist.id}}">
-                    <option value="All">All</option>
+                    <option value="">{{taglist.default}}</option>
                     {% for tag in taglist.tags %}
                         <option value="{{tag}}">{{tag}}</option>
                     {% endfor %}
