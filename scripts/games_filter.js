@@ -10,7 +10,15 @@ var game_tags = [
     {% endfor %}
 ]
 
-var debug = ["Arcade", "Fighting", "Horror", "Party", "Platformer", "Puzzle", "Rhythm", "Rougelike", "RPG", "Shooter", "Strategy", "Visual-Novel"]
+var genre_tags = [
+    {% for taglist in site.tag_lists %}
+    {% if taglist.id == "genre" %}
+    {% for tag in taglist.tags %}
+    "{{ tag }}",
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+]
 
 // Add the update function as a listener
 $(function() {
@@ -51,7 +59,7 @@ function update_games_filter() {
         for (var i=0; i < length; i++) {
             var class_to_keep = applied_tags[i];
             if (class_to_keep == "Untagged_game-tag") {
-                for (var g of debug) {
+                for (var g of genre_tags) {
                     if (element.hasClass(g + "_game-tag")) {
                         element.css("display", "none");
                         return;
