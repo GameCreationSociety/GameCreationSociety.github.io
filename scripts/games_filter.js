@@ -1,34 +1,28 @@
 ---
 # Front Matter
 ---
-// Populate an array of all the game tags being used
+// Populate an array of all the game tags being used by _config.yml
 var game_tags = [
-    {% for tag in site.game_tags %}"{{ tag }}",{% endfor %}
-]
-
-// Populate tags of other platforms from across the site
-var other_tags = [
-    {% for game in site.games %}
-        {% for tag in game.tags %}
-            {% unless site.game_tags contains tag %}
-            "{{ tag }}_game-tag",
-            {% endunless %}
-        {% endfor %}
+    {% for taglist in site.tag_lists %}
+    {% for tag in taglist.tags %}
+    "{{ tag }}",
+    {% endfor %}
     {% endfor %}
 ]
 
-// Condense tag list to only be unique
-var other_platform_tags = [];
-
-for (tag of other_tags) {
-    if (!other_platform_tags.includes(tag)) {
-        other_platform_tags.push(tag);
-    }
-}
+var genre_tags = [
+    {% for taglist in site.tag_lists %}
+    {% if taglist.id == "genre" %}
+    {% for tag in taglist.tags %}
+    "{{ tag }}",
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+]
 
 // Add the update function as a listener
 $(function() {
-    $('.games_filter_checkbox').change(function() {
+    $('.filter-dropdown').change(function() {
         update_games_filter();
     });
     $('#search').on('input', function() {
@@ -36,20 +30,24 @@ $(function() {
     });
 });
 
-// This is called whenever a checkbox is switched.
-// It determines which tags are enabled and then
-// disables all listed games which do not have ALL of those tags.
+// Update listed games to match ALL tags requested
 function update_games_filter() {
     // Figure out which tags are enabled
     var applied_tags = [];
-    var checkboxes = $('.games_filter_checkbox');
-    checkboxes.each(function(index, box) {
-        if (box.checked || $(box).prop('checked')) {
-            var id = $(box).attr('id');
-            var class_to_keep = id.substring("tag_box_".length, id.length) + "_game-tag";
+    var dropdownDivs = $('.filter-dropdown');
+    var dropdowns = [];
+    dropdownDivs.each(function(index, dropdown) {
+        // get the dropdown item
+        dropdowns.push(dropdown.childNodes.item(1));
+    });
+
+    for (var dropdown of dropdowns) {
+        if (dropdown.selectedIndex > 0) {
+            var tag = (dropdown.id == "dropdown_awards") ? "_award-tag" : "_game-tag";
+            var class_to_keep = dropdown.value + tag;
             applied_tags.push(class_to_keep);
         }
-    });
+    };
 
     // Disable all listed games which don't have ALL of those tags
     var games_listed = $('.listed_game');
@@ -60,24 +58,17 @@ function update_games_filter() {
         var length = applied_tags.length;
         for (var i=0; i < length; i++) {
             var class_to_keep = applied_tags[i];
-            if (!element.hasClass(class_to_keep)) {
-
-                // This is a very long check to see if other is selected and what to do if so
-                if (class_to_keep == "Other_game-tag") {
-                    var hasTag = false;
-                    for (tag of other_platform_tags) {
-                        if (element.hasClass(tag)) {
-                            hasTag = true;
-                        }
-                    }
-                    if (!hasTag) {
+            if (class_to_keep == "Untagged_game-tag") {
+                for (var g of genre_tags) {
+                    if (element.hasClass(g + "_game-tag")) {
                         element.css("display", "none");
                         return;
                     }
-                } else {
-                    element.css("display", "none");
-                    return;
                 }
+            }
+            else if (!element.hasClass(class_to_keep)) {
+                element.css("display", "none");
+                return;
             }
         }
 
@@ -114,5 +105,6 @@ function update_games_filter() {
     }
 }
 
-// Run the filter when the page loads, in case any filters are enabled.
-update_games_filter();
+// refresh on page load
+for (var i = 1; i < 4; i++)
+    setTimeout(() => { update_games_filter(); }, 100 * i * i);

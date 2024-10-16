@@ -115,5 +115,16 @@ h2, h3, h4 {
 	overflow: none;
 }
 
-.games_filter_checkbox {
+.filter-box {
+	display: inline;
+	margin: 0.25em 0.25em;
+	padding: 0.8em;
+
+	background-color: var(--light-blue);
+	color: white;
+}
+
+.filter-dropdown {
+	display: inline;
+	margin: 0.0em 0.25em;
 }

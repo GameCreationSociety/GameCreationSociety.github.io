@@ -12,17 +12,49 @@ stage_path: https://stage.gamecreation.org/
 games_path: https://stage.gamecreation.org/games/
 
 # Tags used for filtering games
-game_tags: [
-    # Platform
-    "Windows", "Mac", "Linux", "Web", "Flash", "iOS", "Android", "Other",
-    # Players
-    "Singleplayer", "Multiplayer",
-    # Engines
-    "Unity", "Unreal", "Godot", "Pygame", "Twine", "Board",
-    # Input methods
-    "Controller-Compatible", "VR", "Kinect",
-    # Extras
-    "Game-Jam", "Independent"
+tag_lists: [
+    {
+        "id": "platform",
+        "name": "Platform",
+        "default": "Any",
+        "tags": ["Windows", "Mac", "Linux", "Web", "iOS", "Android", "Console"]
+    },
+    {
+        "id": "genre",
+        "name": "Genre",
+        "default": "Any",
+        "tags": ["Arcade", "Fighting", "Horror", "Party", "Platformer", "Puzzle", "Rhythm", "Roguelike", "RPG", "Shooter", "Strategy", "Visual-Novel", "Untagged"]
+    },
+    {
+        "id": "players",
+        "name": "Players",
+        "default": "Any",
+        "tags": ["Singleplayer", "Multiplayer"]
+    },
+    {
+        "id": "input_methods",
+        "name": "Input Methods",
+        "default": "Any",
+        "tags": ["Controller-Compatible", "VR", "Kinect"]
+    },
+    {
+        "id": "engine",
+        "name": "Engine",
+        "default": "Any",
+        "tags": ["Unity", "Unreal", "Godot", "Flash", "Pygame", "Twine", "Board"]
+    },
+    {
+        "id": "awards",
+        "name": "Awards",
+        "default": "",
+        "tags": ["Award-Winning", "GCS Gold Award", "Best Art", "Best Music", "Best Tech", "Most Innovative Gameplay", "Schell Games Award", "People's Choice Award"]
+    },
+    {
+        "id": "extras",
+        "name": "Extras",
+        "default": "",
+        "tags": ["Game-Jam", "Independent"]
+    }
 ]
 
 # Plugins
