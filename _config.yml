@@ -23,7 +23,7 @@ tag_lists: [
         "id": "genre",
         "name": "Genre",
         "default": "Any",
-        "tags": ["Arcade", "Fighting", "Horror", "Party", "Platformer", "Puzzle", "Rhythm", "Roguelike", "RPG", "Shooter", "Strategy", "Visual-Novel", "Untagged"]
+        "tags": ["Arcade", "Fighting", "Horror", "Party", "Platformer", "Puzzle", "Racing", "Rhythm", "Roguelike", "RPG", "Shooter", "Strategy", "Visual-Novel", "Untagged"]
     },
     {
         "id": "players",
