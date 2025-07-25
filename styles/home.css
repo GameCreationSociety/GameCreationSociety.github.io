@@ -264,3 +264,12 @@ video#games-reel {
     background-color: #000000CC;
     text-decoration: underline;
 }
+
+/* Section 2 */
+#section-6-sponsors {
+    z-index: 1;
+    position: relative;
+    margin: 0 0;
+    background-color: #F8F8F8;
+    color: black;
+}
