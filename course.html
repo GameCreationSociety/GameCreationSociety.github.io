@@ -1,7 +1,7 @@
 ---
 layout: basic-page
 title: Course
-display-title: "GCS StuCo: Game Creation for People Who Want to Create Games (98-127)"
+display-title: "GCS StuCo: Introduction to Game Development in Unity (98-127)"
 top-img: StuCo_1_cropped.png
 top-img-pos: 51%;
 meta-description: "Find information and resources here on the Student College (StuCo) course run by the Game Creation Society at Carnegie Mellon University."
@@ -12,154 +12,181 @@ meta-description: "Find information and resources here on the Student College (S
 <div class="row">
 	<div class="col-md-6">
 		<h1>Course Description</h1>
-		<p>In this course students will learn the basics of game creation.
-			The course is intended for both beginners and experienced game designers.
-			In addition to project work done in class, students will learn fundamental tools like Unity.
+		<p>This course is intended to be the definitive introduction to the Unity game engine. 
+			Students will learn all the major skills necessary for game development, from scripting, 
+			asset pipelines to sound integration among others, and leave the course with sufficient 
+			foundation to confidently pursue more advanced topics in any specialization of their choice 
+			related to game development in Unity. 
 		</p>
 
-		<p>The intent of this course is to expand the community of game makers at CMU to those who are interested in making games but may not have had the inclination to pursue it through more intensive means such as GCS or IDeATe.
+		<p>This course is, however, NOT a game design course, and will not go into topics such as design documents, scoping, character, environment, level or narrative design.
 		</p>
 
-		<p>The course also serves as an additional place for those already involved in the community to learn and collaborate. Tutorials and projects done in Game Creation Society will mirror and compliment work done in class.
-		</p>
 
 		<p><b>Previous Course Iterations:</b> <a href="/course_archive/s19">Spring 2019</a>, <a href="/course_archive/f19">Fall 2019</a>, <a href="/course_archive/s20">Spring 2020</a>, <a href="/course_archive/f20">Fall 2020</a>,  <a href="/course_archive/f21">Fall 2021</a></p>
 	</div>
 	<div class="col-md-6 mt-3 text-center">
 		<h3>StuCo</h3>
-		<p>Wednesdays @6:40-8:30pm<br>Zoom</p>
+		<p>Tuesdays @7:00pm-8:60pm<br>DH 1112</p>
 		<br>
 		<h3>Office Hours</h3>
 		<p>Sundays @2:00-6:00pm<br>Zoom</p>
 		<br>
-		<h3>Instructor</h3>
-		<p><a href="/members/DavidZelongFan">David Zelong Fan</a><br>Thomas Carey</p>
+		<h3>Instructors</h3>
+		<p><a href="_members/JingxuanChen.html">Jingxuan Chen</a><br><a href="_members/ShangyiZhu.html">Shangyi Zhu</a><br><a href="_members/DarioQuintero.html">Dario Quintero</a><br><a href="_members/JeffreyWang.html">Jeffrey Wang</a></p>
 	</div>
 </div>
 
 
 <!-- Schedule -->
 <h1>Schedule</h1>
-<h2>Lecture 1: Introduction</h2>
-<p><a href="https://docs.google.com/presentation/d/1VpN3yC-QA1-tG8egnjNLviW2bVQOrAKHLTRn1PqdSSU/edit?usp=sharing">Slides (Google Slides)</a><br>
-<strong>Lecturer: Thomas</strong></p>
+<h2>(1/13) Introduction to Course and Unity</h2>
+<!-- <p><a href="https://docs.google.com/presentation/d/1VpN3yC-QA1-tG8egnjNLviW2bVQOrAKHLTRn1PqdSSU/edit?usp=sharing">Slides (Google Slides)</a><br> -->
+<strong>Lecturer: Jingxuan</strong></p>
 <ul>
-<li>What is Game Design? What does Game Development Entail?</li>
-<li>A brief overview of the course and course procedures</li>
+<li>We will briefly go over the syllabus before introducing how to install, use and navigate the Unity Editor. We will discuss how Unity uses ECS (Entity Component System) to define in-game behaviour, and how you can write your own components by inheriting from Unity’s Monobehaviour class.</li>
 </ul>
 
 <br>
-<h2>Lecture 2: A First look at Unity</h2>
-<p><a href="https://stage.gamecreation.org/StuCo/S20/lectures/lec02.pdf">Lecture Notes (pdf)</a>, <a href="https://stage.gamecreation.org/StuCo/F22/packages/lec02_resources.unitypackage">Base Code (unitypackage)</a><br>
-<strong>Lecturer: David</strong></p>
+<h2>(1/20) Basic Scripting</h2>
+<!-- <p><a href="https://stage.gamecreation.org/StuCo/S20/lectures/lec02.pdf">Lecture Notes (pdf)</a>, <a href="https://stage.gamecreation.org/StuCo/F22/packages/lec02_resources.unitypackage">Base Code (unitypackage)</a><br> -->
+<strong>Lecturer: Dario</strong></p>
 <ul>
-<li>Understand what a Game Engine is, and why we use the Unity game engine</li>
-<li>Utilize common Unity editor functionality and navigate scenes</li>
-<li>Understand Unity’s high level architecture: the Scene Graph and GameObjects</li>
-<li>Utilize the inspector to design levels, given art assets and scripts</li>
+<li>We will learn the steps to programming simple game mechanics via implementing a basic player controller. Along the way, we will touch upon Unity’s Input System, camera controls using the Cinemachine package, and collision detection and handling.</li>
+<li><b>Assignment 1 OUT</b></li>
 </ul>
 
 <br>
-<h2>Lecture 3: The Asset Pipeline and You</h2>
-<p><a href="https://stage.gamecreation.org/StuCo/S20/lectures/lec04.pdf">Lecture Notes (pdf)</a><br>
-<strong>Lecturer: Thomas</strong></p>
+<h2>(1/27) The 2D Asset Pipeline </h2>
+<!-- <p><a href="https://stage.gamecreation.org/StuCo/S20/lectures/lec03.pdf">Lecture Notes (pdf)</a>, <a href="https://stage.gamecreation.org/StuCo/F22/packages/lec04_resources.unitypackage">Base Code (unitypackage)</a><br> -->
+<strong>Lecturer: Dario</strong></p>
 <ul>
-<li>Become familiar with image manipulation through Gimp</li>
-<li>Perform basic tasks like re-sizing, removing backgrounds, and importing / exporting</li>
-<li>Become familiar with audio manipulation through audacity</li>
-<li>Perform basic tasks like trimming, amplifying, and stretching sounds</li>
-<li>Find both image and audio assets for free on the internet through libraries</li>
+<li>We will learn how to import images as sprites to Unity and create animations using sprite sheets or 2D rigging, as well as how to use tilemaps to build levels.</li>
 </ul>
 
 <br>
-<h2>Lecture 4: Wrangling Unity</h2>
-<p><a href="https://stage.gamecreation.org/StuCo/S20/lectures/lec03.pdf">Lecture Notes (pdf)</a>, <a href="https://stage.gamecreation.org/StuCo/F22/packages/lec04_resources.unitypackage">Base Code (unitypackage)</a><br>
-<strong>Lecturer: David</strong></p>
+<h2>(2/3) The 3D Asset Pipeline </h2>
+<!-- <p><a href="https://stage.gamecreation.org/StuCo/S20/lectures/lec04.pdf">Lecture Notes (pdf)</a><br> -->
+<strong>Lecturer: Dario</strong></p>
 <ul>
-<li>Create C# scripts in the Unity editor, edit them, and apply them to GameObjects as Components</li>
-<li>Understand the basics of Unity’s <code>MonoBehaviour: Start(), Update(),</code> and more</li>
-<li>Add easy-to-use interfaces to your component in the Unity Inspector, enabling artists and level designers to tweak parameters in your Unity code.</li>
-<li>Allow your scripts to interoperate with other Components (of your own creation or Unity’s)</li>
-<li>Use Prefabs to dynamically create GameObjects in your scripts</li>
+<li>We will learn the basics behind how to create, UV unwrap, texture, and rig models in Blender, how to import and animate the assets in Unity, and how to control animations with scripting using Unity’s Animator Controller.</li>
+<li><b>Assignment 1 DUE, Assignment 2 OUT</b></li>
 </ul>
 
 
 <br>
-<h2>Lecture 5 / Midterm: Writing a Game Design Document</h2>
-<p><a href="https://stage.gamecreation.org/StuCo/S20/design_docs/Tricks-GDD-Template-1.pdf">Template (pdf)</a><br>
-<strong>Lecturer: Thomas</strong></p>
+<h2>(2/10) Shaders and VFX</h2>
+<!-- <p><a href="https://stage.gamecreation.org/StuCo/S20/design_docs/Tricks-GDD-Template-1.pdf">Template (pdf)</a><br> -->
+<strong>Lecturer: Jeffrey</strong></p>
 <ul>
-<li>What is a Game Design Document?</li>
-<li>Major elements: Goals, Narrative, Gameplay Systems, Art Style, Technical / Organizational implementation</li>
-<li>Exploring and critically analyzing GDDs from real games
-<ul>
-<li>Case Studies:
-<a href="https://stage.gamecreation.org/StuCo/S20/design_docs/Bioshock Pitch.pdf">Bioshock 1</a>,
-<a href="https://stage.gamecreation.org/StuCo/S20/design_docs/Diablo Pitch.pdf">Diablo 1</a>,
-<a href="https://stage.gamecreation.org/StuCo/S20/design_docs/GTA 1 Design Doc.pdf">GTA 1 ("Race 'n Chase")</a>,
-<a href="https://stage.gamecreation.org/StuCo/S20/design_docs/Starfox 2 Design Doc (Gameplay).pdf">Starfox 2 (Gameplay)</a>,
-<a href="https://stage.gamecreation.org/StuCo/S20/design_docs/Starfox 2 Design Doc (Arwing).pdf">Starfox 2 (Arwing)</a>
-</li>
-</ul></li>
+<li>We will discuss a basic overview of the render pipeline, and teach how to write your own custom materials using Shader Graph. We will also teach how to use Unity’s particle system to create basic visual effects such as fire.</li>
 </ul>
 
 
 <br>
-<h2>Lecture 6: Production</h2>
-<p><a href="https://stage.gamecreation.org/StuCo/F20/lectures/Production.pdf">Lecture Notes (pdf)</a><br>
-<strong>Lecturer: David</strong></p>
+<h2>(2/17) Sound </h2>
+<!-- <p><a href="https://stage.gamecreation.org/StuCo/F20/lectures/Production.pdf">Lecture Notes (pdf)</a><br> -->
+<strong>Lecturer: Shangyi</strong></p>
 <ul>
-<li>Understand the role of producer/team lead in the video game development process</li>
-<li>Learn how to use tools like Github and Trello for cooperation, understand master-dev-feat branching</li>
-<li>Understand the purpose and best practices of playtesting</li>
-<li>Learn how to properly scope and execute the project</li>
+<li>We will learn the basics of sound waves and processing in Reaper, and implement sounds in Unity. We will take the time in class to integrate in FMOD and learn game parameter-based audio events. </li>
+<li><b>Assignment 2 DUE, Assignment 3 OUT</b></li>
+
 </ul>
 
-<!--
 <br>
-<h2>Lecture 7: 3D Modeling in Blender</h2>
-<p><a href="https://stage.gamecreation.org/StuCo/S20/lectures/lec05.pdf">Lecture Notes (pdf)</a><br>
-<strong>Lecturer: Thomas</strong></p>
+<h2>(2/24) UI, Lighting and Postprocessing</h2>
+<!-- <p><a href="https://stage.gamecreation.org/StuCo/S20/lectures/lec05.pdf">Lecture Notes (pdf)</a><br> -->
+<strong>Lecturer: Jeffery and Shangyi</strong></p>
 <ul>
-<li>Understand the basics of the Blender user interface</li>
-<li>Build 3D models using local mesh editing tools</li>
-<li>Utilize global mesh editing tools (Modifiers)</li>
-<li>Map a texture to a 3D model using UV unwrapping</li>
-<li>Export 3D models in a Unity-optimized format</li>
+<li>TBD</li>
+<li><b>Assignment 3 DUE, Assignment 4 OUT</b></li>
+<li><b>Final Project OUT</b></li>
 </ul>
 
-<!--h2>Lecture 6: Animation</h2>
-<p><a href="https://stage.gamecreation.org/StuCo/F20/lectures/lec06.pdf">Lecture Notes (pdf)</a>, <a href="https://stage.gamecreation.org/StuCo/S20/packages/brickbreaker.unitypackage">Base Code (unitypackage)</a><br>
-<strong>Lecturer: Carter</strong></p>
+<br>
+<h2>(3/10) UI, Lighting and Postprocessing</h2>
+<!-- <p><a href="https://stage.gamecreation.org/StuCo/S20/lectures/lec05.pdf">Lecture Notes (pdf)</a><br> -->
+<strong>Lecturer: Jeffery and Shangyi</strong></p>
 <ul>
-<li>Understand the principles of animation</li>
-<li>Create animations using Key Frames and Curves</li>
-<li>Control the properties of scripts using the animation window</li>
-<li>Create a simple state machine using Mecanim</li>
-<li>Use unity animations, particle systems, trails, and post processing effects to add feedback and juice to games</li>
+<li>TBD</li>
+<li><b>Assignment 4 DUE</b></li>
 </ul>
--->
+
+<br>
+<h2>(3/17) Intermediate Scripting</h2>
+<!-- <p><a href="https://stage.gamecreation.org/StuCo/S20/lectures/lec05.pdf">Lecture Notes (pdf)</a><br> -->
+<strong>Lecturer: Dario</strong></p>
+<ul>
+<li>Async (UniTask)/coroutines, scriptable objects, interfaces and abstract classes, custom editors and attributes</li>
+</ul>
+
+<br>
+<h2>(3/24) Procedural Animation </h2>
+<!-- <p><a href="https://stage.gamecreation.org/StuCo/S20/lectures/lec05.pdf">Lecture Notes (pdf)</a><br> -->
+<strong>Lecturer: Jingxuan</strong></p>
+<ul>
+<li>We will learn about inverse kinematics and common constraints used in procedural animation and demonstrate some use cases using Unity’s Animation Rigging package.</li>
+</ul>
+
+<br>
+<h2>(3/31) Advanced Player Controller  </h2>
+<!-- <p><a href="https://stage.gamecreation.org/StuCo/S20/lectures/lec05.pdf">Lecture Notes (pdf)</a><br> -->
+<strong>Lecturer: Jingxuan</strong></p>
+<ul>
+<li>We will cover a collection of techniques used by developers to create a more responsive and enjoyable player controller, including acceleration, input buffering, jump cuts and more.</li>
+</ul>
+<li><b>Final Project Checkpoint</b></li>
+<br>
+
+<h2>(4/7) Enemy AI  </h2>
+<!-- <p><a href="https://stage.gamecreation.org/StuCo/S20/lectures/lec05.pdf">Lecture Notes (pdf)</a><br> -->
+<strong>Lecturer: Jeffrey and Jingxuan</strong></p>
+<ul>
+<li>TBD</li>
+</ul>
+
+<h2>(4/14) Programming Patterns  </h2>
+<!-- <p><a href="https://stage.gamecreation.org/StuCo/S20/lectures/lec05.pdf">Lecture Notes (pdf)</a><br> -->
+<strong>Lecturer: Shangyi and Jingxuan</strong></p>
+<ul>
+<li>TBD</li>
+</ul>
+
+<h2>(4/21) World Streaming  </h2>
+<!-- <p><a href="https://stage.gamecreation.org/StuCo/S20/lectures/lec05.pdf">Lecture Notes (pdf)</a><br> -->
+<strong>Lecturer: Jingxuan</strong></p>
+<ul>
+<li>We will cover two common techniques used to optimise large open world terrain, world partitioning and world streaming, with focus on the latter.</li>
+<li><b>Final Project DUE</b></li>
+</ul>
 
 <!-- Course Goals -->
 <h1>Course Goals</h1>
+<p>Upon successful completion of this course, students should be able to:</p>
 <ol>
-<li>Learn the basic tools of Game Development</li>
-<li>Learn the fundamentals of Design and Game Feel</li>
-<li>Explore the various disciplines involved in Game Creation</li>
-<li>Create a working game that demonstrates these principles</li>
+<li>Understand the role of common windows in the Unity Editor, including but not limited to the Scene, Project, Console, Game, Hierarchy and Inspector windows.
+<li>Explain what an entity component system is and how it differs from object oriented programming.</li>
+<li>Build custom components to drive gameplay behaviour by inheriting from Unity’s Monobehaviour class and accessing other built-in Unity components such as the Transform, Rigidbody or Collider components.</li>
+<li>Create, import and implement assets with animations, both 2D and 3D.</li>
+<li>Create custom shaders and visual effects using Unity’s Shader Graph package and ParticleSystem component</li>
+<li>Implement sound using FMOD and Unity’s built-in sound system</li>
+
 </ol>
 
 <!-- Office Hours -->
 <h1>Office Hours</h1>
 <p>Every Sunday (starting September 20th) from 2:00-6:00pm, GCS holds open office hours via Zoom, where teams come to work in a collaborative environment. Students in the StuCo are also encouraged to come, especially while working on the two main course assignments, as listed below.</p>
 
-<!-- Mid-semester Assignment -->
-<h1>Mid-semester Assignment: Design Document</h1>
-<p>The mid-semester assignment is an original detailed design document. Students will have to reason about scope, game loops, and detailed mechanic descriptions. The assignment is meant to make students think carefully about all the parts of a game. It is also an opportunity to be creative and express the ideas that you would like to see in a game. Time in class will be allocated to work on this, but students are encouraged to work on it outside of class if they feel inspired.</p>
-
 <!-- Final Project -->
 <h1>Final Project</h1>
-<p>Students will team up to collaborate on a final project. Using supplied behaviours, images, and sounds, students will build a game. The design is up to the students and serves as a chance for students to demonstrate the principles covered previously in class. Making a game is a laborious enterprise even with assets from the instructors, so students are encouraged to meet and work outside of class.</p>
+<p>On top of what has been implemented in the assignments, students are expected 
+	to implement 2 additional features of choice from a provided list. Everything 
+	should then be consolidated and extended into a playable game. Students have 
+	the option of either designing their own game or implementing a design provided
+	 by the course. Students are expected to submit a build of their game as well
+	  as a short writeup describing the additional features they’ve chosen to implement.
+	All work is expected to be completed individually.
+</p>
 
 <!-- Course Resources -->
 <h1>Course Resources</h1>
