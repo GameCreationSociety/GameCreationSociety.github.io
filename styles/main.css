@@ -410,6 +410,21 @@ div.at-top a.nav-link {
     text-shadow: -1px -1px 3px #000, 1px -1px 3px #000, -1px 1px 3px #000, 1px 1px 3px #000;
 }
 
+td.schedule_date
+{
+    vertical-align: top;
+    width: 120px;
+    text-align: right;
+    padding-right: 30px;
+}
+
+td.schedule_lecture
+{
+    vertical-align: top;
+    padding-bottom: .6em;
+}
+
+
 /* Font-face */
 @font-face {
     font-display: swap;
