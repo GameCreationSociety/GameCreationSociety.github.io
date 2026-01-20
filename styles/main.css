@@ -424,6 +424,14 @@ td.schedule_lecture
     padding-bottom: .6em;
 }
 
+td.schedule_recording
+{
+    vertical-align: top;
+    padding-bottom: .6em;
+    width: 120px;
+    text-align: right;
+    padding-left: 30px;
+}
 
 /* Font-face */
 @font-face {
