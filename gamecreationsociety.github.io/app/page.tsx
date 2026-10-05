@@ -64,6 +64,9 @@ export default function Home() {
           </a>
         </div>
       </main>
+			<div className="flex h-96">
+
+			</div>
     </div>
   );
 }
