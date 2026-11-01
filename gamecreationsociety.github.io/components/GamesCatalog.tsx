@@ -1,17 +1,14 @@
 "use client";
 
-import { useState } from "react";
 import GameCard from "@/components/GameCard";
-import { gameFilters, type Game, type GameFilterKey } from "@/data/games";
+import { gameFilters, type Game } from "@/data/games";
+import { rememberCatalogPosition, useGameCatalogState, type SortOrder } from "@/lib/game-catalog-state";
 
-type SortOrder = "newest" | "oldest" | "title";
 const semesterOrder = { Spring: 0, Summer: 1, Fall: 2 };
 const controlClassName = "mt-2 min-h-11 w-full rounded-md border border-zinc-400 bg-background px-3 py-2 text-base text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground dark:border-zinc-600";
 
 export default function GamesCatalog({ games }: { games: Game[] }) {
-	const [search, setSearch] = useState("");
-	const [filters, setFilters] = useState<Partial<Record<GameFilterKey, string>>>({});
-	const [sortOrder, setSortOrder] = useState<SortOrder>("newest");
+	const { state: { search, filters, sortOrder }, updateState, reset } = useGameCatalogState();
 
 	const terms = search.trim().toLowerCase().split(/\s+/).filter(Boolean);
 	const visibleGames = games.filter((game) => {
@@ -22,7 +19,7 @@ export default function GamesCatalog({ games }: { games: Game[] }) {
 			if (key === "awards" && value === "Award-Winning") return game.awards.length > 0;
 			return (game[key] as readonly string[]).includes(value);
 		});
-		const searchableFields = [game.title, game.description, ...game.teamMembers]
+		const searchableFields = [game.title, game.description, ...game.teamMembers.map(({ name }) => name)]
 			.map((field) => field.toLowerCase());
 		return matchesFilters && terms.every((term) => searchableFields.some((field) => field.includes(term)));
 	}).sort((a, b) => {
@@ -31,12 +28,6 @@ export default function GamesCatalog({ games }: { games: Game[] }) {
 		const chronological = a.year - b.year || semesterOrder[a.semester] - semesterOrder[b.semester];
 		return (sortOrder === "newest" ? -chronological : chronological) || byTitle;
 	});
-
-	function reset() {
-		setSearch("");
-		setFilters({});
-		setSortOrder("newest");
-	}
 
 	return (
 		<>
@@ -47,14 +38,14 @@ export default function GamesCatalog({ games }: { games: Game[] }) {
 						<input
 							type="search"
 							value={search}
-							onChange={(event) => setSearch(event.target.value)}
+							onChange={(event) => updateState({ search: event.target.value, scrollY: 0 })}
 							placeholder="Title, description, or team member"
 							className={controlClassName}
 						/>
 					</label>
 					<label className="text-sm font-medium">
 						Sort by
-						<select value={sortOrder} onChange={(event) => setSortOrder(event.target.value as SortOrder)} className={controlClassName}>
+						<select value={sortOrder} onChange={(event) => updateState({ sortOrder: event.target.value as SortOrder, scrollY: 0 })} className={controlClassName}>
 							<option value="newest">Newest</option>
 							<option value="oldest">Oldest</option>
 							<option value="title">Title</option>
@@ -69,7 +60,7 @@ export default function GamesCatalog({ games }: { games: Game[] }) {
 								{label}
 								<select
 									value={filters[key] ?? ""}
-									onChange={(event) => setFilters({ ...filters, [key]: event.target.value })}
+									onChange={(event) => updateState({ filters: { ...filters, [key]: event.target.value }, scrollY: 0 })}
 									className={controlClassName}
 								>
 									<option value="">Any</option>
@@ -87,8 +78,8 @@ export default function GamesCatalog({ games }: { games: Game[] }) {
 				{visibleGames.length} {visibleGames.length === 1 ? "game" : "games"} found
 			</p>
 			{visibleGames.length > 0 ? (
-				<div className="grid items-start gap-6 sm:grid-cols-2 lg:grid-cols-3">
-					{visibleGames.map((game) => <GameCard key={game.id} game={game} />)}
+				<div className="grid items-start gap-4 lg:grid-cols-2">
+					{visibleGames.map((game) => <GameCard key={game.id} game={game} onNavigate={rememberCatalogPosition} />)}
 				</div>
 			) : (
 				<div className="py-12 text-center">
