@@ -1,4 +1,4 @@
-// Meeting descriptions are adapted from legacy/about.html and legacy/FAQ.html.
+// Links are also used by the About page; preserve the existing destinations.
 export const semesterEvents = [
   { name: "Pitch Fair", href: "/events#pitch-fair" },
   { name: "Alpha", href: "/events#project-meetings" },
@@ -7,40 +7,33 @@ export const semesterEvents = [
   { name: "Release", href: "/events#release" },
 ];
 
-export const eventGuide = [
+type EventStory = {
+  id: string;
+  title: string;
+  image: { label: string; src?: string; alt?: string };
+  descriptions: { id?: string; text: string }[];
+};
+
+export const eventStories: EventStory[] = [
   {
     id: "pitch-fair",
     title: "Pitch Fair",
-    description: "At the beginning of each semester, members present their game ideas at Pitch Fair and form teams. If you want to pitch a game and lead a project, talk to the officers beforehand about your idea and its scope.",
+    image: { label: "Pitch Fair and team formation" },
+    descriptions: [{ text: "Hear members pitch their game ideas and find a team for the semester." }],
   },
   {
     id: "project-meetings",
-    title: "Alpha, Beta, and Pre-Release",
-    description: "At these meetings, teams present their games and exchange constructive criticism. Come see what other teams are working on and give them feedback.",
-  },
-  {
-    id: "release",
-    title: "Release",
-    description: "At the end of the semester, teams show off the games they’ve been working on at the GCS Release Showcase. Projects are expected to be finished by then, but teams can continue working on them afterward.",
+    title: "Playtesting and Release",
+    image: { label: "Sharing and playtesting games" },
+    descriptions: [
+      { text: "At Alpha, Beta, and Pre-Release, see games in progress and share feedback." },
+      { id: "release", text: "At Release, play the semester’s games and meet their creators." },
+    ],
   },
   {
     id: "other-events",
-    title: "Other meetings and events",
-    description: "Some meetings are tutorials on game development or talks from guest speakers. We also hold game nights and social events. Office hours are a chance to work together, share resources, and get help from other members. Check the calendar and Discord for the current schedule.",
+    title: "Learn and hang out",
+    image: { label: "Club activities and community" },
+    descriptions: [{ text: "Learn through tutorials and guest talks, get help during office hours, or join a game night." }],
   },
 ];
-
-export type GallerySlide = {
-  id: string;
-  label: string;
-  caption: string;
-  src?: string;
-  alt?: string;
-};
-
-export const gallerySlides: GallerySlide[] = [
-  { id: "collaboration", label: "Team collaboration", caption: "Image placeholder · Members working on a game together." },
-  { id: "playtesting", label: "Playtesting and Release", caption: "Image placeholder · Sharing and playtesting student games." },
-  { id: "community", label: "Club events and community", caption: "Image placeholder · Club activities and community." },
-];
-
