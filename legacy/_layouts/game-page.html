@@ -1,0 +1,224 @@
+---
+# Front Matter
+layout: default
+noHeaderMargin: true
+---
+
+<!-- Stylesheet dependencies -->
+<link rel="stylesheet" href="/styles/game-page.css">
+<link rel="stylesheet" href="/styles/smartphoto.min.css">
+<script src="/scripts/smartphoto.min.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded',function(){
+    var sp = new SmartPhoto(".js-smartPhoto");
+    sp.on('open',function(){
+        var th = document.getElementById('page-header');
+        th.style.visibility = "hidden";
+    });
+    sp.on('close',function(){
+        var th = document.getElementById('page-header');
+        th.style.visibility = "visible";
+    });
+});
+</script>
+
+<!-- Top image -->
+<div id="game-top-container">
+    {% if page.tags and page.tags.size > 0 %}
+    <div id="game-tags-container">
+        <p id="game-tags">
+            {% for tag in page.tags %}
+                {% if forloop.first %}
+                    {{tag | replace: "_", " "}}
+                {% else %}
+                    <br>{{tag | replace: "_", " "}}
+                {% endif %}
+            {% endfor %}
+        </p>
+    </div>
+    {% endif %}
+
+    {% if page.awards and page.awards.size > 0 %}
+    <div id="game-awards-container">
+        <p id="game-awards">
+            {% for award in page.awards %}
+                {% if forloop.first %}
+                    {{award}}
+                {% else %}
+                    <br>{{award}}
+                {% endif %}
+            {% endfor %}
+        </p>
+    </div>
+    {% endif %}
+
+    {% if page.top-img %}
+        {% assign topImgSrc = site.games_path | append: page.stage_game_path | append: "images/" | append: page.top-img %}
+    {% elsif page.screenshots.size > 0 %}
+        {% assign topImgSrc = site.games_path | append: page.stage_game_path | append: "images/" | append: page.screenshots[0] %}
+    {% else %}
+        {% assign topImgSrc = "/images/official_no_back.png" %}
+    {% endif %}
+    <img id="game-top-img" src="{{ topImgSrc }}" style="object-fit:{{page.top-img-fit}}" loading="lazy">
+</div>
+
+<!-- Page content -->
+<div id="game-main-content">
+    <!-- Title and year/semester -->
+    <div class="row no-margin">
+        <div class="col">
+            <h1 class="inline">{{ page.title }}</h1><h3 class="inline"> - {{ page.semester }} {{ page.year }}</h3>
+        </div>
+    </div>
+
+    <div class="row no-margin">
+        {% if page.builds.size == 0 %}
+            {% assign other_column_width = "col-md-6"%}
+        {% else %}
+            {% assign other_column_width = "col-md-4"%}
+        {% endif %}
+        <div class="game-content-section {{other_column_width}} col-sm-6 col-12">
+            <!-- About -->
+            <h2>About</h2>
+            <p>{{ page.description }}</p>
+        </div>
+        {% if page.builds.size > 0 %}
+            <div class="game-content-section col-md-4 col-sm-6 col-12">
+                <!-- Builds -->
+                <h2>Play</h2>
+                <p>
+                    {% for build in page.builds %}
+                        {% case build[0] %}
+                            <!-- "Web" denotes a game that is already built and hosted on the GCS server, through WebGl or similar means (i.e. Pair of Hearts). -->
+                            {% when "Web" %}
+                                For Web | <a href="{{ site.games_path }}{{ page.stage_game_path }}{{ build[1] }}">Play</a><br>
+                            <!-- "Web HTML" denotes a game that is hosted on the site, but isn't WebGL and has its own dedicated HTML page (i.e., Reverse No). The argument specified must be the name of the HTML file present in the play folder in the root-level directory of the repo. -->
+                            {% when "Web HTML" %}
+                                For Web | <a href="../play/{{ build[1] }}">Play</a><br>
+                            <!-- "Web Player" denotes an older game that requires the deprecated Unity Web Player to run (i.e. Bleat Beater). This should never be used for new games. -->
+                            {% when "Web Player" %}
+                                For Web | <a href="{{ site.games_path }}{{ page.stage_game_path }}{{ build[1] }}">Play (Unity Web Player Required)</a><br>
+                            <!-- "Web Zip" denotes a game that can theoretically be played via web, but can only be downloaded via zip file (i.e. Battery Assault). This should never be used for newer games. -->
+                            {% when "Web Zip" %}
+                                For Web | <a href="{{ site.games_path }}{{ page.stage_game_path }}{{ build[1] }}">Download</a><br>
+                            <!-- "Itch.io" denotes a game that is hosted on Itch.io (i.e. Implicitus). This requires an absolute link to an Itch.io page. -->
+                            {% when "Itch.io" %}
+                                On Itch.io | <a href="http://{{ build[1] }}">Play</a><br>
+                            <!-- "iOS" and "Android" denotes a game that is available for download from the App Store and Google Play store respectively (i.e. Pair of Hearts). -->
+                            {% when "iOS", "Android" %}
+                                For {{ build[0] }} | <a href="http://{{ build[1] }}">Download</a><br>
+                            <!-- Blanket else for every other game type. -->
+                            {% else %}
+                                For {{ build[0] }} | <a href="{{ site.games_path }}{{ page.stage_game_path }}{{ build[1] }}">Download</a><br>
+                        {% endcase %}
+                    {% endfor %}
+                </p>
+                {% if page.build_instructions %}
+                <h3>Instructions</h3>
+                <p>{{ page.build_instructions }}</p>
+                {% endif %}
+                {% if page.extra_content %}
+                <h3>Extra Content</h3>
+                <p>{{ page.extra_content }}</p>
+                {% endif %}
+            </div>
+        {% endif %}
+        <div class="game-content-section {{other_column_width}} col-sm-6 col-12">
+            <!-- Project Members -->
+            <h2>Project Members</h2>
+            {% assign member_pages = site.members | map: "url" %}
+            <p>
+                {% for member in page.project_members %}
+                    {% assign member_match_string = member[0] | remove: " " | remove: "*" | rstrip %}
+                    {% assign firstpart = member_match_string | split: "(" | first %}
+                    {% assign lastpart = member_match_string | split: ")" | last %}
+                    {% if firstpart == lastpart %}
+                        {% assign member_match_string = member_match_string | prepend: "/members/" %}
+                    {% else %}
+                        {% assign member_match_string = firstpart | append: lastpart | prepend: "/members/" %}
+                    {% endif %}
+
+                    <!-- Removes numeric characters (the member name ID). Please replace this if they ever add a better filter for removing numbers...-->
+                    {% assign member_display_name = member[0] | remove: "*" | remove: "0" | remove: "1" | remove: "2" | remove: "3" | remove: "4" | remove: "5" | remove: "6" | remove: "7" | remove: "8" | remove: "9" | rstrip %}
+                    
+                    <!-- <p>member match string: {{member_match_string}}</p> -->
+                    {% if member_pages contains member_match_string %}
+                        <a href="{{member_match_string}}">{{ member_display_name }}</a> - <i>{{ member[1] }}</i><br>
+                    {% else %}
+                        {% if member[1] == "first" %}
+                            <h3>{{ member[0] }}</h3>
+                        {% elsif member[1] == "" %}
+                            <br/><h3>{{ member[0] }}</h3>
+                        {% else %}
+                            {{ member_display_name }} - <i>{{ member[1] }}</i><br>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </p>
+        </div>
+    </div>
+
+    <!-- Screenshots -->
+    {% if page.screenshots and page.screenshots[0] %}
+    <div class="row no-margin">
+        <div class="col">
+            <h2>Screenshots</h2>
+        </div>
+    </div>
+    <div class="screenshot-row">
+        {% for img in page.screenshots %}
+        <div class="screenshot-column">
+            {% assign split_screenshot_string = img | split: "." %}
+            {% if split_screenshot_string[1] == "webm" %}
+                {% assign gif_screenshot_string = split_screenshot_string[0] | append: ".gif" %}
+                <a href="{{site.games_path}}{{page.stage_game_path}}images/{{gif_screenshot_string}}" class="js-smartPhoto" data-caption="{{page.title}}" data-id="{{forloop.index}}" data-group="game">
+                    <img class="screenshot-thumbnail hover-shadow" src="{{site.games_path}}{{page.stage_game_path}}images/{{gif_screenshot_string}}"  loading="lazy"/>
+                    <!--video class="screenshot-thumbnail hover-shadow" autoplay loop>
+                        <source src="{{site.games_path}}{{page.stage_game_path}}images/{{img}}" type="video/webm">
+                    </video--> 
+            {% else %}
+                <a href="{{site.games_path}}{{page.stage_game_path}}images/{{img}}" class="js-smartPhoto" data-caption="{{page.title}}" data-id="{{forloop.index}}" data-group="game">
+                    <img class="screenshot-thumbnail hover-shadow" src="{{site.games_path}}{{page.stage_game_path}}images/{{img}}"  loading="lazy"/>
+            {% endif %}
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Original Soundtrack Soundcloud embed -->
+    {% if page.OST-embed %}
+    <div class="row no-margin">
+        <div class="col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12">
+            <h2>Original Soundtrack</h2>
+            <iframe class="soundcloud-embed" scrolling="no" frameborder="no" allow="autoplay" src="{{ page.OST-embed }}"></iframe>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Gameplay videos -->
+    {% if page.gameplay-videos %}
+    <div class="row no-margin">
+        <!--div class="col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12"-->
+        <div class="col-12">
+            {% if page.gameplay-videos.size == 1 %}
+                <h2>Gameplay Video</h2>
+            {% else %}
+                <h2>Gameplay Videos</h2>
+            {% endif %}
+            <div class="row no-margin">
+                {% for video in page.gameplay-videos %}
+                <div class="col-xl-6 col-lg-6 d-flex justify-content-center" style="padding: 8px">
+                    <div class="video-container">
+                        <iframe class="video-iframe" src="https://{{ video }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Custom content (this could be moved up?) -->
+    {{ content }}
+</div>

@@ -1,0 +1,195 @@
+---
+# Front Matter
+layout: default
+title: Home
+noHeaderMargin: true
+meta-description: "Want to make games? Welcome to the Game Creation Society, a student-run game development club at Carnegie Mellon University!"
+
+redirect_from:
+- /extra
+- /content/library
+- /content/articles-and-tutorials
+- /content/external-links
+---
+
+<!-- Stylesheet dependencies -->
+<link rel="stylesheet" href="/styles/home.css">
+<link rel="stylesheet" href="/styles/listed_game.css">
+
+<!-- Content -->
+<!-- Demo reel and overlay -->
+<div id="reel-container">
+    <div id="reel-overlay-outer">
+        <h1 id="want-to-make-games">Want to make games?</h1><br>
+        <p id="reel-overlay-description">We are a student game development club at Carnegie Mellon University.</p><br><br>
+        <div id="reel-overlay-buttons">
+            <a href="/about">
+                <button type="button" class="standard-button red-button">Learn More</button>
+            </a>
+            <a href="https://youtu.be/wwZLlcA69xY">
+                <button type="button" class="standard-button blue-button">View Video Reel</button>
+            </a>
+            <!-- <a href="/games">
+                <button type="button" class="standard-button blue-button">Play Our Games</button>
+            </a> -->
+        </div>
+    </div>
+
+    <video autoplay loop muted playsinline id="games-reel">
+        <source src="/videos/GCS F22 banner video.mp4" type="video/mp4"></source>
+        <source src="/videos/GCS F22 banner video - compressed.mp4" type="video/mp4"></source>
+    </video>
+    <div id="reel-faded-mask"></div>
+</div>
+
+<script>
+    // https://stackoverflow.com/questions/9847580/how-to-detect-safari-chrome-ie-firefox-and-opera-browser
+
+    // Opera 8.0+
+    var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+
+    // Safari 3.0+ "[object HTMLElementConstructor]" 
+    var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+
+    // Internet Explorer 6-11
+    var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+    var games_reel = document.getElementById("games-reel");
+
+    if ((isOpera || isIE)) {
+        games_reel.style.background = "url('/images/arches.jpg')";
+    }
+    else if (isSafari) {
+        games_reel.style.background = "url('/images/jp2/arches.jp2')";
+    }
+    else {
+        games_reel.style.background = "url('/images/webp/arches.webp')";
+    }
+</script>
+
+<!-- Section 2 -->
+<div id="section-2">
+    <span>
+        <br>
+        <div id="section-2-icon-container">
+            <img id="section-2-icon" class="replaceable" src="/images/webp/Home_description_smaller.webp" onerror="this.src='/images/Home_description_smaller.jpg'" alt="icon" loading="lazy">
+        </div>
+        <h2>Game Creation Society</h2>
+        is a student-run organization at Carnegie Mellon University, dedicated to the art and science of making games. GCS provides an environment for people of various disciplines to work together on projects as they would in a real development environment.
+        <br><br>
+        <a href="https://lists.andrew.cmu.edu/mailman/listinfo/game-creation" class="no-text-decoration">
+            <button type="button" class="standard-button red-button">Join Mailing List</button>
+        </a>
+        <br><br><br>
+    </span>
+</div>
+
+<!-- Section 3 -->
+<div id="section-3">
+    <div id="section-3-content">
+        <br><br>
+        <h1>Join us</h1>
+        <h5>Whatever your talents are, if you are interested in making games we can find a role for you!</h5>
+        <br>
+        <h5><b>Meetings every Friday<br>6:00 pm in the Hunt Studios</b></h5>
+        <br><br>
+
+        <a href="/contact" class="no-text-decoration">
+            <button type="button" class="standard-button red-button">Contact Us</button>
+        </a>
+        <br><br><br><br>
+    </div>
+</div>
+
+<!-- Section 4 -->
+<div id="section-4">
+    <div class="text-center">
+        <br>
+        <h2>The GCS Experience</h2>
+        <br>
+    </div>
+
+    <div class="row justify-content-center text-center align-items-start">
+        <div class="col col-xl-2 mx-3">
+            <div id="section-4-icon-container">
+                <img id="section-4-icon" class="replaceable" src="/images/webp/Home_interdisciplinary_collabs_smaller.webp" onerror="this.src='/images/Home_interdisciplinary_collabs_smaller.png'" alt="icon" loading="lazy">
+                <br><br>
+                <div>Interdisciplinary Collabs</div>
+            </div>
+        </div>
+        <div class="col col-xl-2 mx-3">
+            <div id="section-4-icon-container">
+                <img id="section-4-icon" class="replaceable" src="/images/webp/Home_gamemaking_tutorials_smaller.webp" onerror="this.src='/images/Home_gamemaking_tutorials_smaller.png'" alt="icon" loading="lazy">
+                <br><br>
+                <div>Gamemaking Tutorials</div>
+            </div>
+        </div>
+        <div class="col col-xl-2 mx-3">
+            <div id="section-4-icon-container">
+                <img id="section-4-icon" class="replaceable" src="/images/webp/Home_industry_talks_smaller.webp" onerror="this.src='/images/Home_industry_talks_smaller.png'" alt="icon" loading="lazy">
+                <br><br>
+                <div>Professional Talks</div>
+            </div>
+        </div>
+        <div class="col col-xl-2 mx-3">
+            <div id="section-4-icon-container">
+                <img id="section-4-icon" class="replaceable" src="/images/webp/Home_gaming_events_smaller.webp" onerror="this.src='/images/Home_gaming_events_smaller.png'" alt="icon" loading="lazy">
+                <!-- <img id="section-4-icon" src="/images/About_page_head.jpg" alt="icon"> -->
+                <br><br>
+                <div>Gaming Events</div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+</div>
+
+<!-- Section 5 -->
+<div id="section-5">
+    <div class="text-center">
+        <br>
+        <h2>Our Games</h2>
+        <br>
+    </div>
+
+    <div class="row no-margin justify-content-around align-items-center">
+
+        {% assign years = site.games | group_by: "year" %}
+        {% assign years = years | sort: "name" | reverse %}
+
+        {% assign game_counter = 0 %}
+        {% for year in years %}
+            {% assign games_sorted = year.items | sort: "semester" %}
+            {% if page.sort_by == "oldest" %}
+                {% assign games_sorted = year.items | sort: "semester" | reverse %}
+            {% endif %}
+            {% for game in games_sorted %}
+                {% if game_counter >= 3 %}
+                    {% break %}
+                {% endif %}
+                {% assign game_counter = game_counter | plus: 1 %}
+                {% include listed_game.html %}
+            {% endfor %}
+            <!-- See listed_game.html for the formatting of each game listed -->
+        {% endfor %}
+    </div>
+    <br><br>
+    <div class="text-center">
+        <a href="/games">
+            <button type="button" class="standard-button red-button">View More</button>
+        </a>
+    </div>
+    <br><br>
+
+    <!-- Section 6: Sponsors -->
+    <div id="section-6-sponsors" class="text-center">
+        <br>
+        <h2>Our Sponsors</h2>
+        <br>
+        <div class="row justify-content-center align-items-center flex-wrap" id="sponsor-logos">
+            <div class="col-4 col-md-2 p-3">
+                <img src="images\sponsors\Roblox-Logo.png" alt="Roblox Logo" class="img-fluid" loading="lazy">
+            </div>
+        </div>
+        <br><br>
+    </div>
+</div>

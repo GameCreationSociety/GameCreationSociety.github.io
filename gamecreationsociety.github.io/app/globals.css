@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gcs-desaturated-blue: #7d81be;
+  --color-gcs-dark-blue: #292a68;
+  --color-gcs-soft-red: #d94a66;
+  --color-gcs-dark-red: #42111a;
+  --color-gcs-gray-red: #c0a2a8;
+}
+
+@keyframes gcs-marquee {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.gcs-marquee {
+  animation: gcs-marquee 40s linear infinite;
+  will-change: transform;
+}
+
+.gcs-marquee:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gcs-marquee {
+    animation: none;
+  }
+}
+
+.gcs-fade-edges {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
