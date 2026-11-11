@@ -84,3 +84,14 @@
 @media (max-width: 767px) {
   .carouselDots { max-width: min(100%, var(--dot-row-width)); }
 }
+
+.community { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; margin-bottom: 32px; }
+.communityLink { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; color: #404040; font-size: .9375rem; font-weight: 500; text-decoration: none; }
+.communityLink svg { width: 24px; height: 24px; flex-shrink: 0; }
+.communityPrimary { color: #171717; font-weight: 600; }
+.home .communityLink:hover { background: transparent; color: #171717; }
+.communityLink:hover span { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 767px) {
+  .community { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .communityLink { flex-direction: column; justify-content: center; gap: 8px; min-height: 64px; font-size: .8125rem; text-align: center; }
+}

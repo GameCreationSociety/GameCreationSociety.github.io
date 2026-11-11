@@ -5,12 +5,14 @@ import Image from "next/image";
 import { useEffect, useRef, useState, useSyncExternalStore, type CSSProperties } from "react";
 import type { Game } from "@/data/games";
 import styles from "./home.module.css";
+import { useGameTransition } from "@/components/GameTransitionProvider";
 
 const subscribeReady = () => () => {};
 const copies = 9;
 const middleCopy = Math.floor(copies / 2);
 
 export default function GamesCarousel({ games }: { games: Game[] }) {
+  const { expandGame } = useGameTransition();
   const ready = useSyncExternalStore(subscribeReady, () => true, () => false);
   const root = useRef<HTMLDivElement>(null);
   const viewport = useRef<HTMLDivElement>(null);
@@ -273,10 +275,14 @@ export default function GamesCarousel({ games }: { games: Game[] }) {
       <div className={styles.gameTrack}>
         {Array.from({ length: looping ? copies : 1 }, (_, copy) => games.map(game => {
           const canonical = !looping || copy === middleCopy;
-          return <Link data-game-card data-canonical={canonical} key={`${copy}-${game.id}`} className={styles.gameCard}
+          return <Link data-game-card data-game-link={game.id} data-canonical={canonical} key={`${copy}-${game.id}`} className={styles.gameCard}
             href={`/games/${game.id}`} tabIndex={canonical ? undefined : -1} aria-hidden={canonical ? undefined : true}
+            onNavigate={event => {
+              const source = viewport.current?.querySelector<HTMLElement>(`[data-game-link="${CSS.escape(game.id)}"][data-copy="${copy}"]`);
+              if (source) { event.preventDefault(); expandGame(game.id, source); }
+            }} data-copy={copy}
             aria-label={`${game.title}, ${game.semester} ${game.year}`} draggable={false}>
-            <div className={styles.gameImage}>
+            <div className={styles.gameImage} data-game-artwork>
               {game.thumbnail ? <Image src={game.thumbnail.src} alt={game.thumbnail.alt} fill sizes="(max-width: 767px) 80vw, 320px" className={styles.thumbnail} draggable={false} /> : <span aria-hidden="true">Game artwork</span>}
             </div>
             <h3>{game.title}</h3><p>{game.semester} {game.year}</p>

@@ -1,177 +1,209 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useLayoutEffect, useRef, type ReactNode } from "react";
+import Link from "next/link";
+import { createContext, useCallback, useContext, useEffect, useLayoutEffect, useRef, useSyncExternalStore, type ReactNode } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import styles from "@/components/GameTransitionProvider.module.css";
+import styles from "./GameTransitionProvider.module.css";
 
+type Entry = { id: string; origin: "/" | "/games"; scrollY: number; carouselLeft?: number; sourceCopy?: number };
+type Journey = { entry: Entry; direction: "in" | "out"; sourcePath: string; targetPath: string; rect?: DOMRect; timer: ReturnType<typeof setTimeout>; target?: HTMLElement; opacity?: string; focus?: HTMLElement; animations: Animation[] };
 type TransitionContext = {
   expandGame: (id: string, source: HTMLElement, onStart?: () => void) => void;
   registerDestination: (id: string, destination: HTMLElement) => () => void;
+  returnToOrigin: (id: string) => void;
 };
-type Expansion = {
-  id: string;
-  sourcePath: string;
-  targetPath: string;
-  frames: number[];
-  timer: ReturnType<typeof setTimeout>;
-  destination?: HTMLElement;
-  previousOpacity?: string;
-  main?: HTMLElement;
-  wasInert?: boolean;
-};
+const Context = createContext<TransitionContext | null>(null);
+const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const navigationEvent = "gcs-game-navigation";
 
-const TransitionContext = createContext<TransitionContext | null>(null);
-
-// Copies are visual only; the actual page remains the navigation and accessibility surface.
-function visualCopy(element: HTMLElement, className: string) {
-  const container = document.createElement("div");
-  container.className = className;
-  container.style.width = "100%";
-  container.style.height = "100%";
-  const copy = element.cloneNode(true) as HTMLElement;
-  copy.removeAttribute("id");
-  copy.querySelectorAll("[id]").forEach((child) => child.removeAttribute("id"));
-  copy.removeAttribute("data-game-transition-target");
-  Object.assign(copy.style, { width: "100%", height: "100%", margin: "0", opacity: "1", border: "0", borderRadius: "0" });
-  container.append(copy);
-  return container;
+function readEntry(id?: string): Entry | null {
+  const entry = window.history.state?.gcsGameEntry as Entry | undefined;
+  if (!entry || (id && entry.id !== id) || !["/", "/games"].includes(entry.origin) || !Number.isFinite(entry.scrollY)) return null;
+  return entry;
+}
+function originLink(entry: Entry) {
+  const links = Array.from(document.querySelectorAll<HTMLElement>(`[data-game-link="${CSS.escape(entry.id)}"]`));
+  return links[entry.sourceCopy ?? 0] ?? links[0];
+}
+function artwork(element: HTMLElement) {
+  return element.querySelector<HTMLElement>("[data-game-artwork]") ?? element;
 }
 
 export default function GameTransitionProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
   const layer = useRef<HTMLDivElement>(null);
-  const active = useRef<Expansion | null>(null);
+  const active = useRef<Journey | null>(null);
+  const pending = useRef<Entry | null>(null);
+  const lastDetail = useRef<{ id: string; entry: Entry | null } | null>(null);
 
   const finish = useCallback(() => {
-    const expansion = active.current;
-    if (!expansion) return;
+    const journey = active.current;
     active.current = null;
-    clearTimeout(expansion.timer);
-    expansion.frames.forEach(cancelAnimationFrame);
-    if (expansion.destination) expansion.destination.style.opacity = expansion.previousOpacity ?? "";
-    if (expansion.main) {
-      expansion.main.removeAttribute("data-game-entering");
-      expansion.main.inert = expansion.wasInert ?? false;
+    if (journey) {
+      clearTimeout(journey.timer);
+      journey.animations.forEach(animation => animation.cancel());
+      if (journey.target) journey.target.style.opacity = journey.opacity ?? "";
+      journey.focus?.focus({ preventScroll: true });
     }
     if (layer.current) {
       layer.current.hidden = true;
-      layer.current.removeAttribute("data-expanding");
       layer.current.replaceChildren();
+      layer.current.style.transform = "";
     }
   }, []);
 
-  const expandGame = useCallback((id: string, source: HTMLElement, onStart?: () => void) => {
-    const surface = layer.current;
-    if (active.current || !surface) return;
-    const rect = source.getBoundingClientRect();
-    if (!rect.width || !rect.height) {
-      onStart?.();
-      router.push(`/games/${encodeURIComponent(id)}`);
+  const begin = useCallback((entry: Entry, direction: "in" | "out", source: HTMLElement | null) => {
+    finish();
+    const journey: Journey = {
+      entry, direction, sourcePath: window.location.pathname,
+      targetPath: direction === "in" ? `/games/${encodeURIComponent(entry.id)}` : entry.origin,
+      timer: setTimeout(finish, 2000), animations: [],
+    };
+    active.current = journey;
+    if (source && layer.current && !reducedMotion()) {
+      const media = artwork(source);
+      const rect = media.getBoundingClientRect();
+      if (rect.width && rect.height && rect.top >= 64 && rect.bottom <= window.innerHeight) {
+        journey.rect = rect;
+        const copy = media.cloneNode(true) as HTMLElement;
+        copy.removeAttribute("id");
+        copy.querySelectorAll("[id]").forEach(child => child.removeAttribute("id"));
+        Object.assign(copy.style, { width: "100%", height: "100%", margin: "0" });
+        layer.current.replaceChildren(copy);
+        Object.assign(layer.current.style, { left: `${rect.left}px`, top: `${rect.top}px`, width: `${rect.width}px`, height: `${rect.height}px` });
+        layer.current.hidden = false;
+      }
+    }
+    return journey;
+  }, [finish]);
+
+  const land = useCallback((journey: Journey, target?: HTMLElement, focus?: HTMLElement) => {
+    if (active.current !== journey) return;
+    if (target && journey.target === target) return;
+    journey.focus = focus;
+    const rect = target?.getBoundingClientRect();
+    if (!journey.rect || !rect || !rect.width || rect.top < 64 || rect.bottom > window.innerHeight || reducedMotion() || !layer.current) {
+      finish();
       return;
     }
-
-    onStart?.();
-    const expansion: Expansion = {
-      id,
-      sourcePath: window.location.pathname,
-      targetPath: `/games/${encodeURIComponent(id)}`,
-      frames: [],
-      timer: setTimeout(finish, 2000),
-    };
-    active.current = expansion;
-    surface.removeAttribute("data-expanding");
-    surface.replaceChildren(visualCopy(source, styles.source));
-    Object.assign(surface.style, {
-      left: `${rect.left}px`, top: `${rect.top}px`, width: `${rect.width}px`, height: `${rect.height}px`,
-      borderRadius: getComputedStyle(source).borderRadius,
-      borderColor: getComputedStyle(source).borderColor,
+    journey.target = target;
+    journey.opacity = target!.style.opacity;
+    target!.style.opacity = "0";
+    const source = journey.rect;
+    const animation = layer.current.animate([
+      { transform: "translate(0, 0) scale(1, 1)" },
+      { transform: `translate(${rect.left - source.left}px, ${rect.top - source.top}px) scale(${rect.width / source.width}, ${rect.height / source.height})` },
+    ], { duration: 360, easing: "cubic-bezier(.16, 1, .3, 1)", fill: "forwards" });
+    journey.animations.push(animation);
+    document.querySelectorAll<HTMLElement>("[data-game-detail-copy]").forEach(element => {
+      journey.animations.push(element.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 160, fill: "both" }));
     });
-    surface.hidden = false;
+    clearTimeout(journey.timer);
+    journey.timer = setTimeout(finish, 380);
+  }, [finish]);
 
-    try {
-      router.push(expansion.targetPath, { scroll: false });
-    } catch {
-      finish();
-    }
-  }, [finish, router]);
+  const expandGame = useCallback((id: string, source: HTMLElement, onStart?: () => void) => {
+    onStart?.();
+    const origin = window.location.pathname === "/" ? "/" : "/games";
+    const links = Array.from(document.querySelectorAll<HTMLElement>(`[data-game-link="${CSS.escape(id)}"]`));
+    const carousel = source.closest<HTMLElement>('[aria-roledescription="carousel"]');
+    const entry: Entry = { id, origin, scrollY: window.scrollY, carouselLeft: carousel?.scrollLeft, sourceCopy: Math.max(0, links.indexOf(source)) };
+    pending.current = entry;
+    begin(entry, "in", source);
+    router.push(`/games/${encodeURIComponent(id)}`, { scroll: false });
+  }, [begin, router]);
 
   const registerDestination = useCallback((id: string, destination: HTMLElement) => {
-    const expansion = active.current;
-    const surface = layer.current;
-    if (!expansion || expansion.id !== id || !surface) return () => {};
-    const cleanup = () => {
-      // Strict Mode replays layout effects while the same destination is still mounted.
-      queueMicrotask(() => {
-        if (active.current === expansion && !destination.isConnected) finish();
-      });
-    };
-    if (expansion.destination === destination) return cleanup;
-
-    window.scrollTo({ top: 0, behavior: "instant" });
-    const rect = destination.getBoundingClientRect();
-    if (!rect.width || !rect.height) {
-      finish();
-      return () => {};
+    const entry = pending.current?.id === id ? pending.current : readEntry(id);
+    if (entry) {
+      window.history.replaceState({ ...window.history.state, gcsGameEntry: entry }, "");
+      pending.current = null;
+      window.dispatchEvent(new Event(navigationEvent));
     }
-    expansion.destination = destination;
-    expansion.previousOpacity = destination.style.opacity;
-    expansion.main = destination.closest("main") ?? undefined;
-    if (expansion.main) {
-      expansion.wasInert = expansion.main.inert;
-      expansion.main.inert = true;
-      expansion.main.setAttribute("data-game-entering", "true");
+    lastDetail.current = { id, entry };
+    const journey = active.current;
+    if (journey?.direction === "in" && journey.entry.id === id) {
+      window.scrollTo({ top: 0, behavior: "instant" });
+      land(journey, destination, document.querySelector<HTMLElement>("[data-game-detail-page] h1") ?? undefined);
     }
-    destination.style.opacity = "0";
-    surface.append(visualCopy(destination, styles.destination));
-    clearTimeout(expansion.timer);
+    return () => {};
+  }, [land]);
 
-    // Let the source rectangle paint before changing bounds, including on prefetched routes.
-    expansion.frames.push(requestAnimationFrame(() => {
-      expansion.frames.push(requestAnimationFrame(() => {
-        if (active.current !== expansion) return;
-        surface.setAttribute("data-expanding", "true");
-        Object.assign(surface.style, {
-          left: `${rect.left}px`, top: `${rect.top}px`, width: `${rect.width}px`, height: `${rect.height}px`,
-          borderRadius: getComputedStyle(destination).borderRadius,
-        });
-        expansion.timer = setTimeout(finish, 450);
-      }));
-    }));
-    return cleanup;
-  }, [finish]);
+  const returnToOrigin = useCallback((id: string) => {
+    const entry = readEntry(id);
+    if (!entry) { router.push("/games"); return; }
+    begin(entry, "out", document.querySelector<HTMLElement>("[data-game-transition-target]"));
+    router.back();
+  }, [begin, router]);
+
+  useLayoutEffect(() => {
+    const journey = active.current;
+    if (!journey) return;
+    if (pathname !== journey.sourcePath && pathname !== journey.targetPath) { pending.current = null; finish(); return; }
+    if (journey.direction !== "out" || pathname !== journey.targetPath) return;
+    let frame = 0, attempts = 0;
+    function restore() {
+      if (active.current !== journey) return;
+      // The homepage installs its repeated carousel after hydration and measures it.
+      let link = originLink(journey!.entry);
+      if ((!link || (journey!.entry.origin === "/" && !document.querySelector('[data-canonical="false"]'))) && attempts++ < 12) {
+        frame = requestAnimationFrame(restore);
+        return;
+      }
+      const carousel = link?.closest<HTMLElement>('[aria-roledescription="carousel"]');
+      if (carousel && journey!.entry.carouselLeft !== undefined) carousel.scrollLeft = journey!.entry.carouselLeft;
+      window.scrollTo({ top: journey!.entry.scrollY, behavior: "instant" });
+      if (link?.getAttribute("aria-hidden") === "true") {
+        // Rebase to the accessible copy while keeping the same artwork on screen.
+        const canonical = document.querySelector<HTMLElement>(`[data-game-link="${CSS.escape(journey!.entry.id)}"][data-canonical="true"]`);
+        if (canonical && carousel) {
+          carousel.scrollLeft += canonical.getBoundingClientRect().left - link.getBoundingClientRect().left;
+          link = canonical;
+        }
+      }
+      land(journey!, link ? artwork(link) : undefined, link?.getAttribute("aria-hidden") === "true" ? undefined : link);
+      lastDetail.current = null;
+    }
+    // Allow local catalog state and carousel measurements to settle first.
+    frame = requestAnimationFrame(() => { frame = requestAnimationFrame(restore); });
+    return () => cancelAnimationFrame(frame);
+  }, [pathname, finish, land]);
 
   useEffect(() => {
-    const expansion = active.current;
-    if (expansion && pathname !== expansion.sourcePath && pathname !== expansion.targetPath) finish();
-  }, [pathname, finish]);
-
-  useEffect(() => {
-    window.addEventListener("resize", finish);
-    window.addEventListener("pagehide", finish);
-    window.addEventListener("popstate", finish);
+    function onPopState() {
+      const detail = lastDetail.current;
+      if (detail && detail.entry && window.location.pathname === detail.entry.origin) {
+        if (active.current?.direction !== "out") begin(detail.entry, "out", document.querySelector<HTMLElement>("[data-game-transition-target]"));
+      } else {
+        const entry = readEntry();
+        if (entry && window.location.pathname === `/games/${entry.id}`) begin(entry, "in", originLink(entry) ?? null);
+        else finish();
+      }
+      window.dispatchEvent(new Event(navigationEvent));
+    }
+    function cancel() { finish(); }
+    window.addEventListener("popstate", onPopState);
+    window.addEventListener("resize", cancel);
+    window.addEventListener("pagehide", cancel);
     return () => {
-      window.removeEventListener("resize", finish);
-      window.removeEventListener("pagehide", finish);
-      window.removeEventListener("popstate", finish);
+      window.removeEventListener("popstate", onPopState);
+      window.removeEventListener("resize", cancel);
+      window.removeEventListener("pagehide", cancel);
       finish();
     };
-  }, [finish]);
+  }, [begin, finish]);
 
-  return (
-    <TransitionContext.Provider value={{ expandGame, registerDestination }}>
-      {children}
-      <div ref={layer} hidden inert aria-hidden="true" className={styles.layer} />
-    </TransitionContext.Provider>
-  );
+  return <Context.Provider value={{ expandGame, registerDestination, returnToOrigin }}>
+    {children}<div ref={layer} hidden inert aria-hidden="true" className={styles.layer} />
+  </Context.Provider>;
 }
 
 export function useGameTransition() {
-  const value = useContext(TransitionContext);
-  if (!value) throw new Error("Game transitions require GameTransitionProvider.");
-  return value;
+  const context = useContext(Context);
+  if (!context) throw new Error("Game transitions require GameTransitionProvider.");
+  return context;
 }
-
 export function GameTransitionDestination({ gameId, className, children }: { gameId: string; className?: string; children: ReactNode }) {
   const element = useRef<HTMLDivElement>(null);
   const { registerDestination } = useGameTransition();
@@ -179,4 +211,22 @@ export function GameTransitionDestination({ gameId, className, children }: { gam
     if (element.current) return registerDestination(gameId, element.current);
   }, [gameId, registerDestination]);
   return <div ref={element} data-game-transition-target={gameId} className={className}>{children}</div>;
+}
+function subscribeEntry(listener: () => void) {
+  window.addEventListener(navigationEvent, listener);
+  window.addEventListener("popstate", listener);
+  return () => {
+    window.removeEventListener(navigationEvent, listener);
+    window.removeEventListener("popstate", listener);
+  };
+}
+export function GameReturnLink({ gameId, className }: { gameId: string; className?: string }) {
+  const origin = useSyncExternalStore(subscribeEntry, () => readEntry(gameId)?.origin ?? "/games", () => "/games");
+  const { returnToOrigin } = useGameTransition();
+  return <Link href={origin} scroll={false} className={className} onNavigate={event => {
+    event.preventDefault();
+    returnToOrigin(gameId);
+  }}><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="m8 4-6 6 6 6M2 10h16" /></svg>
+    {origin === "/" ? "Back to homepage" : "Back to games"}
+  </Link>;
 }

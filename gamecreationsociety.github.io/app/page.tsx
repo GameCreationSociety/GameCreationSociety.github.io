@@ -6,5 +6,11 @@ import Sponsors from "@/components/home/Sponsors";
 import styles from "@/components/home/home.module.css";
 export const revalidate = 900;
 export default function Home() {
-  return <main className={styles.home}><Hero /><ActivitySection /><InfoSection /><GamesPreview /><Sponsors /></main>;
+	return <main className={styles.home}>
+		<Hero />
+		<ActivitySection />
+		<InfoSection />
+		<GamesPreview />
+		<Sponsors />
+	</main>;
 }
