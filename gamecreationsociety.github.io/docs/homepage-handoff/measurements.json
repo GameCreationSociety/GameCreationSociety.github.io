@@ -1,0 +1,201 @@
+[
+  {
+    "width": 1440,
+    "height": 800,
+    "anchor": 80,
+    "overflow": false,
+    "sections": [
+      {
+        "name": "Game Creation Society",
+        "y": 64,
+        "height": 576,
+        "width": 1440
+      },
+      {
+        "name": "What’s happening",
+        "y": 640,
+        "height": 758.328125,
+        "width": 1440
+      },
+      {
+        "name": "Who we are",
+        "y": 1398.328125,
+        "height": 640,
+        "width": 1440
+      },
+      {
+        "name": "Our games",
+        "y": 2038.328125,
+        "height": 640,
+        "width": 1440
+      },
+      {
+        "name": "Our sponsors",
+        "y": 2678.328125,
+        "height": 280,
+        "width": 1440
+      }
+    ],
+    "slots": [
+      "desktop",
+      "desktop",
+      "desktop",
+      "desktop",
+      "desktop"
+    ]
+  },
+  {
+    "width": 1280,
+    "height": 720,
+    "anchor": 80,
+    "overflow": false,
+    "sections": [
+      {
+        "name": "Game Creation Society",
+        "y": 64,
+        "height": 512,
+        "width": 1280
+      },
+      {
+        "name": "What’s happening",
+        "y": 576,
+        "height": 758.328125,
+        "width": 1280
+      },
+      {
+        "name": "Who we are",
+        "y": 1334.328125,
+        "height": 640,
+        "width": 1280
+      },
+      {
+        "name": "Our games",
+        "y": 1974.328125,
+        "height": 640,
+        "width": 1280
+      },
+      {
+        "name": "Our sponsors",
+        "y": 2614.328125,
+        "height": 280,
+        "width": 1280
+      }
+    ],
+    "slots": [
+      "desktop",
+      "desktop",
+      "desktop",
+      "desktop",
+      "desktop"
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "anchor": 80,
+    "overflow": false,
+    "sections": [
+      {
+        "name": "Game Creation Society",
+        "y": 64,
+        "height": 560,
+        "width": 390
+      },
+      {
+        "name": "What’s happening",
+        "y": 624,
+        "height": 1212.3125,
+        "width": 390
+      },
+      {
+        "name": "Who we are",
+        "y": 1836.3125,
+        "height": 794.828125,
+        "width": 390
+      },
+      {
+        "name": "Our games",
+        "y": 2631.140625,
+        "height": 435.6875,
+        "width": 390
+      },
+      {
+        "name": "Our sponsors",
+        "y": 3066.828125,
+        "height": 438.390625,
+        "width": 390
+      }
+    ],
+    "slots": [
+      "mobile",
+      "mobile",
+      "mobile",
+      "mobile",
+      "mobile"
+    ]
+  },
+  {
+    "width": 360,
+    "height": 640,
+    "anchor": 80,
+    "overflow": false,
+    "sections": [
+      {
+        "name": "Game Creation Society",
+        "y": 64,
+        "height": 560,
+        "width": 360
+      },
+      {
+        "name": "What’s happening",
+        "y": 624,
+        "height": 1237.90625,
+        "width": 360
+      },
+      {
+        "name": "Who we are",
+        "y": 1861.90625,
+        "height": 772.328125,
+        "width": 360
+      },
+      {
+        "name": "Our games",
+        "y": 2634.234375,
+        "height": 480.578125,
+        "width": 360
+      },
+      {
+        "name": "Our sponsors",
+        "y": 3114.8125,
+        "height": 438.390625,
+        "width": 360
+      }
+    ],
+    "slots": [
+      "mobile",
+      "mobile",
+      "mobile",
+      "mobile",
+      "mobile"
+    ]
+  },
+  {
+    "route": "/about",
+    "nav": "passed"
+  },
+  {
+    "route": "/events",
+    "nav": "passed"
+  },
+  {
+    "route": "/contact",
+    "nav": "passed"
+  },
+  {
+    "route": "/games",
+    "nav": "passed"
+  },
+  {
+    "enlargedTextOverflow": false
+  }
+]

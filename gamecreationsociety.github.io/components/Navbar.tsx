@@ -1,44 +1,19 @@
+"use client";
 import Link from "next/link";
-
+import { useState } from "react";
+import { usePathname } from "next/navigation";
+import styles from "./Navbar.module.css";
+const links = [["Home", "/"], ["About", "/about"], ["Events", "/events"], ["Contact", "/contact"], ["Games", "/games"]];
 export default function Navbar() {
-	return (
-		<header className="sticky top-0 z-67 h-16 w-full">
-			<nav
-				aria-label="Main navigation"
-				className="mx-auto flex h-full max-w-6xl items-center justify-between px-8 md:px-12"
-			>
-				<Link href="/" className="text-xl font-bold">
-					MySite
-				</Link>
-
-				<ul className="flex gap-6">
-					<li>
-						<Link href="/" className="hover:text-blue-500">
-							Home
-						</Link>
-					</li>
-					<li>
-						<Link href="/about" className="hover:text-blue-500">
-							About
-						</Link>
-					</li>
-					<li>
-						<Link href="/events" className="hover:text-blue-500">
-							Events
-						</Link>
-					</li>
-					<li>
-						<Link href="/contact" className="hover:text-blue-500">
-							Contact
-						</Link>
-					</li>
-					<li>
-						<Link href="/games" className="hover:text-blue-500">
-							Games
-						</Link>
-					</li>
-				</ul>
-			</nav>
-		</header>
-	);
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  return <header className={styles.header} onKeyDown={e => { if (e.key === "Escape") { setOpen(false); e.currentTarget.querySelector("button")?.focus(); } }}>
+    <nav aria-label="Main navigation" className={styles.nav}>
+      <Link href="/" className={styles.brand} onClick={() => setOpen(false)}>GCS</Link>
+      <button type="button" className={styles.toggle} aria-expanded={open} aria-controls="main-links" onClick={() => setOpen(!open)}>{open ? "Close menu" : "Menu"}</button>
+      <ul id="main-links" className={`${styles.links} ${open ? styles.open : ""}`}>
+        {links.map(([label, href]) => <li key={href}><Link href={href} aria-current={pathname === href ? "page" : undefined} onClick={() => setOpen(false)}>{label}</Link></li>)}
+      </ul>
+    </nav>
+  </header>;
 }

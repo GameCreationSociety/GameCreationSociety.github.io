@@ -1,0 +1,14 @@
+.header { position: sticky; top: 0; z-index: 67; height: 64px; flex-shrink: 0; background: #fff; color: #171717; border-bottom: 1px solid #d4d4d4; }
+.nav { width: min(1152px, calc(100% - 64px)); height: 100%; margin-inline: auto; display: flex; align-items: center; justify-content: space-between; }
+.brand { font-size: 1.25rem; font-weight: 700; }
+.links { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; }
+.links a { display: block; padding-block: 10px; }
+.links a:hover, .links a[aria-current] { text-decoration: underline; text-underline-offset: 4px; }
+.toggle { display: none; border: 1px solid #737373; padding: 8px 12px; }
+.nav :focus-visible { outline: 2px solid #171717; outline-offset: 4px; }
+@media (max-width: 767px) {
+ .nav { width: calc(100% - 40px); }
+ .toggle { display: block; }
+ .links { display: none; position: absolute; top: 64px; inset-inline: 0; background: #fff; border-bottom: 1px solid #a3a3a3; padding: 12px 20px; max-height: calc(100svh - 64px); overflow-y: auto; }
+ .open { display: flex; flex-direction: column; gap: 4px; }
+}
