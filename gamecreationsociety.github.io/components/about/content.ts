@@ -2,6 +2,7 @@
 // Discord's invite API confirmed this invite leads to CMU GCS on 2026-11-04.
 export const aboutLinks = {
   discord: "https://discord.gg/Hfs9bfY",
+  facebook: "https://www.facebook.com/groups/cmugcs/",
   instagram: "https://instagram.com/gamecreation",
   mailingList: "https://lists.andrew.cmu.edu/mailman/listinfo/game-creation",
   calendar: "https://calendar.google.com/calendar/embed?src=andrew.cmu.edu_81nu9se1dvr891bdcfjo9ndovk%40group.calendar.google.com&ctz=America%2FNew_York",
