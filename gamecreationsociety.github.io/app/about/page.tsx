@@ -5,6 +5,7 @@ import AboutHighlights from "@/components/about/AboutHighlights";
 import AboutFaq from "@/components/about/AboutFaq";
 import AboutHistory from "@/components/about/AboutHistory";
 import styles from "./about.module.css";
+import { sectionLinks } from "@/components/about/content";
 
 export const metadata: Metadata = {
   title: "About | Game Creation Society",
@@ -15,9 +16,12 @@ export default function AboutPage() {
   return (
     <main className={styles.page}>
       <AboutIntro />
+      <nav aria-label="On this page" className={styles.sectionNav}>
+        <ul>{sectionLinks.map(({ label, href }) => <li key={href}><a href={href}>{label}</a></li>)}</ul>
+      </nav>
       <ParticipationSections />
-      <AboutHighlights />
       <AboutFaq />
+      <AboutHighlights />
       <AboutHistory />
     </main>
   );

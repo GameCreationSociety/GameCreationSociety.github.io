@@ -11,10 +11,10 @@ export const aboutLinks = {
 };
 
 export const sectionLinks = [
-  { label: "Each semester", href: "#what-we-do" },
   { label: "Getting involved", href: "#get-involved" },
-  { label: "Past years", href: "#gallery" },
+  { label: "Each semester", href: "#what-we-do" },
   { label: "FAQ", href: "#faq" },
+  { label: "Past years", href: "#gallery" },
   { label: "History", href: "#history" },
 ];
 

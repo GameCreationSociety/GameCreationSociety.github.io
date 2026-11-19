@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import Link from "next/link";
+import { FaDiscord, FaInstagram } from "react-icons/fa";
 import { FiCalendar } from "react-icons/fi";
-import { FaDiscord } from "react-icons/fa";
 import { aboutLinks } from "@/components/about/content";
 import EventsGallery from "@/components/events/EventsGallery";
 import UpcomingEvents from "@/components/events/UpcomingEvents";
@@ -24,12 +24,22 @@ export default function EventsPage() {
 
   return (
     <main className={styles.page}>
-      <header className={styles.intro}>
+      <header>
         <h1>Events</h1>
-      </header>
-			<header className={styles.intro}>
-        <a href="#calendar" className={`${styles.headerAction} ${styles.calendarAction}`}><FiCalendar aria-hidden="true" />View calendar</a>
-        <a href={aboutLinks.discord} className={`${styles.headerAction} ${styles.discordAction}`}><FaDiscord aria-hidden="true" />Join Discord</a>
+        <div className={styles.headerLinks}>
+          <a href="#calendar" className={styles.textLink}>
+            <FiCalendar aria-hidden="true" />
+            View full calendar
+          </a>
+          <a href={aboutLinks.discord} className={styles.textLink}>
+            <FaDiscord aria-hidden="true" />
+            Join Discord
+          </a>
+          <a href={aboutLinks.instagram} className={styles.textLink}>
+            <FaInstagram aria-hidden="true" />
+            Follow on Instagram
+          </a>
+        </div>
       </header>
       <EventsGallery />
       <div className={styles.schedule}>

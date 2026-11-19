@@ -10,10 +10,10 @@ export function UpcomingLoading() {
 
 export function UpcomingList({ result }: { result: UpcomingResult }) {
   if (result.status === "unavailable") {
-    return <p className={styles.upcomingStatus}>Upcoming events couldn’t be loaded. <a href={aboutLinks.calendar}>View the calendar</a> or <a href={aboutLinks.discord}>check Discord.</a></p>;
+    return <p className={styles.upcomingStatus}>Upcoming events couldn’t be loaded. <a href={aboutLinks.calendar}>View the calendar</a> for upcoming dates.</p>;
   }
   if (result.events.length === 0) {
-    return <p className={styles.upcomingStatus}>No upcoming events are listed. <a href={aboutLinks.discord}>Check Discord for announcements.</a></p>;
+    return <p className={styles.upcomingStatus}>No upcoming events are listed.</p>;
   }
   return (
     <>

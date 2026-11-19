@@ -22,7 +22,7 @@ export default function AboutHistory() {
     const observer = new ResizeObserver(() => {
       const nextItem = list.children[visibleMilestones];
       const full = list.scrollHeight + 2;
-      const preview = nextItem ? nextItem.getBoundingClientRect().top - list.getBoundingClientRect().top + 48 : full;
+      const preview = nextItem ? nextItem.getBoundingClientRect().top - list.getBoundingClientRect().top : full;
       const next = { full, collapsed: Math.min(preview, full) };
       setHeights(current => current?.full === next.full && current?.collapsed === next.collapsed ? current : next);
     });
